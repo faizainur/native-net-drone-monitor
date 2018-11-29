@@ -13,6 +13,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Vlc.DotNet.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace native_net_drone_monitor
 {
@@ -20,10 +23,31 @@ namespace native_net_drone_monitor
     {
         public frmMain()
         {
+            
             InitializeComponent();
+            vlcControl1.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+
         }
 
         private void tabStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var settingsForm = new frmSettings();
+            settingsForm.Show();
+    
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            cmb.SelectedIndex = 0;
+            
+        }
+
+        private void vlcControl1_Click(object sender, EventArgs e)
         {
 
         }

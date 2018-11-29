@@ -7,26 +7,26 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.IO;
-using Vlc.DotNet.Forms;
+using System.Text;
+using System.Windows.Forms;
+using System.Reflection;
 
 namespace native_net_drone_monitor
 {
-    static class Program
+    public partial class frmSettings : Syncfusion.Windows.Forms.MetroForm
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
+        public frmSettings()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            InitializeComponent();
+        }
 
-           
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+            
         }
 
         
