@@ -57,7 +57,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv4 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
+            this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
             this.menuMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -75,6 +75,7 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).BeginInit();
             this.tabControlAdv3.SuspendLayout();
             this.tabPageAdv4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuMain
@@ -197,16 +198,20 @@ namespace native_net_drone_monitor
             this.tabControlAdv1.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
             this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(926, 235);
-            this.tabControlAdv1.CloseButtonForeColor = System.Drawing.Color.Empty;
-            this.tabControlAdv1.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
-            this.tabControlAdv1.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
+            this.tabControlAdv1.CloseButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabControlAdv1.CloseButtonHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.tabControlAdv1.CloseButtonPressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.tabControlAdv1.Controls.Add(this.tabPageAdv1);
             this.tabControlAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlAdv1.InactiveCloseButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.tabControlAdv1.InActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv1.Location = new System.Drawing.Point(0, 0);
             this.tabControlAdv1.Name = "tabControlAdv1";
             this.tabControlAdv1.SeparatorColor = System.Drawing.SystemColors.ControlDark;
+            this.tabControlAdv1.ShowCloseButtonForActiveTabOnly = true;
+            this.tabControlAdv1.ShowCloseButtonHighLightBackColor = true;
             this.tabControlAdv1.ShowSeparator = false;
+            this.tabControlAdv1.ShowTabCloseButton = true;
             this.tabControlAdv1.Size = new System.Drawing.Size(926, 235);
             this.tabControlAdv1.TabIndex = 0;
             this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
@@ -298,7 +303,7 @@ namespace native_net_drone_monitor
             // 
             // tabPageAdv4
             // 
-            this.tabPageAdv4.Controls.Add(this.videoSourcePlayer1);
+            this.tabPageAdv4.Controls.Add(this.vlcControl1);
             this.tabPageAdv4.Image = null;
             this.tabPageAdv4.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv4.Location = new System.Drawing.Point(1, 2);
@@ -335,15 +340,18 @@ namespace native_net_drone_monitor
             this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 705);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // videoSourcePlayer1
+            // vlcControl1
             // 
-            this.videoSourcePlayer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoSourcePlayer1.Location = new System.Drawing.Point(0, 0);
-            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
-            this.videoSourcePlayer1.Size = new System.Drawing.Size(923, 445);
-            this.videoSourcePlayer1.TabIndex = 0;
-            this.videoSourcePlayer1.Text = "videoSourcePlayer1";
-            this.videoSourcePlayer1.VideoSource = null;
+            this.vlcControl1.BackColor = System.Drawing.Color.Black;
+            this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
+            this.vlcControl1.Name = "vlcControl1";
+            this.vlcControl1.Size = new System.Drawing.Size(923, 445);
+            this.vlcControl1.Spu = -1;
+            this.vlcControl1.TabIndex = 0;
+            this.vlcControl1.Text = "vlcControl1";
+            this.vlcControl1.VlcLibDirectory = null;
+            this.vlcControl1.VlcMediaplayerOptions = null;
             // 
             // frmMain
             // 
@@ -374,6 +382,7 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).EndInit();
             this.tabControlAdv3.ResumeLayout(false);
             this.tabPageAdv4.ResumeLayout(false);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +412,6 @@ namespace native_net_drone_monitor
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv4;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private Vlc.DotNet.Forms.VlcControl vlcControl1;
     }
 }
