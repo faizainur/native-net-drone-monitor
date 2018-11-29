@@ -16,11 +16,16 @@ using System.Windows.Forms;
 
 namespace native_net_drone_monitor
 {
-    public partial class Form1 : Form
+    public partial class frmMain : Syncfusion.Windows.Forms.MetroForm
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
+        }
+
+        private void tabStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
