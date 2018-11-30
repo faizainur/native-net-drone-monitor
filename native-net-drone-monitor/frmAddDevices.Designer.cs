@@ -188,7 +188,7 @@ namespace native_net_drone_monitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 236);
+            this.ClientSize = new System.Drawing.Size(339, 236);
             this.Controls.Add(this.btnAddDevices);
             this.Controls.Add(this.btnCancelAdd);
             this.Controls.Add(this.txtProfileName);

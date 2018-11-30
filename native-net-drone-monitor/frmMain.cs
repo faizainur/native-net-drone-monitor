@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Vlc.DotNet.Forms;
 using System.IO;
 using System.Reflection;
+using System.Xml;
 
 namespace native_net_drone_monitor
 {
@@ -31,20 +32,20 @@ namespace native_net_drone_monitor
 
         private void tabStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var settingsForm = new frmConnect();
             settingsForm.Show();
+            
     
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            cmb.SelectedIndex = 0;
-            
+            cmb.SelectedIndex = 0;            
         }
 
         private void vlcControl1_Click(object sender, EventArgs e)
@@ -62,6 +63,22 @@ namespace native_net_drone_monitor
         {
             var addDevices = new frmAddDevices();
             addDevices.Show();
+        }
+
+        private Boolean update()
+        {
+            var currentVersion = Application.ProductVersion;
+            var currentName = Application.ProductName;
+            return true;
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (update())
+            {
+                MessageBox.Show(Application.
+                    ProductVersion);
+            }
         }
     }
 }

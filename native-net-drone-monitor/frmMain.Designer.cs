@@ -139,38 +139,38 @@ namespace native_net_drone_monitor
             // connectToDeviceToolStripMenuItem
             // 
             this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
-            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.connectToDeviceToolStripMenuItem.Text = "Connect to device";
             this.connectToDeviceToolStripMenuItem.Click += new System.EventHandler(this.connectToDeviceToolStripMenuItem_Click);
             // 
             // addDeviceToolStripMenuItem
             // 
             this.addDeviceToolStripMenuItem.Name = "addDeviceToolStripMenuItem";
-            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.addDeviceToolStripMenuItem.Text = "Add device";
             this.addDeviceToolStripMenuItem.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(167, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem
@@ -187,25 +187,26 @@ namespace native_net_drone_monitor
             // gettingStartedToolStripMenuItem
             // 
             this.gettingStartedToolStripMenuItem.Name = "gettingStartedToolStripMenuItem";
-            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gettingStartedToolStripMenuItem.Text = "Getting Started";
             // 
             // aboutThisSoftwareToolStripMenuItem
             // 
             this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
-            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutThisSoftwareToolStripMenuItem.Text = "About this software";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 
@@ -536,8 +537,8 @@ namespace native_net_drone_monitor
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(54, 22);
-            this.toolStripStatusLabel2.Text = "Latency :";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(45, 22);
+            this.toolStripStatusLabel2.Text = "Status :";
             // 
             // statusConnection
             // 
