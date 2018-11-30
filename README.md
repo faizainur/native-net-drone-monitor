@@ -1,6 +1,6 @@
 # Drone Monitor
 
-an open sourced project
+an open source project
 ## Description
 Drone Monitor is a software that could show any data streamed from data using any transfer method. The supported data yet to show is
 1. Video with image processing(optional)
