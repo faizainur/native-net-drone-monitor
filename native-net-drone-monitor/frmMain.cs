@@ -36,7 +36,7 @@ namespace native_net_drone_monitor
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var settingsForm = new frmSettings();
+            var settingsForm = new frmConnect();
             settingsForm.Show();
     
         }
@@ -50,6 +50,18 @@ namespace native_net_drone_monitor
         private void vlcControl1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void connectToDeviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var connectFrm = new frmConnect();
+            connectFrm.Show();
+        }
+
+        private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addDevices = new frmAddDevices();
+            addDevices.Show();
         }
     }
 }

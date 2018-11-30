@@ -17,9 +17,9 @@ using System.Reflection;
 
 namespace native_net_drone_monitor
 {
-    public partial class frmSettings : Syncfusion.Windows.Forms.MetroForm
+    public partial class frmConnect : Syncfusion.Windows.Forms.MetroForm
     {
-        public frmSettings()
+        public frmConnect()
         {
             InitializeComponent();
         }
@@ -29,6 +29,19 @@ namespace native_net_drone_monitor
             
         }
 
-        
+        private void sfButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sfButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
