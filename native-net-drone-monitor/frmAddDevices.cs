@@ -46,10 +46,7 @@ namespace native_net_drone_monitor
             {
                 return false;
             }
-            if (radioHttp.Checked == false || radioMavlink.Checked == false || radioRtsp.Checked == false  || radioTcp.Checked == false || txtSocket.Text == null)
-            {
-                return false;
-            } 
+            
             return true;
         }
 
@@ -60,10 +57,9 @@ namespace native_net_drone_monitor
 
         private void btnAddDevices_Click(object sender, EventArgs e)
         {
-            if (!validateForm())
-            {
-                MessageBox.Show("Please check again !!!", "Error");
-            }
+            
         }
+
+        
     }
 }

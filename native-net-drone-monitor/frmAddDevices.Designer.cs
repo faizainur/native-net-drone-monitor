@@ -43,7 +43,6 @@ namespace native_net_drone_monitor
             this.radioMavlink = new System.Windows.Forms.RadioButton();
             this.radioTcp = new System.Windows.Forms.RadioButton();
             this.radioRtsp = new System.Windows.Forms.RadioButton();
-            this.radioHttp = new System.Windows.Forms.RadioButton();
             this.txtIPDevices = new System.Windows.Forms.TextBox();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.btnCancelAdd = new Syncfusion.WinForms.Controls.SfButton();
@@ -76,7 +75,6 @@ namespace native_net_drone_monitor
             this.groupBox1.Controls.Add(this.radioMavlink);
             this.groupBox1.Controls.Add(this.radioTcp);
             this.groupBox1.Controls.Add(this.radioRtsp);
-            this.groupBox1.Controls.Add(this.radioHttp);
             this.groupBox1.Location = new System.Drawing.Point(53, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(227, 97);
@@ -136,17 +134,6 @@ namespace native_net_drone_monitor
             this.radioRtsp.TabStop = true;
             this.radioRtsp.Text = "RTSP";
             this.radioRtsp.UseVisualStyleBackColor = true;
-            // 
-            // radioHttp
-            // 
-            this.radioHttp.AutoSize = true;
-            this.radioHttp.Location = new System.Drawing.Point(7, 19);
-            this.radioHttp.Name = "radioHttp";
-            this.radioHttp.Size = new System.Drawing.Size(54, 17);
-            this.radioHttp.TabIndex = 0;
-            this.radioHttp.TabStop = true;
-            this.radioHttp.Text = "HTTP";
-            this.radioHttp.UseVisualStyleBackColor = true;
             // 
             // txtIPDevices
             // 
@@ -219,7 +206,6 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.RadioButton radioMavlink;
         private System.Windows.Forms.RadioButton radioTcp;
         private System.Windows.Forms.RadioButton radioRtsp;
-        private System.Windows.Forms.RadioButton radioHttp;
         private System.Windows.Forms.TextBox txtIPDevices;
         private System.Windows.Forms.TextBox txtProfileName;
         private Syncfusion.WinForms.Controls.SfButton btnCancelAdd;

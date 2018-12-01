@@ -35,87 +35,63 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConnect));
             this.listAvailDevices = new Syncfusion.WinForms.ListView.SfListView();
-            this.sfButton1 = new Syncfusion.WinForms.Controls.SfButton();
-            this.sfButton3 = new Syncfusion.WinForms.Controls.SfButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.btnEdit = new Syncfusion.WinForms.Controls.SfButton();
+            this.btnDelete = new Syncfusion.WinForms.Controls.SfButton();
             this.SuspendLayout();
             // 
             // listAvailDevices
             // 
             this.listAvailDevices.AccessibleName = "ScrollControl";
-            this.listAvailDevices.Location = new System.Drawing.Point(12, 12);
+            this.listAvailDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listAvailDevices.ItemHeight = 30D;
+            this.listAvailDevices.Location = new System.Drawing.Point(22, 12);
             this.listAvailDevices.Name = "listAvailDevices";
-            this.listAvailDevices.Size = new System.Drawing.Size(367, 191);
+            this.listAvailDevices.Size = new System.Drawing.Size(373, 281);
+            this.listAvailDevices.Style.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.listAvailDevices.TabIndex = 0;
             this.listAvailDevices.Text = "sfListView1";
             // 
-            // sfButton1
+            // btnEdit
             // 
-            this.sfButton1.AccessibleName = "Button";
-            this.sfButton1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.sfButton1.Location = new System.Drawing.Point(12, 255);
-            this.sfButton1.Name = "sfButton1";
-            this.sfButton1.Size = new System.Drawing.Size(367, 42);
-            this.sfButton1.TabIndex = 1;
-            this.sfButton1.Text = "CONNECT";
-            this.sfButton1.Click += new System.EventHandler(this.sfButton1_Click);
+            this.btnEdit.AccessibleName = "Button";
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEdit.Location = new System.Drawing.Point(401, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(41, 37);
+            this.btnEdit.Style.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            this.btnEdit.TabIndex = 1;
             // 
-            // sfButton3
+            // btnDelete
             // 
-            this.sfButton3.AccessibleName = "Button";
-            this.sfButton3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.sfButton3.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.sfButton3.Location = new System.Drawing.Point(12, 303);
-            this.sfButton3.Name = "sfButton3";
-            this.sfButton3.Size = new System.Drawing.Size(367, 42);
-            this.sfButton3.TabIndex = 3;
-            this.sfButton3.Text = "Cancel";
-            this.sfButton3.Click += new System.EventHandler(this.sfButton3_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 209);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 40);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Options";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 17);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(110, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Image Processing";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.btnDelete.AccessibleName = "Button";
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageSize = new System.Drawing.Size(14, 20);
+            this.btnDelete.Location = new System.Drawing.Point(401, 55);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(41, 37);
+            this.btnDelete.Style.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            this.btnDelete.TabIndex = 2;
             // 
             // frmConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 359);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.sfButton3);
-            this.Controls.Add(this.sfButton1);
+            this.ClientSize = new System.Drawing.Size(445, 311);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.listAvailDevices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximumSize = new System.Drawing.Size(406, 395);
-            this.MinimumSize = new System.Drawing.Size(406, 395);
+            this.MaximizeBox = false;
             this.Name = "frmConnect";
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Connect to Devices";
-            this.Load += new System.EventHandler(this.frmSettings_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Text = "Connect to Drone";
+            this.Load += new System.EventHandler(this.frmConnect_Load);
             this.ResumeLayout(false);
 
         }
@@ -123,9 +99,7 @@ namespace native_net_drone_monitor
         #endregion
 
         private Syncfusion.WinForms.ListView.SfListView listAvailDevices;
-        private Syncfusion.WinForms.Controls.SfButton sfButton1;
-        private Syncfusion.WinForms.Controls.SfButton sfButton3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private Syncfusion.WinForms.Controls.SfButton btnEdit;
+        private Syncfusion.WinForms.Controls.SfButton btnDelete;
     }
 }

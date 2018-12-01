@@ -11,6 +11,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using Vlc.DotNet.Forms;
+using System.Threading;
 
 namespace native_net_drone_monitor
 {
@@ -24,9 +25,11 @@ namespace native_net_drone_monitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
+            
             Application.Run(new frmMain());
 
-           
+            
         }
 
         

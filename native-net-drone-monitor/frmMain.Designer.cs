@@ -44,8 +44,8 @@ namespace native_net_drone_monitor
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editDevicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -63,10 +63,16 @@ namespace native_net_drone_monitor
             this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.listMessages = new Syncfusion.WinForms.ListView.SfListView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.cmbConnect = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.btnDisconnect = new Syncfusion.WinForms.Controls.SfButton();
+            this.btnConnectDevices = new Syncfusion.WinForms.Controls.SfButton();
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPageAdv3 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.statusStripPanelItem1 = new Syncfusion.Windows.Forms.Tools.StatusStripPanelItem();
             this.cmb = new System.Windows.Forms.ToolStripComboBox();
@@ -105,9 +111,19 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbConnect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv2)).BeginInit();
             this.tabControlAdv2.SuspendLayout();
             this.tabPageAdv2.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -126,8 +142,8 @@ namespace native_net_drone_monitor
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.connectToDeviceToolStripMenuItem,
             this.addDeviceToolStripMenuItem,
+            this.editDevicesToolStripMenuItem,
             this.toolStripSeparator2,
             this.settingsToolStripMenuItem,
             this.toolStripSeparator6,
@@ -136,42 +152,42 @@ namespace native_net_drone_monitor
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // connectToDeviceToolStripMenuItem
-            // 
-            this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
-            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.connectToDeviceToolStripMenuItem.Text = "Connect to device";
-            this.connectToDeviceToolStripMenuItem.Click += new System.EventHandler(this.connectToDeviceToolStripMenuItem_Click);
-            // 
             // addDeviceToolStripMenuItem
             // 
             this.addDeviceToolStripMenuItem.Name = "addDeviceToolStripMenuItem";
-            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.addDeviceToolStripMenuItem.Text = "Add device";
             this.addDeviceToolStripMenuItem.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
+            // 
+            // editDevicesToolStripMenuItem
+            // 
+            this.editDevicesToolStripMenuItem.Name = "editDevicesToolStripMenuItem";
+            this.editDevicesToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.editDevicesToolStripMenuItem.Text = "Edit Devices";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(134, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -187,24 +203,24 @@ namespace native_net_drone_monitor
             // gettingStartedToolStripMenuItem
             // 
             this.gettingStartedToolStripMenuItem.Name = "gettingStartedToolStripMenuItem";
-            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.gettingStartedToolStripMenuItem.Text = "Getting Started";
             // 
             // aboutThisSoftwareToolStripMenuItem
             // 
             this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
-            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.aboutThisSoftwareToolStripMenuItem.Text = "About this software";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
@@ -220,7 +236,7 @@ namespace native_net_drone_monitor
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControlAdv2);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1354, 693);
             this.splitContainer1.SplitterDistance = 926;
             this.splitContainer1.TabIndex = 1;
@@ -281,6 +297,8 @@ namespace native_net_drone_monitor
             // 
             // vlcControl1
             // 
+            this.vlcControl1.AccessibleName = "player";
+            this.vlcControl1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.vlcControl1.BackColor = System.Drawing.Color.Black;
             this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vlcControl1.Location = new System.Drawing.Point(0, 0);
@@ -291,7 +309,6 @@ namespace native_net_drone_monitor
             this.vlcControl1.Text = "vlcControl1";
             this.vlcControl1.VlcLibDirectory = ((System.IO.DirectoryInfo)(resources.GetObject("vlcControl1.VlcLibDirectory")));
             this.vlcControl1.VlcMediaplayerOptions = null;
-            this.vlcControl1.Click += new System.EventHandler(this.vlcControl1_Click);
             // 
             // tabPageAdv5
             // 
@@ -328,14 +345,14 @@ namespace native_net_drone_monitor
             this.tabControlAdv1.ShowSeparator = false;
             this.tabControlAdv1.Size = new System.Drawing.Size(926, 230);
             this.tabControlAdv1.TabIndex = 0;
-            this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016Black);
+            this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016Colorful);
             this.tabControlAdv1.VSLikeScrollButton = true;
             // 
             // tabPageAdv1
             // 
-            this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.tabPageAdv1.Controls.Add(this.listMessages);
-            this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabPageAdv1.Controls.Add(this.listBox1);
+            this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv1.Image = null;
             this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv1.Location = new System.Drawing.Point(1, 2);
@@ -346,21 +363,96 @@ namespace native_net_drone_monitor
             this.tabPageAdv1.Text = "Messages";
             this.tabPageAdv1.ThemesEnabled = false;
             // 
-            // listMessages
+            // listBox1
             // 
-            this.listMessages.AccessibleName = "ScrollControl";
-            this.listMessages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listMessages.Location = new System.Drawing.Point(0, 0);
-            this.listMessages.Name = "listMessages";
-            this.listMessages.Size = new System.Drawing.Size(923, 206);
-            this.listMessages.TabIndex = 0;
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(923, 206);
+            this.listBox1.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.tabControlAdv2);
+            this.splitContainer3.Size = new System.Drawing.Size(424, 693);
+            this.splitContainer3.SplitterDistance = 25;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.cmbConnect);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.btnDisconnect);
+            this.splitContainer4.Panel2.Controls.Add(this.btnConnectDevices);
+            this.splitContainer4.Size = new System.Drawing.Size(424, 25);
+            this.splitContainer4.SplitterDistance = 319;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // cmbConnect
+            // 
+            this.cmbConnect.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmbConnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConnect.Location = new System.Drawing.Point(0, 0);
+            this.cmbConnect.Name = "cmbConnect";
+            this.cmbConnect.Size = new System.Drawing.Size(319, 25);
+            this.cmbConnect.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConnect.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbConnect.TabIndex = 1;
+            this.cmbConnect.Text = "Select drone";
+            this.cmbConnect.SelectedIndexChanged += new System.EventHandler(this.cmbConnect_SelectedIndexChanged);
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.AccessibleName = "Button";
+            this.btnDisconnect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDisconnect.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.btnDisconnect.Location = new System.Drawing.Point(0, 0);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(101, 25);
+            this.btnDisconnect.TabIndex = 1;
+            this.btnDisconnect.Text = "DISCONNECT";
+            this.btnDisconnect.Visible = false;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
+            // 
+            // btnConnectDevices
+            // 
+            this.btnConnectDevices.AccessibleName = "Button";
+            this.btnConnectDevices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnConnectDevices.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
+            this.btnConnectDevices.Location = new System.Drawing.Point(0, 0);
+            this.btnConnectDevices.Name = "btnConnectDevices";
+            this.btnConnectDevices.Size = new System.Drawing.Size(101, 25);
+            this.btnConnectDevices.TabIndex = 0;
+            this.btnConnectDevices.Text = "CONNECT";
+            this.btnConnectDevices.Click += new System.EventHandler(this.btnConnectDevices_Click);
             // 
             // tabControlAdv2
             // 
             this.tabControlAdv2.ActiveTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tabControlAdv2.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.Alignment = System.Windows.Forms.TabAlignment.Right;
-            this.tabControlAdv2.BeforeTouchSize = new System.Drawing.Size(424, 693);
+            this.tabControlAdv2.BeforeTouchSize = new System.Drawing.Size(424, 664);
             this.tabControlAdv2.CloseButtonForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
@@ -372,7 +464,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv2.Name = "tabControlAdv2";
             this.tabControlAdv2.SeparatorColor = System.Drawing.SystemColors.ControlDark;
             this.tabControlAdv2.ShowSeparator = false;
-            this.tabControlAdv2.Size = new System.Drawing.Size(424, 693);
+            this.tabControlAdv2.Size = new System.Drawing.Size(424, 664);
             this.tabControlAdv2.TabIndex = 0;
             this.tabControlAdv2.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
             // 
@@ -386,7 +478,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv2.Location = new System.Drawing.Point(2, 1);
             this.tabPageAdv2.Name = "tabPageAdv2";
             this.tabPageAdv2.ShowCloseButton = true;
-            this.tabPageAdv2.Size = new System.Drawing.Size(399, 690);
+            this.tabPageAdv2.Size = new System.Drawing.Size(399, 661);
             this.tabPageAdv2.TabIndex = 1;
             this.tabPageAdv2.Text = "Stats";
             this.tabPageAdv2.ThemesEnabled = false;
@@ -396,14 +488,25 @@ namespace native_net_drone_monitor
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.69565F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.30435F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 690);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 661);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabPageAdv3
             // 
@@ -414,7 +517,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv3.Location = new System.Drawing.Point(2, 1);
             this.tabPageAdv3.Name = "tabPageAdv3";
             this.tabPageAdv3.ShowCloseButton = true;
-            this.tabPageAdv3.Size = new System.Drawing.Size(399, 690);
+            this.tabPageAdv3.Size = new System.Drawing.Size(399, 661);
             this.tabPageAdv3.TabIndex = 2;
             this.tabPageAdv3.Text = "Tables";
             this.tabPageAdv3.ThemesEnabled = false;
@@ -606,6 +709,7 @@ namespace native_net_drone_monitor
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuMain;
             this.Name = "frmMain";
             this.ShowIcon = false;
@@ -629,9 +733,19 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageAdv1.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbConnect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv2)).EndInit();
             this.tabControlAdv2.ResumeLayout(false);
             this.tabPageAdv2.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -663,7 +777,6 @@ namespace native_net_drone_monitor
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv4;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Vlc.DotNet.Forms.VlcControl vlcControl1;
         private Syncfusion.Windows.Forms.Tools.StatusStripPanelItem statusStripPanelItem1;
         private System.Windows.Forms.ToolStripComboBox cmb;
         private Syncfusion.Windows.Forms.Tools.ToolStripPanelItem btnConnect;
@@ -681,13 +794,20 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private Syncfusion.Windows.Forms.Tools.ToolStripPanelItem toolStripPanelItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem connectToDeviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDeviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripStatusLabel statusConnection;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.Panel panel1;
-        private Syncfusion.WinForms.ListView.SfListView listMessages;
+        private System.Windows.Forms.Button button1;
+        private Vlc.DotNet.Forms.VlcControl vlcControl1;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private Syncfusion.WinForms.ListView.SfComboBox cmbConnect;
+        private Syncfusion.WinForms.Controls.SfButton btnConnectDevices;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.ToolStripMenuItem editDevicesToolStripMenuItem;
+        private Syncfusion.WinForms.Controls.SfButton btnDisconnect;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }

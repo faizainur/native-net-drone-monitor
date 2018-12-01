@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<drone-list>
+  <drone name="palapa">
+    <ip-address>192.0.0.1</ip-address>
+    <conn-method>rtsp</conn-method>
+    <socket>80</socket>
+    <protocol>tcp</protocol>
+    <port>25</port>
+  </drone>
+  <drone name="prometheus">
+    <ip-address>192.0.0.1</ip-address>
+    <conn-method>rtsp</conn-method>
+    <socket>80</socket>
+    <protocol>tcp</protocol>
+    <port>25</port>
+  </drone>
+</drone-list>
