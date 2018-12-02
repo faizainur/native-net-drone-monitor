@@ -169,9 +169,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="dronesList.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
     <Content Include="iconfinder_Science__Technology_27_2633200.ico" />
   </ItemGroup>
   <ItemGroup>

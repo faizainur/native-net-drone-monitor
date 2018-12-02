@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Xml;
 using System.Data.SqlClient;
 using System.Threading;
+using System.Xml.Linq;
 
 namespace native_net_drone_monitor
 {
@@ -28,61 +29,102 @@ namespace native_net_drone_monitor
         private BindingList<Drone> droneList = new BindingList<Drone>();
         private BindingSource source = new BindingSource();
         private List<string> messages = new List<string>();
+        private string FILENAME = "droneList.xml";
         public string path;
         public frmMain()
         {
             
             InitializeComponent();
             path = "D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv";
-            
-            //vlcControl1.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+
+
         }
 
         public void refresh()
         {
-            droneList.Clear();
-           
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("droneList.xml");
-
-            foreach (XmlNode node in xmlDoc.DocumentElement)
+            if (!File.Exists(FILENAME))
             {
-                var profileName = node.Attributes[0].InnerText;
-                
-                Drone newDrone = new Drone();
+                var result = MessageBox.Show("Seems this your first time :), please add device first.", "No devices listed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        if (!createXmlFile())
+                        {
+                            MessageBox.Show("Error creating XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            var frmAdd = new frmAddDevices();
+                            frmAdd.Show();
+                            frmAdd.TopMost = true;
+                        }
+                        break;
+                    case DialogResult.No:
+                        break;
+                    default:
+                        MessageBox.Show("What did you press?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                        break;
+                }
+            } else
+            {
+                droneList.Clear();
 
-                var port = 0;
-                var socket = 0;
-                var ipAddress = node.SelectSingleNode("/drone-list/drone/ip-address").InnerText;
-                var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
-                var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/port").InnerText, out port);
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(FILENAME);
 
-                newDrone.profileName = profileName;
-                newDrone.ipAddress = ipAddress;
-                newDrone.protocolConn = protocolConn;
-                newDrone.connMethod = connMethod;
-                newDrone.port = port;
-                newDrone.socket = socket;
+                foreach (XmlNode node in xmlDoc.DocumentElement)
+                {
+                    var profileName = node.Attributes[0].InnerText;
 
-                droneList.Add(newDrone);
+                    Drone newDrone = new Drone();
+
+                    var port = 0;
+                    var socket = 0;
+                    var ipAddress = node.SelectSingleNode("/drone-list/drone/ip-address").InnerText;
+                    var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
+                    var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
+                    Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
+                    Int32.TryParse(node.SelectSingleNode("/drone-list/drone/port").InnerText, out port);
+
+                    newDrone.profileName = profileName;
+                    newDrone.ipAddress = ipAddress;
+                    newDrone.protocolConn = protocolConn;
+                    newDrone.connMethod = connMethod;
+                    newDrone.port = port;
+                    newDrone.socket = socket;
+
+                    droneList.Add(newDrone);
+                }
+                source.DataSource = droneList;
+                cmbConnect.DataSource = source;
+                cmbConnect.DisplayMember = "profileName";
             }
-            source.DataSource = droneList;
-            cmbConnect.DataSource = source;
-            cmbConnect.DisplayMember = "profileName";
           
         }
       
+        public bool createXmlFile()
+        {
+            new XDocument(
+                new XElement("drone-list")).Save(FILENAME);
+            if (!File.Exists(FILENAME))
+            {
+                return false;
+            }
+            return true;
+        }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             refresh();
-            cmbConnect.DropDownListView.Height = 100;
-            cmbConnect.DropDownListView.Width = cmbConnect.Width;
-            cmbConnect.DropDownListView.ItemHeight = 30;
+            statusConnection.Text = "DISCONNECTED";
+            statusConnection.ForeColor = Color.Red;
+            statusIP.Visible = false;
+            statusLatency.Visible = false;
+            statusLblIP.Visible = false;
+            statusLblLatency.Visible = false;
+            statusLblLatencyUnit.Visible = false;
         }
-       
+
         private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addDevices = new frmAddDevices();
@@ -106,10 +148,7 @@ namespace native_net_drone_monitor
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            streamPlayer.Pause();
-        }
+       
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -124,31 +163,57 @@ namespace native_net_drone_monitor
         private void btnConnectDevices_Click(object sender, EventArgs e)
         {
             var idx = cmbConnect.SelectedIndex;
-            streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
-            btnConnectDevices.Visible = false;
-            btnDisconnect.Visible = true;
-            
+            Drone selectedDrone = new Drone();
+            connect(selectedDrone);
         }
 
         private void cmbConnect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!File.Exists("blbla.xml"))
-            {
-                MessageBox.Show("No file found");
-            }
+            
         }
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
+            var result = MessageBox.Show("Are you sure to disconnect?", "Really?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    disconnect();
+                    break;
+                case DialogResult.No:
+                    break;
+                default:
+                    MessageBox.Show("What did you press?", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    break;
+            }
+        }
+
+        public void connect(Drone drone)
+        {
+            streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+            btnConnectDevices.Visible = false;
+            btnDisconnect.Visible = true;
+            statusConnection.Text = "CONNECTED";
+            statusIP.Visible = true;
+            statusLatency.Visible = true;
+            statusLblIP.Visible = true;
+            statusLblLatency.Visible = true;
+            statusLblLatencyUnit.Visible = true;
+            statusConnection.ForeColor = Color.Green;
+        }
+
+        public void disconnect()
+        {
             streamPlayer.Stop();
             btnConnectDevices.Visible = true;
             btnDisconnect.Visible = false;
-        }
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            statusConnection.Text = "NOT CONNECTED";
+            statusIP.Visible = false;
+            statusLatency.Visible = false;
+            statusLblIP.Visible = false;
+            statusLblLatency.Visible = false;
+            statusLblLatencyUnit.Visible = false;
+            statusConnection.ForeColor = Color.Red;
         }
 
         private void editDevicesToolStripMenuItem_Click(object sender, EventArgs e)

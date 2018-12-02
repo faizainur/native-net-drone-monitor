@@ -60,7 +60,7 @@ namespace native_net_drone_monitor
             var name = selectedDrone.profileName;
             deleteData(name);
             frmMain main = (frmMain)Application.OpenForms["frmMain"];
-            main.refreshToolStripMenuItem.PerformClick();
+            main.menuRefresh.PerformClick();
         }
 
         private void deleteData(string attrName)
