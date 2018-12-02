@@ -75,6 +75,8 @@ namespace native_net_drone_monitor
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelHome = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,6 +91,7 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.toggleMavLink)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).BeginInit();
+            this.panelHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -103,7 +106,7 @@ namespace native_net_drone_monitor
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panelGeneral);
+            this.splitContainer1.Panel2.Controls.Add(this.panelHome);
             this.splitContainer1.Size = new System.Drawing.Size(647, 502);
             this.splitContainer1.SplitterDistance = 215;
             this.splitContainer1.TabIndex = 0;
@@ -437,12 +440,33 @@ namespace native_net_drone_monitor
             this.label1.TabIndex = 0;
             this.label1.Text = "Profile name";
             // 
+            // panelHome
+            // 
+            this.panelHome.Controls.Add(this.panelGeneral);
+            this.panelHome.Controls.Add(this.label10);
+            this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelHome.Location = new System.Drawing.Point(0, 0);
+            this.panelHome.Name = "panelHome";
+            this.panelHome.Size = new System.Drawing.Size(428, 502);
+            this.panelHome.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(27, 68);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(389, 42);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Setup your drone and save the configuration for future\r\nuse.";
+            // 
             // frmAddDevices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.CaptionBarHeight = 15;
+            this.CaptionForeColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(647, 502);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -450,6 +474,7 @@ namespace native_net_drone_monitor
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Setup Wizard";
             this.Load += new System.EventHandler(this.frmAddDevices_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -469,6 +494,8 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.toggleMavLink)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).EndInit();
+            this.panelHome.ResumeLayout(false);
+            this.panelHome.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,5 +533,7 @@ namespace native_net_drone_monitor
         private Syncfusion.WinForms.ListView.SfComboBox cmbPortCOM;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panelHome;
+        private System.Windows.Forms.Label label10;
     }
 }

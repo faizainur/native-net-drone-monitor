@@ -86,26 +86,25 @@ namespace native_net_drone_monitor
         private void btnAddData_Click(object sender, EventArgs e)
         {
             var main = (frmMain)Application.OpenForms["frmMain"];
-            addData();
-            main.menuRefresh.PerformClick();
-            if (main.Enabled == false)
+            if (addData())
             {
-                main.Enabled = true;
+                main.menuRefresh.PerformClick();
+                if (main.Enabled == false)
+                {
+                    main.Enabled = true;
+                }
+                this.Close();
             }
-            this.Close();
+            
         }
 
-        private void addData()
+        private bool addData()
         {
 
             /* TODO Validating data form */
 
             string baudrate, selectedProtocol, selectedCOM;
-            if (toggleWebSocket.ToggleState == ToggleButtonState.Active && toggleMavLink.ToggleState == ToggleButtonState.Active)
-            {
-                MessageBox.Show("Please only choose one connection method", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (toggleMavLink.ToggleState == ToggleButtonState.Active)
+            if (toggleMavLink.ToggleState == ToggleButtonState.Active)
             {
                 selectedConnMethod = "MAVLink";
             }
@@ -116,34 +115,54 @@ namespace native_net_drone_monitor
             if (cmbBaudrate.SelectedItem != null)
             {
                 baudrate = baudrateList[cmbBaudrate.SelectedIndex];
-            } else { baudrate = ""; }
-            
+            }
+            else { baudrate = ""; }
+
             string seletedType = droneType[cmbDroneType.SelectedIndex];
 
             if (cmbProtocol.SelectedItem != null)
             {
                 selectedProtocol = protocol[cmbProtocol.SelectedIndex];
-            } else { selectedProtocol = ""; }
+            }
+            else { selectedProtocol = ""; }
 
             if (cmbPortCOM.SelectedItem != null)
             {
                 selectedCOM = listCOM[cmbPortCOM.SelectedIndex];
-            } else { selectedCOM = ""; }
+            }
+            else { selectedCOM = ""; }
 
-            var xmlDoc = XDocument.Load(FILENAME);
-            var newElement = new XElement("drone",
-                new XAttribute("name", txtProfileName.Text),
-                new XElement("drone-type", seletedType),
-                new XElement("ip-address", txtIPAddress.Text),
-                new XElement("conn-method", selectedConnMethod),
-                new XElement("port", txtPort.Text),
-                new XElement("protocol", selectedProtocol),
-                new XElement("socket", txtSocket.Text),
-                new XElement("port-com", selectedCOM),
-                new XElement("baudrate", baudrate));
-            xmlDoc.Element("drone-list").Add(newElement);
-            xmlDoc.Save(FILENAME);
-            
+            if (toggleWebSocket.ToggleState == ToggleButtonState.Active && toggleMavLink.ToggleState == ToggleButtonState.Active)
+            {
+                var result = MessageBox.Show("Please only choose one connection method", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        return false;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                var xmlDoc = XDocument.Load(FILENAME);
+                var newElement = new XElement("drone",
+                    new XAttribute("name", txtProfileName.Text),
+                    new XElement("drone-type", seletedType),
+                    new XElement("ip-address", txtIPAddress.Text),
+                    new XElement("conn-method", selectedConnMethod),
+                    new XElement("port", txtPort.Text),
+                    new XElement("protocol", selectedProtocol),
+                    new XElement("socket", txtSocket.Text),
+                    new XElement("port-com", selectedCOM),
+                    new XElement("baudrate", baudrate));
+                xmlDoc.Element("drone-list").Add(newElement);
+                xmlDoc.Save(FILENAME);
+
+            }
+            return true;
+
+
             // TODO Check if file exist
         }
 
@@ -165,6 +184,7 @@ namespace native_net_drone_monitor
             {
                 lblSocket.Enabled = false;
                 txtSocket.Enabled = false;
+                txtSocket.Clear();
             }
         }
 
@@ -198,6 +218,7 @@ namespace native_net_drone_monitor
             {
                 lblProtocol.Enabled = false;
                 cmbProtocol.Enabled = false;
+                cmbProtocol.SelectedItem = null;
             }
         }
 

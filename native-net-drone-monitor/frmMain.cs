@@ -44,26 +44,26 @@ namespace native_net_drone_monitor
         {
             if (!File.Exists(FILENAME))
             {
-                var result = MessageBox.Show("Seems this your first time :), please add device first.", "No devices listed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                switch (result)
+                if (!createXmlFile())
                 {
-                    case DialogResult.Yes:
-                        if (!createXmlFile())
-                        {
-                            MessageBox.Show("Error creating XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
+                    MessageBox.Show("Error creating XML file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var result = MessageBox.Show("Seems this is your first time :), please add device first.", "No devices listed", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    switch (result)
+                    {
+                        case DialogResult.Yes:
                             var frmAdd = new frmAddDevices();
                             frmAdd.Show();
                             frmAdd.TopMost = true;
-                        }
-                        break;
-                    case DialogResult.No:
-                        break;
-                    default:
-                        MessageBox.Show("What did you press?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                        break;
+                            break;
+                        case DialogResult.No:
+                            break;
+                        default:
+                            MessageBox.Show("What did you press?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                            break;
+                    }
                 }
             } else
             {
@@ -116,7 +116,7 @@ namespace native_net_drone_monitor
         private void frmMain_Load(object sender, EventArgs e)
         {
             refresh();
-            statusConnection.Text = "DISCONNECTED";
+            statusConnection.Text = "NOT CONNECTED";
             statusConnection.ForeColor = Color.Red;
             statusIP.Visible = false;
             statusLatency.Visible = false;
