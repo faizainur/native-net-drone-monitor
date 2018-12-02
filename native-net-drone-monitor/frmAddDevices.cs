@@ -10,14 +10,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Xml;
 
 namespace native_net_drone_monitor
 {
     public partial class frmAddDevices : Syncfusion.Windows.Forms.MetroForm
     {
+        public const string FILENAME = "droneList.xml";
         public frmAddDevices()
         {
             InitializeComponent();
@@ -46,7 +49,6 @@ namespace native_net_drone_monitor
             {
                 return false;
             }
-            
             return true;
         }
 
@@ -57,9 +59,24 @@ namespace native_net_drone_monitor
 
         private void btnAddDevices_Click(object sender, EventArgs e)
         {
-            
+            var main = (frmMain)Application.OpenForms["frmMain"];
+            addData();
+            main.refreshToolStripMenuItem.PerformClick();
+            this.Close();
         }
 
+        private void addData()
+        {
+            var xmlDoc = XDocument.Load(FILENAME);
+            var newElement = new XElement("drone",
+                new XAttribute("name", txtProfileName.Text),
+                new XElement("ip-address", txtIPDevices.Text),
+                new XElement("socket", txtSocket.Text));
+            xmlDoc.Element("drone-list").Add(newElement);
+            xmlDoc.Save(FILENAME);
+            
+            // TODO Check if file exist
+        }
         
     }
 }

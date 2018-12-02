@@ -7,7 +7,7 @@
 #endregion
 namespace native_net_drone_monitor
 {
-    partial class frmConnect
+    partial class frmEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConnect));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEdit));
             this.listAvailDevices = new Syncfusion.WinForms.ListView.SfListView();
             this.btnEdit = new Syncfusion.WinForms.Controls.SfButton();
             this.btnDelete = new Syncfusion.WinForms.Controls.SfButton();
@@ -76,8 +76,9 @@ namespace native_net_drone_monitor
             this.btnDelete.Size = new System.Drawing.Size(41, 37);
             this.btnDelete.Style.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             this.btnDelete.TabIndex = 2;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // frmConnect
+            // frmEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,9 +88,10 @@ namespace native_net_drone_monitor
             this.Controls.Add(this.listAvailDevices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "frmConnect";
+            this.Name = "frmEdit";
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connect to Drone";
             this.Load += new System.EventHandler(this.frmConnect_Load);
             this.ResumeLayout(false);

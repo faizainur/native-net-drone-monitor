@@ -41,8 +41,6 @@ namespace native_net_drone_monitor
             this.txtSocket = new System.Windows.Forms.TextBox();
             this.radioSocket = new System.Windows.Forms.RadioButton();
             this.radioMavlink = new System.Windows.Forms.RadioButton();
-            this.radioTcp = new System.Windows.Forms.RadioButton();
-            this.radioRtsp = new System.Windows.Forms.RadioButton();
             this.txtIPDevices = new System.Windows.Forms.TextBox();
             this.txtProfileName = new System.Windows.Forms.TextBox();
             this.btnCancelAdd = new Syncfusion.WinForms.Controls.SfButton();
@@ -62,7 +60,7 @@ namespace native_net_drone_monitor
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 65);
+            this.label2.Location = new System.Drawing.Point(56, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 1;
@@ -73,11 +71,9 @@ namespace native_net_drone_monitor
             this.groupBox1.Controls.Add(this.txtSocket);
             this.groupBox1.Controls.Add(this.radioSocket);
             this.groupBox1.Controls.Add(this.radioMavlink);
-            this.groupBox1.Controls.Add(this.radioTcp);
-            this.groupBox1.Controls.Add(this.radioRtsp);
-            this.groupBox1.Location = new System.Drawing.Point(53, 88);
+            this.groupBox1.Location = new System.Drawing.Point(53, 119);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(227, 97);
+            this.groupBox1.Size = new System.Drawing.Size(227, 48);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data transfer method";
@@ -85,7 +81,7 @@ namespace native_net_drone_monitor
             // txtSocket
             // 
             this.txtSocket.Enabled = false;
-            this.txtSocket.Location = new System.Drawing.Point(164, 41);
+            this.txtSocket.Location = new System.Drawing.Point(164, 19);
             this.txtSocket.Name = "txtSocket";
             this.txtSocket.Size = new System.Drawing.Size(53, 20);
             this.txtSocket.TabIndex = 6;
@@ -93,7 +89,7 @@ namespace native_net_drone_monitor
             // radioSocket
             // 
             this.radioSocket.AutoSize = true;
-            this.radioSocket.Location = new System.Drawing.Point(99, 42);
+            this.radioSocket.Location = new System.Drawing.Point(99, 19);
             this.radioSocket.Name = "radioSocket";
             this.radioSocket.Size = new System.Drawing.Size(59, 17);
             this.radioSocket.TabIndex = 4;
@@ -105,7 +101,7 @@ namespace native_net_drone_monitor
             // radioMavlink
             // 
             this.radioMavlink.AutoSize = true;
-            this.radioMavlink.Location = new System.Drawing.Point(99, 19);
+            this.radioMavlink.Location = new System.Drawing.Point(6, 19);
             this.radioMavlink.Name = "radioMavlink";
             this.radioMavlink.Size = new System.Drawing.Size(68, 17);
             this.radioMavlink.TabIndex = 3;
@@ -113,31 +109,9 @@ namespace native_net_drone_monitor
             this.radioMavlink.Text = "MAVLink";
             this.radioMavlink.UseVisualStyleBackColor = true;
             // 
-            // radioTcp
-            // 
-            this.radioTcp.AutoSize = true;
-            this.radioTcp.Location = new System.Drawing.Point(7, 65);
-            this.radioTcp.Name = "radioTcp";
-            this.radioTcp.Size = new System.Drawing.Size(46, 17);
-            this.radioTcp.TabIndex = 2;
-            this.radioTcp.TabStop = true;
-            this.radioTcp.Text = "TCP";
-            this.radioTcp.UseVisualStyleBackColor = true;
-            // 
-            // radioRtsp
-            // 
-            this.radioRtsp.AutoSize = true;
-            this.radioRtsp.Location = new System.Drawing.Point(7, 42);
-            this.radioRtsp.Name = "radioRtsp";
-            this.radioRtsp.Size = new System.Drawing.Size(54, 17);
-            this.radioRtsp.TabIndex = 1;
-            this.radioRtsp.TabStop = true;
-            this.radioRtsp.Text = "RTSP";
-            this.radioRtsp.UseVisualStyleBackColor = true;
-            // 
             // txtIPDevices
             // 
-            this.txtIPDevices.Location = new System.Drawing.Point(140, 62);
+            this.txtIPDevices.Location = new System.Drawing.Point(140, 61);
             this.txtIPDevices.Name = "txtIPDevices";
             this.txtIPDevices.Size = new System.Drawing.Size(140, 20);
             this.txtIPDevices.TabIndex = 4;
@@ -204,8 +178,6 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.TextBox txtSocket;
         private System.Windows.Forms.RadioButton radioSocket;
         private System.Windows.Forms.RadioButton radioMavlink;
-        private System.Windows.Forms.RadioButton radioTcp;
-        private System.Windows.Forms.RadioButton radioRtsp;
         private System.Windows.Forms.TextBox txtIPDevices;
         private System.Windows.Forms.TextBox txtProfileName;
         private Syncfusion.WinForms.Controls.SfButton btnCancelAdd;

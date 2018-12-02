@@ -42,11 +42,17 @@ namespace native_net_drone_monitor
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            Syncfusion.Windows.Forms.Gauge.LinearRange linearRange1 = new Syncfusion.Windows.Forms.Gauge.LinearRange();
+            Syncfusion.Windows.Forms.Gauge.LinearRange linearRange2 = new Syncfusion.Windows.Forms.Gauge.LinearRange();
+            Syncfusion.Windows.Forms.CaptionImage captionImage1 = new Syncfusion.Windows.Forms.CaptionImage();
+            Syncfusion.Windows.Forms.CaptionLabel captionLabel1 = new Syncfusion.Windows.Forms.CaptionLabel();
+            Syncfusion.Windows.Forms.CaptionLabel captionLabel2 = new Syncfusion.Windows.Forms.CaptionLabel();
             this.menuMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editDevicesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,11 +65,10 @@ namespace native_net_drone_monitor
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabControlAdv3 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv4 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
+            this.streamPlayer = new Vlc.DotNet.Forms.VlcControl();
             this.tabPageAdv5 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.cmbConnect = new Syncfusion.WinForms.ListView.SfComboBox();
@@ -72,7 +77,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv2 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.altIndicator = new Syncfusion.Windows.Forms.Gauge.LinearGauge();
             this.tabPageAdv3 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.statusStripPanelItem1 = new Syncfusion.Windows.Forms.Tools.StatusStripPanelItem();
             this.cmb = new System.Windows.Forms.ToolStripComboBox();
@@ -107,10 +112,9 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).BeginInit();
             this.tabControlAdv3.SuspendLayout();
             this.tabPageAdv4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streamPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
-            this.tabPageAdv1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -130,6 +134,7 @@ namespace native_net_drone_monitor
             // 
             // menuMain
             // 
+            this.menuMain.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -145,6 +150,7 @@ namespace native_net_drone_monitor
             this.addDeviceToolStripMenuItem,
             this.editDevicesToolStripMenuItem,
             this.toolStripSeparator2,
+            this.refreshToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.toolStripSeparator6,
             this.exitToolStripMenuItem});
@@ -155,37 +161,46 @@ namespace native_net_drone_monitor
             // addDeviceToolStripMenuItem
             // 
             this.addDeviceToolStripMenuItem.Name = "addDeviceToolStripMenuItem";
-            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.addDeviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addDeviceToolStripMenuItem.Text = "Add device";
             this.addDeviceToolStripMenuItem.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
             // editDevicesToolStripMenuItem
             // 
             this.editDevicesToolStripMenuItem.Name = "editDevicesToolStripMenuItem";
-            this.editDevicesToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.editDevicesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editDevicesToolStripMenuItem.Text = "Edit Devices";
+            this.editDevicesToolStripMenuItem.Click += new System.EventHandler(this.editDevicesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -203,24 +218,24 @@ namespace native_net_drone_monitor
             // gettingStartedToolStripMenuItem
             // 
             this.gettingStartedToolStripMenuItem.Name = "gettingStartedToolStripMenuItem";
-            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.gettingStartedToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gettingStartedToolStripMenuItem.Text = "Getting Started";
             // 
             // aboutThisSoftwareToolStripMenuItem
             // 
             this.aboutThisSoftwareToolStripMenuItem.Name = "aboutThisSoftwareToolStripMenuItem";
-            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.aboutThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutThisSoftwareToolStripMenuItem.Text = "About this software";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // checkForUpdatesToolStripMenuItem
             // 
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
@@ -237,8 +252,8 @@ namespace native_net_drone_monitor
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer1.Size = new System.Drawing.Size(1354, 693);
-            this.splitContainer1.SplitterDistance = 926;
+            this.splitContainer1.Size = new System.Drawing.Size(1354, 636);
+            this.splitContainer1.SplitterDistance = 925;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
@@ -255,8 +270,8 @@ namespace native_net_drone_monitor
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControlAdv1);
-            this.splitContainer2.Size = new System.Drawing.Size(926, 693);
-            this.splitContainer2.SplitterDistance = 459;
+            this.splitContainer2.Size = new System.Drawing.Size(925, 636);
+            this.splitContainer2.SplitterDistance = 420;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabControlAdv3
@@ -264,7 +279,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv3.ActiveTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tabControlAdv3.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv3.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControlAdv3.BeforeTouchSize = new System.Drawing.Size(926, 459);
+            this.tabControlAdv3.BeforeTouchSize = new System.Drawing.Size(925, 420);
             this.tabControlAdv3.CloseButtonForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv3.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv3.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
@@ -276,39 +291,39 @@ namespace native_net_drone_monitor
             this.tabControlAdv3.Name = "tabControlAdv3";
             this.tabControlAdv3.SeparatorColor = System.Drawing.SystemColors.ControlDark;
             this.tabControlAdv3.ShowSeparator = false;
-            this.tabControlAdv3.Size = new System.Drawing.Size(926, 459);
+            this.tabControlAdv3.Size = new System.Drawing.Size(925, 420);
             this.tabControlAdv3.TabIndex = 0;
             this.tabControlAdv3.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
             // 
             // tabPageAdv4
             // 
             this.tabPageAdv4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv4.Controls.Add(this.vlcControl1);
+            this.tabPageAdv4.Controls.Add(this.streamPlayer);
             this.tabPageAdv4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv4.Image = null;
             this.tabPageAdv4.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv4.Location = new System.Drawing.Point(1, 2);
             this.tabPageAdv4.Name = "tabPageAdv4";
             this.tabPageAdv4.ShowCloseButton = true;
-            this.tabPageAdv4.Size = new System.Drawing.Size(923, 435);
+            this.tabPageAdv4.Size = new System.Drawing.Size(922, 396);
             this.tabPageAdv4.TabIndex = 1;
             this.tabPageAdv4.Text = "Video Stream";
             this.tabPageAdv4.ThemesEnabled = false;
             // 
-            // vlcControl1
+            // streamPlayer
             // 
-            this.vlcControl1.AccessibleName = "player";
-            this.vlcControl1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.vlcControl1.BackColor = System.Drawing.Color.Black;
-            this.vlcControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vlcControl1.Location = new System.Drawing.Point(0, 0);
-            this.vlcControl1.Name = "vlcControl1";
-            this.vlcControl1.Size = new System.Drawing.Size(923, 435);
-            this.vlcControl1.Spu = -1;
-            this.vlcControl1.TabIndex = 0;
-            this.vlcControl1.Text = "vlcControl1";
-            this.vlcControl1.VlcLibDirectory = ((System.IO.DirectoryInfo)(resources.GetObject("vlcControl1.VlcLibDirectory")));
-            this.vlcControl1.VlcMediaplayerOptions = null;
+            this.streamPlayer.AccessibleName = "player";
+            this.streamPlayer.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.streamPlayer.BackColor = System.Drawing.Color.Black;
+            this.streamPlayer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.streamPlayer.Location = new System.Drawing.Point(0, 0);
+            this.streamPlayer.Name = "streamPlayer";
+            this.streamPlayer.Size = new System.Drawing.Size(922, 396);
+            this.streamPlayer.Spu = -1;
+            this.streamPlayer.TabIndex = 0;
+            this.streamPlayer.Text = "vlcControl1";
+            this.streamPlayer.VlcLibDirectory = ((System.IO.DirectoryInfo)(resources.GetObject("streamPlayer.VlcLibDirectory")));
+            this.streamPlayer.VlcMediaplayerOptions = null;
             // 
             // tabPageAdv5
             // 
@@ -319,7 +334,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv5.Location = new System.Drawing.Point(1, 2);
             this.tabPageAdv5.Name = "tabPageAdv5";
             this.tabPageAdv5.ShowCloseButton = true;
-            this.tabPageAdv5.Size = new System.Drawing.Size(923, 435);
+            this.tabPageAdv5.Size = new System.Drawing.Size(922, 406);
             this.tabPageAdv5.TabIndex = 2;
             this.tabPageAdv5.Text = "GPS / MAPS";
             this.tabPageAdv5.ThemesEnabled = false;
@@ -329,7 +344,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv1.ActiveTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tabControlAdv1.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv1.Alignment = System.Windows.Forms.TabAlignment.Bottom;
-            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(926, 230);
+            this.tabControlAdv1.BeforeTouchSize = new System.Drawing.Size(925, 212);
             this.tabControlAdv1.CloseButtonForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv1.CloseButtonHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.tabControlAdv1.CloseButtonPressedForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
@@ -343,7 +358,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv1.ShowCloseButtonForActiveTabOnly = true;
             this.tabControlAdv1.ShowCloseButtonHighLightBackColor = true;
             this.tabControlAdv1.ShowSeparator = false;
-            this.tabControlAdv1.Size = new System.Drawing.Size(926, 230);
+            this.tabControlAdv1.Size = new System.Drawing.Size(925, 212);
             this.tabControlAdv1.TabIndex = 0;
             this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016Colorful);
             this.tabControlAdv1.VSLikeScrollButton = true;
@@ -351,26 +366,16 @@ namespace native_net_drone_monitor
             // tabPageAdv1
             // 
             this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv1.Controls.Add(this.listBox1);
             this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv1.Image = null;
             this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv1.Location = new System.Drawing.Point(1, 2);
             this.tabPageAdv1.Name = "tabPageAdv1";
             this.tabPageAdv1.ShowCloseButton = true;
-            this.tabPageAdv1.Size = new System.Drawing.Size(923, 206);
+            this.tabPageAdv1.Size = new System.Drawing.Size(922, 188);
             this.tabPageAdv1.TabIndex = 1;
             this.tabPageAdv1.Text = "Messages";
             this.tabPageAdv1.ThemesEnabled = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(923, 206);
-            this.listBox1.TabIndex = 0;
             // 
             // splitContainer3
             // 
@@ -386,13 +391,14 @@ namespace native_net_drone_monitor
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.tabControlAdv2);
-            this.splitContainer3.Size = new System.Drawing.Size(424, 693);
+            this.splitContainer3.Size = new System.Drawing.Size(425, 636);
             this.splitContainer3.SplitterDistance = 25;
             this.splitContainer3.TabIndex = 0;
             // 
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.IsSplitterFixed = true;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
             // 
@@ -404,8 +410,8 @@ namespace native_net_drone_monitor
             // 
             this.splitContainer4.Panel2.Controls.Add(this.btnDisconnect);
             this.splitContainer4.Panel2.Controls.Add(this.btnConnectDevices);
-            this.splitContainer4.Size = new System.Drawing.Size(424, 25);
-            this.splitContainer4.SplitterDistance = 319;
+            this.splitContainer4.Size = new System.Drawing.Size(425, 25);
+            this.splitContainer4.SplitterDistance = 300;
             this.splitContainer4.TabIndex = 0;
             // 
             // cmbConnect
@@ -415,7 +421,7 @@ namespace native_net_drone_monitor
             this.cmbConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbConnect.Location = new System.Drawing.Point(0, 0);
             this.cmbConnect.Name = "cmbConnect";
-            this.cmbConnect.Size = new System.Drawing.Size(319, 25);
+            this.cmbConnect.Size = new System.Drawing.Size(300, 25);
             this.cmbConnect.Style.EditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbConnect.Style.ReadOnlyEditorStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbConnect.TabIndex = 1;
@@ -429,7 +435,7 @@ namespace native_net_drone_monitor
             this.btnDisconnect.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.btnDisconnect.Location = new System.Drawing.Point(0, 0);
             this.btnDisconnect.Name = "btnDisconnect";
-            this.btnDisconnect.Size = new System.Drawing.Size(101, 25);
+            this.btnDisconnect.Size = new System.Drawing.Size(121, 25);
             this.btnDisconnect.TabIndex = 1;
             this.btnDisconnect.Text = "DISCONNECT";
             this.btnDisconnect.Visible = false;
@@ -442,7 +448,7 @@ namespace native_net_drone_monitor
             this.btnConnectDevices.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
             this.btnConnectDevices.Location = new System.Drawing.Point(0, 0);
             this.btnConnectDevices.Name = "btnConnectDevices";
-            this.btnConnectDevices.Size = new System.Drawing.Size(101, 25);
+            this.btnConnectDevices.Size = new System.Drawing.Size(121, 25);
             this.btnConnectDevices.TabIndex = 0;
             this.btnConnectDevices.Text = "CONNECT";
             this.btnConnectDevices.Click += new System.EventHandler(this.btnConnectDevices_Click);
@@ -452,7 +458,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv2.ActiveTabFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.tabControlAdv2.ActiveTabForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.Alignment = System.Windows.Forms.TabAlignment.Right;
-            this.tabControlAdv2.BeforeTouchSize = new System.Drawing.Size(424, 664);
+            this.tabControlAdv2.BeforeTouchSize = new System.Drawing.Size(425, 607);
             this.tabControlAdv2.CloseButtonForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.CloseButtonHoverForeColor = System.Drawing.Color.Empty;
             this.tabControlAdv2.CloseButtonPressedForeColor = System.Drawing.Color.Empty;
@@ -464,7 +470,7 @@ namespace native_net_drone_monitor
             this.tabControlAdv2.Name = "tabControlAdv2";
             this.tabControlAdv2.SeparatorColor = System.Drawing.SystemColors.ControlDark;
             this.tabControlAdv2.ShowSeparator = false;
-            this.tabControlAdv2.Size = new System.Drawing.Size(424, 664);
+            this.tabControlAdv2.Size = new System.Drawing.Size(425, 607);
             this.tabControlAdv2.TabIndex = 0;
             this.tabControlAdv2.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
             // 
@@ -478,7 +484,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv2.Location = new System.Drawing.Point(2, 1);
             this.tabPageAdv2.Name = "tabPageAdv2";
             this.tabPageAdv2.ShowCloseButton = true;
-            this.tabPageAdv2.Size = new System.Drawing.Size(399, 661);
+            this.tabPageAdv2.Size = new System.Drawing.Size(400, 604);
             this.tabPageAdv2.TabIndex = 1;
             this.tabPageAdv2.Text = "Stats";
             this.tabPageAdv2.ThemesEnabled = false;
@@ -488,25 +494,59 @@ namespace native_net_drone_monitor
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.altIndicator, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.69565F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.30435F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 661);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 604);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // button1
+            // altIndicator
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.altIndicator.BackgroundGradientEndColor = System.Drawing.Color.White;
+            this.altIndicator.BackgroundGradientStartColor = System.Drawing.Color.White;
+            this.altIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.altIndicator.ForeColor = System.Drawing.Color.Gray;
+            this.altIndicator.GaugelabelFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.altIndicator.InnerFrameGradientEndColor = System.Drawing.Color.White;
+            this.altIndicator.InnerFrameGradientStartColor = System.Drawing.Color.White;
+            this.altIndicator.LinearFrameType = Syncfusion.Windows.Forms.Gauge.LinearFrameType.Vertical;
+            this.altIndicator.Location = new System.Drawing.Point(3, 3);
+            this.altIndicator.MajorDifference = 10;
+            this.altIndicator.MajorTickMarkColor = System.Drawing.Color.Red;
+            this.altIndicator.MajorTicksHeight = 15;
+            this.altIndicator.MaximumValue = 50F;
+            this.altIndicator.MinimumSize = new System.Drawing.Size(75, 125);
+            this.altIndicator.MinorTickCount = 10;
+            this.altIndicator.MinorTickHeight = 10;
+            this.altIndicator.Name = "altIndicator";
+            this.altIndicator.OuterFrameGradientEndColor = System.Drawing.Color.White;
+            this.altIndicator.OuterFrameGradientStartColor = System.Drawing.Color.White;
+            this.altIndicator.PointerPlacement = Syncfusion.Windows.Forms.Gauge.Placement.Center;
+            linearRange1.Color = System.Drawing.Color.Lime;
+            linearRange1.EndValue = 20F;
+            linearRange1.Height = 5;
+            linearRange1.InRange = true;
+            linearRange1.Name = "GaugeRange1";
+            linearRange1.RangePlacement = Syncfusion.Windows.Forms.Gauge.TickPlacement.Inside;
+            linearRange1.StartValue = 0F;
+            linearRange2.Color = System.Drawing.Color.Red;
+            linearRange2.EndValue = 50F;
+            linearRange2.Height = 5;
+            linearRange2.InRange = false;
+            linearRange2.Name = "GaugeRange2";
+            linearRange2.RangePlacement = Syncfusion.Windows.Forms.Gauge.TickPlacement.Inside;
+            linearRange2.StartValue = 30F;
+            this.altIndicator.Ranges.Add(linearRange1);
+            this.altIndicator.Ranges.Add(linearRange2);
+            this.altIndicator.ScaleColor = System.Drawing.Color.Gray;
+            this.altIndicator.Size = new System.Drawing.Size(194, 288);
+            this.altIndicator.TabIndex = 0;
+            this.altIndicator.Text = "linearGauge1";
+            this.altIndicator.ValueIndicatorColor = System.Drawing.Color.MediumAquamarine;
             // 
             // tabPageAdv3
             // 
@@ -517,7 +557,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv3.Location = new System.Drawing.Point(2, 1);
             this.tabPageAdv3.Name = "tabPageAdv3";
             this.tabPageAdv3.ShowCloseButton = true;
-            this.tabPageAdv3.Size = new System.Drawing.Size(399, 661);
+            this.tabPageAdv3.Size = new System.Drawing.Size(400, 619);
             this.tabPageAdv3.TabIndex = 2;
             this.tabPageAdv3.Text = "Tables";
             this.tabPageAdv3.ThemesEnabled = false;
@@ -603,7 +643,7 @@ namespace native_net_drone_monitor
             this.toolStripStatusLabel4,
             this.statusLatency,
             this.toolStripStatusLabel3});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 717);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 660);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1354, 27);
             this.statusStrip1.TabIndex = 2;
@@ -611,12 +651,14 @@ namespace native_net_drone_monitor
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(23, 22);
             this.toolStripStatusLabel1.Text = "IP :";
             // 
             // statusIP
             // 
+            this.statusIP.BackColor = System.Drawing.Color.Transparent;
             this.statusIP.Name = "statusIP";
             this.statusIP.Size = new System.Drawing.Size(52, 22);
             this.statusIP.Text = "192.0.0.1";
@@ -639,12 +681,14 @@ namespace native_net_drone_monitor
             // 
             // toolStripStatusLabel2
             // 
+            this.toolStripStatusLabel2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(45, 22);
             this.toolStripStatusLabel2.Text = "Status :";
             // 
             // statusConnection
             // 
+            this.statusConnection.BackColor = System.Drawing.Color.Transparent;
             this.statusConnection.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusConnection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.statusConnection.Name = "statusConnection";
@@ -653,6 +697,7 @@ namespace native_net_drone_monitor
             // 
             // toolStripStatusLabel6
             // 
+            this.toolStripStatusLabel6.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
             this.toolStripStatusLabel6.Size = new System.Drawing.Size(23, 22);
             this.toolStripStatusLabel6.Text = "ms";
@@ -675,18 +720,21 @@ namespace native_net_drone_monitor
             // 
             // toolStripStatusLabel4
             // 
+            this.toolStripStatusLabel4.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
             this.toolStripStatusLabel4.Size = new System.Drawing.Size(54, 22);
             this.toolStripStatusLabel4.Text = "Latency :";
             // 
             // statusLatency
             // 
+            this.statusLatency.BackColor = System.Drawing.Color.Transparent;
             this.statusLatency.Name = "statusLatency";
             this.statusLatency.Size = new System.Drawing.Size(13, 22);
             this.statusLatency.Text = "2";
             // 
             // toolStripStatusLabel3
             // 
+            this.toolStripStatusLabel3.BackColor = System.Drawing.Color.Transparent;
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(23, 22);
             this.toolStripStatusLabel3.Text = "ms";
@@ -697,14 +745,43 @@ namespace native_net_drone_monitor
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1354, 693);
+            this.panel1.Size = new System.Drawing.Size(1354, 636);
             this.panel1.TabIndex = 3;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 744);
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BorderColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.BorderThickness = 5;
+            this.CaptionBarColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.CaptionBarHeight = 75;
+            this.CaptionButtonColor = System.Drawing.Color.White;
+            this.CaptionButtonHoverColor = System.Drawing.Color.White;
+            this.CaptionFont = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CaptionForeColor = System.Drawing.Color.Black;
+            captionImage1.BackColor = System.Drawing.Color.Transparent;
+            captionImage1.Image = ((System.Drawing.Image)(resources.GetObject("captionImage1.Image")));
+            captionImage1.Location = new System.Drawing.Point(-10, 8);
+            captionImage1.Name = "CaptionImage1";
+            captionImage1.Size = new System.Drawing.Size(100, 60);
+            this.CaptionImages.Add(captionImage1);
+            captionLabel1.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            captionLabel1.ForeColor = System.Drawing.Color.White;
+            captionLabel1.Location = new System.Drawing.Point(100, 18);
+            captionLabel1.Name = "lblProfileNameCapt";
+            captionLabel1.Size = new System.Drawing.Size(500, 24);
+            captionLabel1.Text = "Drone Monitor";
+            captionLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            captionLabel2.ForeColor = System.Drawing.Color.White;
+            captionLabel2.Location = new System.Drawing.Point(100, 23);
+            captionLabel2.Name = "CaptionLabel1";
+            captionLabel2.Size = new System.Drawing.Size(500, 50);
+            captionLabel2.Text = "Monitoring Telemetry, Video, etc.";
+            this.CaptionLabels.Add(captionLabel1);
+            this.CaptionLabels.Add(captionLabel2);
+            this.ClientSize = new System.Drawing.Size(1354, 687);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuMain);
@@ -715,7 +792,9 @@ namespace native_net_drone_monitor
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Drone Monitor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.VisibleChanged += new System.EventHandler(this.frmMain_VisibleChanged);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -729,10 +808,9 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).EndInit();
             this.tabControlAdv3.ResumeLayout(false);
             this.tabPageAdv4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.streamPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
-            this.tabPageAdv1.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
@@ -800,14 +878,14 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private Vlc.DotNet.Forms.VlcControl vlcControl1;
+        private Vlc.DotNet.Forms.VlcControl streamPlayer;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private Syncfusion.WinForms.ListView.SfComboBox cmbConnect;
         private Syncfusion.WinForms.Controls.SfButton btnConnectDevices;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.ToolStripMenuItem editDevicesToolStripMenuItem;
         private Syncfusion.WinForms.Controls.SfButton btnDisconnect;
-        public System.Windows.Forms.ListBox listBox1;
+        private Syncfusion.Windows.Forms.Gauge.LinearGauge altIndicator;
+        internal System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
     }
 }

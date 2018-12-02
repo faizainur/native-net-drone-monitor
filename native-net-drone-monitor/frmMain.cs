@@ -24,7 +24,9 @@ namespace native_net_drone_monitor
 {
     public partial class frmMain : Syncfusion.Windows.Forms.MetroForm
     {
-        private List<Drone> droneList = new List<Drone>();
+        public event EventHandler RefreshTriggered;
+        private BindingList<Drone> droneList = new BindingList<Drone>();
+        private BindingSource source = new BindingSource();
         private List<string> messages = new List<string>();
         public string path;
         public frmMain()
@@ -38,21 +40,15 @@ namespace native_net_drone_monitor
 
         public void refresh()
         {
-            vlcControl1.Play(new Uri(path));
-        }
-        private void tabStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            droneList.Clear();
            
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("dronesList.xml");
+            xmlDoc.Load("droneList.xml");
 
             foreach (XmlNode node in xmlDoc.DocumentElement)
             {
                 var profileName = node.Attributes[0].InnerText;
+                
                 Drone newDrone = new Drone();
 
                 var port = 0;
@@ -72,23 +68,26 @@ namespace native_net_drone_monitor
 
                 droneList.Add(newDrone);
             }
-            cmbConnect.DataSource = droneList;
+            source.DataSource = droneList;
+            cmbConnect.DataSource = source;
             cmbConnect.DisplayMember = "profileName";
-
-            
+          
         }
+      
 
-
-        private void vlcControl1_Click(object sender, EventArgs e)
+        private void frmMain_Load(object sender, EventArgs e)
         {
-            
+            refresh();
+            cmbConnect.DropDownListView.Height = 100;
+            cmbConnect.DropDownListView.Width = cmbConnect.Width;
+            cmbConnect.DropDownListView.ItemHeight = 30;
         }
-
        
         private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addDevices = new frmAddDevices();
             addDevices.Show();
+            
         }
 
         private Boolean update()
@@ -109,7 +108,7 @@ namespace native_net_drone_monitor
 
         private void button1_Click(object sender, EventArgs e)
         {
-            vlcControl1.Pause();
+            streamPlayer.Pause();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,30 +118,14 @@ namespace native_net_drone_monitor
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
         }
-        public void AddToMyListBox()
-        {
-            // Stop the ListBox from drawing while items are added.
-            listBox1.BeginUpdate();
-
-            // Loop through and add five thousand new items.
-            int x = 0;
-            while (true)
-            {
-                listBox1.Items.Add("Item " + x.ToString());
-                x++;
-            }
-
-            // End the update process and force a repaint of the ListBox.
-            listBox1.EndUpdate();
-        }
-
+        
         private void btnConnectDevices_Click(object sender, EventArgs e)
         {
             var idx = cmbConnect.SelectedIndex;
-            vlcControl1.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
-            AddToMyListBox();
-            btnConnect.Visible = false;
+            streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+            btnConnectDevices.Visible = false;
             btnDisconnect.Visible = true;
             
         }
@@ -157,14 +140,38 @@ namespace native_net_drone_monitor
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-            vlcControl1.Stop();
-            btnConnect.Visible = true;
+            streamPlayer.Stop();
+            btnConnectDevices.Visible = true;
             btnDisconnect.Visible = false;
         }
+        
 
-        private void vlcControl1_Playing(object sender, Vlc.DotNet.Core.VlcMediaPlayerPlayingEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-           // AddToMyListBox();
+
         }
+
+        private void editDevicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var editFrm = new frmEdit();
+            editFrm.Show();
+        }
+
+        private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void frmMain_VisibleChanged(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        
     }
 }
