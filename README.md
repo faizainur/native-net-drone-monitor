@@ -9,11 +9,11 @@ Drone Monitor is a software that could show any data streamed from data using an
 Any data received from the drone will be saved on a log file.
 
 ## Supported tranfer method
-1. TCP
-2. RTSP
-3. HTTP
-4. MAVLink (ROS)
-5. Socket
+1. TCP (Telemetry)
+2. RTSP (Video stream)
+3. MAVLink (Telemetry)
+4. Socket (Telemetry)
+
 ## Get the source code
 
 Use `git clone` command in terminal or use `git pull` to get the latest source code
