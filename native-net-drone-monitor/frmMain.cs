@@ -67,8 +67,10 @@ namespace native_net_drone_monitor
                 }
             } else
             {
-                droneList.Clear();
-
+                if (droneList.Count != 0)
+                {
+                    droneList.Clear();
+                }
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(FILENAME);
 
