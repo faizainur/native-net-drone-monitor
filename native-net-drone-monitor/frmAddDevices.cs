@@ -81,13 +81,20 @@ namespace native_net_drone_monitor
             }
             if (toggleMavLink.ToggleState == ToggleButtonState.Active)
             {
-                if (cmbPortCOM.SelectedItem == null)
+                if (cmbProtocol.SelectedItem == null)
                 {
                     return false;
                 }
-                if (cmbBaudrate.SelectedItem == null)
+                else if (cmbProtocol.SelectedIndex == 2)
                 {
-                    return false;
+                    if (cmbPortCOM.SelectedItem == null)
+                    {
+                        return false;
+                    }
+                    if (cmbBaudrate.SelectedItem == null)
+                    {
+                        return false;
+                    }
                 }
             }
             if (toggleWebSocket.ToggleState == ToggleButtonState.Active)

@@ -115,7 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drone.cs" />
+    <Compile Include="Model\Drone.cs" />
     <Compile Include="frmAddDevices.cs">
       <SubType>Form</SubType>
     </Compile>
