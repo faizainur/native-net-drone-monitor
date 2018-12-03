@@ -237,6 +237,11 @@ namespace native_net_drone_monitor
             refresh();
         }
 
-        
+        private void menuSettings_Click(object sender, EventArgs e)
+        {
+            var settingsFrm = new frmSettings();
+            settingsFrm.Show();
+            settingsFrm.TopMost = true;
+        }
     }
 }

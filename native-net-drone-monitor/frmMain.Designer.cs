@@ -756,6 +756,7 @@ namespace native_net_drone_monitor
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Size = new System.Drawing.Size(180, 22);
             this.menuSettings.Text = "Settings";
+            this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // toolStripSeparator6
             // 
@@ -799,13 +800,13 @@ namespace native_net_drone_monitor
             // menuExPdf
             // 
             this.menuExPdf.Name = "menuExPdf";
-            this.menuExPdf.Size = new System.Drawing.Size(180, 22);
+            this.menuExPdf.Size = new System.Drawing.Size(153, 22);
             this.menuExPdf.Text = "PDF File (.pdf)";
             // 
             // menuExExcel
             // 
             this.menuExExcel.Name = "menuExExcel";
-            this.menuExExcel.Size = new System.Drawing.Size(180, 22);
+            this.menuExExcel.Size = new System.Drawing.Size(153, 22);
             this.menuExExcel.Text = "Excel File (.xlsx)";
             // 
             // toolStripSeparator7
