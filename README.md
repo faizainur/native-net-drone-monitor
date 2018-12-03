@@ -4,7 +4,10 @@ an open source project
 
 ```
 PLEASE BE AWARE !!!
-THIS PROGRAM STILL UNDER DEVELOPMENT AND IN ALPHA STATUS. SO THERE ARE STILL BUGS MIGHT BE HAPPENED
+THIS PROGRAM STILL UNDER DEVELOPMENT AND IN ALPHA STATUS. SO THERE ARE BUGS THAT WE HAVEN'T NOTICED.
+ANY BUGS THAT MIGHT BE BROKE YOU DRONE IS YOUR RESPONSIBILITIES, NOT OUR.
+
+THANK YOU.
 ```
 ## Description
 Drone Monitor is a software that could show any data streamed from data using any transfer method. The supported data yet to show is
