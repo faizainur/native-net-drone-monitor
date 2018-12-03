@@ -92,7 +92,7 @@ namespace native_net_drone_monitor
             this.ShowIcon = false;
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Connect to Drone";
+            this.Text = "Edit Devices Profile";
             this.Load += new System.EventHandler(this.frmConnect_Load);
             this.ResumeLayout(false);
 

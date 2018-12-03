@@ -26,10 +26,10 @@ namespace native_net_drone_monitor
     public partial class frmMain : Syncfusion.Windows.Forms.MetroForm
     {
         public event EventHandler RefreshTriggered;
-        private BindingList<Drone> droneList = new BindingList<Drone>();
-        private BindingSource source = new BindingSource();
+        private List<Drone> droneList = new List<Drone>();
         private List<string> messages = new List<string>();
         private string FILENAME = "droneList.xml";
+        private string SETTINGS_FILENAME = "settings.conf";
         public string path;
         public frmMain()
         {
@@ -42,7 +42,9 @@ namespace native_net_drone_monitor
 
         public void refresh()
         {
-            if (!File.Exists(FILENAME))
+            /* TODO : ERROR WHILE REFRESHING */
+
+            if (!File.Exists(FILENAME) || !File.Exists(SETTINGS_FILENAME))
             {
                 if (!createXmlFile())
                 {
@@ -67,7 +69,7 @@ namespace native_net_drone_monitor
                 }
             } else
             {
-                if (droneList.Count != 0)
+                if (droneList.Count > 0)
                 {
                     droneList.Clear();
                 }
@@ -97,7 +99,8 @@ namespace native_net_drone_monitor
 
                     droneList.Add(newDrone);
                 }
-                source.DataSource = droneList;
+                var bindingList = new BindingList<Drone>(droneList);
+                var source = new BindingSource(bindingList, null);
                 cmbConnect.DataSource = source;
                 cmbConnect.DisplayMember = "profileName";
             }
@@ -108,7 +111,9 @@ namespace native_net_drone_monitor
         {
             new XDocument(
                 new XElement("drone-list")).Save(FILENAME);
-            if (!File.Exists(FILENAME))
+            new XDocument(
+                new XElement("settings")).Save(SETTINGS_FILENAME);
+            if (!File.Exists(FILENAME) && !File.Exists(SETTINGS_FILENAME))
             {
                 return false;
             }

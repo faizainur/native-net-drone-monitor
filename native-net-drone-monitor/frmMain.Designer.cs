@@ -728,14 +728,14 @@ namespace native_net_drone_monitor
             // 
             this.menuAddDevice.Name = "menuAddDevice";
             this.menuAddDevice.Size = new System.Drawing.Size(180, 22);
-            this.menuAddDevice.Text = "Add device";
+            this.menuAddDevice.Text = "Add New Device";
             this.menuAddDevice.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
             // menuEditDevices
             // 
             this.menuEditDevices.Name = "menuEditDevices";
             this.menuEditDevices.Size = new System.Drawing.Size(180, 22);
-            this.menuEditDevices.Text = "Edit Devices";
+            this.menuEditDevices.Text = "Edit Device Profile";
             this.menuEditDevices.Click += new System.EventHandler(this.editDevicesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
@@ -800,13 +800,13 @@ namespace native_net_drone_monitor
             // menuExPdf
             // 
             this.menuExPdf.Name = "menuExPdf";
-            this.menuExPdf.Size = new System.Drawing.Size(153, 22);
+            this.menuExPdf.Size = new System.Drawing.Size(180, 22);
             this.menuExPdf.Text = "PDF File (.pdf)";
             // 
             // menuExExcel
             // 
             this.menuExExcel.Name = "menuExExcel";
-            this.menuExExcel.Size = new System.Drawing.Size(153, 22);
+            this.menuExExcel.Size = new System.Drawing.Size(180, 22);
             this.menuExExcel.Text = "Excel File (.xlsx)";
             // 
             // toolStripSeparator7
