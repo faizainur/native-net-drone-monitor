@@ -224,12 +224,12 @@ namespace native_net_drone_monitor
         {
             if (e.ToggleState == ToggleButtonState.Active)
             {
-                lblSocket.Enabled = true;
-                txtSocket.Enabled = true;
+                lblSocket.Visible = true;
+                txtSocket.Visible = true;
             }if (e.ToggleState == ToggleButtonState.Inactive)
             {
-                lblSocket.Enabled = false;
-                txtSocket.Enabled = false;
+                lblSocket.Visible = false;
+                txtSocket.Visible = false;
                 txtSocket.Clear();
             }
         }
@@ -271,23 +271,23 @@ namespace native_net_drone_monitor
         {
             if (e.ToggleState == ToggleButtonState.Active)
             {
-                lblProtocol.Enabled = true;
-                cmbProtocol.Enabled = true;
+                lblProtocol.Visible = true;
+                cmbProtocol.Visible = true;
             }
             if (e.ToggleState == ToggleButtonState.Inactive)
             {
-                lblProtocol.Enabled = false;
-                cmbProtocol.Enabled = false;
+                lblProtocol.Visible = false;
+                cmbProtocol.Visible = false;
                 cmbProtocol.SelectedItem = null;
                 panelTcp.Visible = false;
                 panelUdp.Visible = false;
                 panelSerial.Visible = false;
                 cmbBaudrate.SelectedItem = null;
                 cmbPortCOM.SelectedItem = null;
-                txtTcpHost.Text = null;
-                txtTcpPort.Text = null;
-                txtUdpHost.Text = null;
-                txtUdpPort.Text = null;
+                txtTcpHost.Clear();
+                txtTcpPort.Clear();
+                txtUdpHost.Clear();
+                txtUdpPort.Clear();
             }
         }
 

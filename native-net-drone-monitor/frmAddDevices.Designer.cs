@@ -35,15 +35,15 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection1 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer1 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection4 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection7 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection7 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer7 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection7 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection8 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection8 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer8 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection8 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSetupWizard = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeGeneral = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
@@ -133,9 +133,9 @@ namespace native_net_drone_monitor
             // navSetupWizard
             // 
             this.navSetupWizard.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection1.HeaderText = "Setup Wizard";
-            this.navSetupWizard.Header = headerCollection1;
+            headerCollection4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection4.HeaderText = "Setup Wizard";
+            this.navSetupWizard.Header = headerCollection4;
             this.navSetupWizard.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSetupWizard.Items.Add(this.treeGeneral);
             this.navSetupWizard.Items.Add(this.treeVideoStream);
@@ -323,23 +323,23 @@ namespace native_net_drone_monitor
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(34, 34);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(11, 20);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(233, 21);
+            this.label15.Size = new System.Drawing.Size(282, 25);
             this.label15.TabIndex = 17;
             this.label15.Text = "Set video streaming preferences";
             // 
             // txtPortRtsp
             // 
-            this.txtPortRtsp.Location = new System.Drawing.Point(153, 129);
+            this.txtPortRtsp.Location = new System.Drawing.Point(130, 104);
             this.txtPortRtsp.Name = "txtPortRtsp";
             this.txtPortRtsp.Size = new System.Drawing.Size(59, 20);
             this.txtPortRtsp.TabIndex = 16;
             // 
             // txtRtspServer
             // 
-            this.txtRtspServer.Location = new System.Drawing.Point(153, 96);
+            this.txtRtspServer.Location = new System.Drawing.Point(130, 71);
             this.txtRtspServer.Name = "txtRtspServer";
             this.txtRtspServer.Size = new System.Drawing.Size(232, 20);
             this.txtRtspServer.TabIndex = 15;
@@ -348,7 +348,7 @@ namespace native_net_drone_monitor
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(34, 129);
+            this.label4.Location = new System.Drawing.Point(11, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 20);
             this.label4.TabIndex = 14;
@@ -358,7 +358,7 @@ namespace native_net_drone_monitor
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(34, 96);
+            this.label3.Location = new System.Drawing.Point(11, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 13;
@@ -381,22 +381,22 @@ namespace native_net_drone_monitor
             // 
             // txtSocket
             // 
-            this.txtSocket.Enabled = false;
             this.txtSocket.Location = new System.Drawing.Point(142, 86);
             this.txtSocket.Name = "txtSocket";
             this.txtSocket.Size = new System.Drawing.Size(232, 20);
             this.txtSocket.TabIndex = 3;
+            this.txtSocket.Visible = false;
             // 
             // lblSocket
             // 
             this.lblSocket.AutoSize = true;
-            this.lblSocket.Enabled = false;
             this.lblSocket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSocket.Location = new System.Drawing.Point(38, 86);
             this.lblSocket.Name = "lblSocket";
             this.lblSocket.Size = new System.Drawing.Size(59, 20);
             this.lblSocket.TabIndex = 2;
             this.lblSocket.Text = "Socket";
+            this.lblSocket.Visible = false;
             // 
             // label6
             // 
@@ -410,17 +410,17 @@ namespace native_net_drone_monitor
             // 
             // toggleWebSocket
             // 
-            this.toggleWebSocket.ActiveState = activeStateCollection2;
+            this.toggleWebSocket.ActiveState = activeStateCollection7;
             this.toggleWebSocket.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleWebSocket.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleWebSocket.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleWebSocket.InactiveState = inactiveStateCollection7;
             this.toggleWebSocket.Location = new System.Drawing.Point(316, 14);
             this.toggleWebSocket.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleWebSocket.Name = "toggleWebSocket";
-            this.toggleWebSocket.Renderer = toggleButtonRenderer2;
+            this.toggleWebSocket.Renderer = toggleButtonRenderer7;
             this.toggleWebSocket.Size = new System.Drawing.Size(90, 40);
-            this.toggleWebSocket.Slider = sliderCollection2;
+            this.toggleWebSocket.Slider = sliderCollection7;
             this.toggleWebSocket.TabIndex = 0;
             this.toggleWebSocket.Text = "toggleButton1";
             this.toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -540,12 +540,12 @@ namespace native_net_drone_monitor
             this.cmbProtocol.AllowDropDownResize = false;
             this.cmbProtocol.AllowNull = true;
             this.cmbProtocol.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cmbProtocol.Enabled = false;
             this.cmbProtocol.Location = new System.Drawing.Point(243, 73);
             this.cmbProtocol.Name = "cmbProtocol";
             this.cmbProtocol.Size = new System.Drawing.Size(163, 28);
             this.cmbProtocol.TabIndex = 6;
             this.cmbProtocol.Text = "None";
+            this.cmbProtocol.Visible = false;
             this.cmbProtocol.SelectedIndexChanged += new System.EventHandler(this.cmbProtocol_SelectedIndexChanged);
             // 
             // panelSerial
@@ -597,13 +597,13 @@ namespace native_net_drone_monitor
             // lblProtocol
             // 
             this.lblProtocol.AutoSize = true;
-            this.lblProtocol.Enabled = false;
             this.lblProtocol.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProtocol.Location = new System.Drawing.Point(34, 75);
             this.lblProtocol.Name = "lblProtocol";
             this.lblProtocol.Size = new System.Drawing.Size(68, 21);
             this.lblProtocol.TabIndex = 4;
             this.lblProtocol.Text = "Protocol";
+            this.lblProtocol.Visible = false;
             // 
             // label7
             // 
@@ -617,17 +617,17 @@ namespace native_net_drone_monitor
             // 
             // toggleMavLink
             // 
-            this.toggleMavLink.ActiveState = activeStateCollection1;
+            this.toggleMavLink.ActiveState = activeStateCollection8;
             this.toggleMavLink.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleMavLink.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleMavLink.InactiveState = inactiveStateCollection1;
+            inactiveStateCollection8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleMavLink.InactiveState = inactiveStateCollection8;
             this.toggleMavLink.Location = new System.Drawing.Point(316, 14);
             this.toggleMavLink.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleMavLink.Name = "toggleMavLink";
-            this.toggleMavLink.Renderer = toggleButtonRenderer1;
+            this.toggleMavLink.Renderer = toggleButtonRenderer8;
             this.toggleMavLink.Size = new System.Drawing.Size(90, 40);
-            this.toggleMavLink.Slider = sliderCollection1;
+            this.toggleMavLink.Slider = sliderCollection8;
             this.toggleMavLink.TabIndex = 2;
             this.toggleMavLink.Text = "toggleButton1";
             this.toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;

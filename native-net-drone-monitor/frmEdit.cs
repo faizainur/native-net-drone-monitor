@@ -48,8 +48,9 @@ namespace native_net_drone_monitor
             else
             {
                 refreshList();
+                listAvailDevices.CollapseAllGroups();
             }
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -92,6 +93,10 @@ namespace native_net_drone_monitor
             var source = new BindingSource(bindingList, null);
             listAvailDevices.DataSource = source;
             listAvailDevices.DisplayMember = "profileName";
+            listAvailDevices.View.GroupDescriptors.Add(new Syncfusion.DataSource.GroupDescriptor()
+            {
+                PropertyName = "droneType"
+            });
         }
 
         private void readXmlFile()
@@ -105,45 +110,43 @@ namespace native_net_drone_monitor
 
             foreach (XmlNode node in xmlDoc.DocumentElement)
             {
-                var profileName = node.Attributes[0].InnerText;
-
-                Drone newDrone = new Drone();
-
                 var rtspPort = 0;
                 var socket = 0;
                 var baudrate = 0;
                 var tcpPort = 0;
                 var udpPort = 0;
-                var rtspServer = node.SelectSingleNode("/drone-list/drone/rtsp-server").InnerText;
-                var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
-                var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
-                var droneType = node.SelectSingleNode("/drone-list/drone/drone-type").InnerText;
-                var portCOM = node.SelectSingleNode("/drone-list/drone/port-com").InnerText;
-                var tcpHost = node.SelectSingleNode("/drone-list/drone/tcp-host").InnerText;
-                var udpHost = node.SelectSingleNode("/drone-list/drone/udp-host").InnerText;
 
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/baudrate").InnerText, out baudrate);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/rtsp-port").InnerText, out rtspPort);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/tcp-port").InnerText, out tcpPort);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/udp-port").InnerText, out udpPort);
+                Drone newDrone = new Drone();
 
-                newDrone.profileName = profileName;
-                newDrone.rtspServer = rtspServer;
-                newDrone.protocolConn = protocolConn;
-                newDrone.connMethod = connMethod;
+                Int32.TryParse(node["baudrate"].InnerText, out baudrate);
+                Int32.TryParse(node["tcp-port"].InnerText, out tcpPort);
+                Int32.TryParse(node["socket"].InnerText, out socket);
+                Int32.TryParse(node["udp-port"].InnerText, out udpPort);
+                Int32.TryParse(node["rtsp-port"].InnerText, out rtspPort);
+
+                newDrone.profileName = node.Attributes[0].InnerText;
+                newDrone.rtspServer = node["rtsp-server"].InnerText;
+                newDrone.protocolConn = node["protocol"].InnerText;
+                newDrone.connMethod = node["conn-method"].InnerText;
+                newDrone.droneType = node["drone-type"].InnerText;
+                newDrone.portCom = node["port-com"].InnerText;
+                newDrone.tcpHost = node["tcp-host"].InnerText;
+                newDrone.udpHost = node["udp-host"].InnerText;
                 newDrone.rtspPort = rtspPort;
                 newDrone.socket = socket;
-                newDrone.droneType = droneType;
-                newDrone.baudrate = baudrate;
-                newDrone.portCom = portCOM;
-                newDrone.tcpPort = tcpPort;
-                newDrone.tcpHost = tcpHost;
                 newDrone.udpPort = udpPort;
-                newDrone.udpHost = udpHost;
+                newDrone.baudrate = baudrate;
+                newDrone.tcpPort = tcpPort;
 
                 droneList.Add(newDrone);
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int idx = listAvailDevices.SelectedIndex;
+            //Drone sel = droneList[idx];
+            MessageBox.Show(droneList[0].droneType);
         }
     }
 }

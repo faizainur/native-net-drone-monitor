@@ -64,6 +64,7 @@ namespace native_net_drone_monitor
             this.btnEdit.Size = new System.Drawing.Size(41, 37);
             this.btnEdit.Style.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             this.btnEdit.TabIndex = 1;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
