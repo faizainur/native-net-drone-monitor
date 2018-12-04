@@ -21,8 +21,7 @@ namespace native_net_drone_monitor
     {
 
         private const string FILENAME = "droneList.xml";
-        BindingList<Drone> droneList = new BindingList<Drone>();
-        private BindingSource source = new BindingSource();
+        List<Drone> droneList = new List<Drone>();
         XmlDocument xmlDoc = new XmlDocument();
 
         public frmEdit()
@@ -87,10 +86,22 @@ namespace native_net_drone_monitor
 
         private void refreshList()
         {
-            droneList.Clear();
             listAvailDevices.DataSource = null;
+            readXmlFile();
+            var bindingList = new BindingList<Drone>(droneList);
+            var source = new BindingSource(bindingList, null);
+            listAvailDevices.DataSource = source;
+            listAvailDevices.DisplayMember = "profileName";
+        }
+
+        private void readXmlFile()
+        {
+            if (droneList.Count > 0)
+            {
+                droneList.Clear();
+            }
             XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("droneList.xml");
+            xmlDoc.Load(FILENAME);
 
             foreach (XmlNode node in xmlDoc.DocumentElement)
             {
@@ -98,26 +109,41 @@ namespace native_net_drone_monitor
 
                 Drone newDrone = new Drone();
 
-                var port = 0;
+                var rtspPort = 0;
                 var socket = 0;
-                var ipAddress = node.SelectSingleNode("/drone-list/drone/ip-address").InnerText;
+                var baudrate = 0;
+                var tcpPort = 0;
+                var udpPort = 0;
+                var rtspServer = node.SelectSingleNode("/drone-list/drone/rtsp-server").InnerText;
                 var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
                 var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
+                var droneType = node.SelectSingleNode("/drone-list/drone/drone-type").InnerText;
+                var portCOM = node.SelectSingleNode("/drone-list/drone/port-com").InnerText;
+                var tcpHost = node.SelectSingleNode("/drone-list/drone/tcp-host").InnerText;
+                var udpHost = node.SelectSingleNode("/drone-list/drone/udp-host").InnerText;
+
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/baudrate").InnerText, out baudrate);
                 Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
-                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/port").InnerText, out port);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/rtsp-port").InnerText, out rtspPort);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/tcp-port").InnerText, out tcpPort);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/udp-port").InnerText, out udpPort);
 
                 newDrone.profileName = profileName;
-                newDrone.ipAddress = ipAddress;
+                newDrone.rtspServer = rtspServer;
                 newDrone.protocolConn = protocolConn;
                 newDrone.connMethod = connMethod;
-                newDrone.port = port;
+                newDrone.rtspPort = rtspPort;
                 newDrone.socket = socket;
+                newDrone.droneType = droneType;
+                newDrone.baudrate = baudrate;
+                newDrone.portCom = portCOM;
+                newDrone.tcpPort = tcpPort;
+                newDrone.tcpHost = tcpHost;
+                newDrone.udpPort = udpPort;
+                newDrone.udpHost = udpHost;
 
                 droneList.Add(newDrone);
             }
-            source.DataSource = droneList;
-            listAvailDevices.DataSource = source;
-            listAvailDevices.DisplayMember = "profileName";
         }
     }
 }

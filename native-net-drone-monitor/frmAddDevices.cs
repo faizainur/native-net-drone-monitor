@@ -26,8 +26,9 @@ namespace native_net_drone_monitor
         private List<string> protocol = new List<string>();
         private List<string> baudrateList = new List<string>();
         private List<string> listCOM = new List<string>();
-        string selectedConnMethod;
 
+        string selectedConnMethod;
+        bool telemetryTabIsOpened = false;
         public const string FILENAME = "droneList.xml";
         public frmAddDevices()
         {
@@ -39,8 +40,8 @@ namespace native_net_drone_monitor
             droneType.Add("Plane");
             cmbDroneType.DataSource = droneType;
 
-            protocol.Add("TCP");
             protocol.Add("UDP");
+            protocol.Add("TCP");
             protocol.Add("Serial");
             cmbProtocol.DataSource = protocol;
 
@@ -67,7 +68,7 @@ namespace native_net_drone_monitor
         private bool validateForm()
         {
             // TODO : Error validating radioButtons status
-            if (txtIPAddress.Text == null)
+            if (txtRtspServer.Text == null)
             {
                 return false;
             }
@@ -85,15 +86,40 @@ namespace native_net_drone_monitor
                 {
                     return false;
                 }
-                else if (cmbProtocol.SelectedIndex == 2)
+                else 
                 {
-                    if (cmbPortCOM.SelectedItem == null)
+                    switch (cmbProtocol.SelectedIndex)
                     {
-                        return false;
-                    }
-                    if (cmbBaudrate.SelectedItem == null)
-                    {
-                        return false;
+                        case 0:
+                            if (txtUdpPort.Text == null)
+                            {
+                                return false;
+                            }
+                            if (txtUdpHost.Text == null)
+                            {
+                                return false;
+                            }
+                            break;
+                        case 1:
+                            if (txtTcpHost.Text == null)
+                            {
+                                return false;
+                            }
+                            if (txtTcpPort.Text == null)
+                            {
+                                return false;
+                            }
+                            break;
+                        case 2:
+                            if (cmbPortCOM.SelectedItem == null)
+                            {
+                                return false;
+                            }
+                            if (cmbBaudrate.SelectedItem == null)
+                            {
+                                return false;
+                            }
+                            break;
                     }
                 }
             }
@@ -110,21 +136,6 @@ namespace native_net_drone_monitor
         private void btnCancelAdd_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnAddData_Click(object sender, EventArgs e)
-        {
-            var main = (frmMain)Application.OpenForms["frmMain"];
-            if (addData())
-            {
-                main.menuRefresh.PerformClick();
-                if (main.Enabled == false)
-                {
-                    main.Enabled = true;
-                }
-                this.Close();
-            }
-            
         }
 
         private bool addData()
@@ -184,16 +195,19 @@ namespace native_net_drone_monitor
                     var newElement = new XElement("drone",
                         new XAttribute("name", txtProfileName.Text),
                         new XElement("drone-type", seletedType),
-                        new XElement("ip-address", txtIPAddress.Text),
+                        new XElement("rtsp-server", txtRtspServer.Text),
                         new XElement("conn-method", selectedConnMethod),
-                        new XElement("port", txtPort.Text),
+                        new XElement("rtsp-port", txtPortRtsp.Text),
                         new XElement("protocol", selectedProtocol),
                         new XElement("socket", txtSocket.Text),
                         new XElement("port-com", selectedCOM),
-                        new XElement("baudrate", baudrate));
+                        new XElement("baudrate", baudrate),
+                        new XElement("tcp-host", txtTcpHost.Text),
+                        new XElement("tcp-port", txtTcpPort.Text),
+                        new XElement("udp-host", txtUdpHost.Text),
+                        new XElement("udp-port", txtUdpPort.Text));
                     xmlDoc.Element("drone-list").Add(newElement);
                     xmlDoc.Save(FILENAME);
-
                 }
             }
             return true;
@@ -204,8 +218,6 @@ namespace native_net_drone_monitor
         {
             toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
             toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
-
-            
         }
 
         private void toggleWebSocket_ToggleStateChanged(object sender, Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventArgs e)
@@ -229,7 +241,7 @@ namespace native_net_drone_monitor
             {
                 case "General":
                     panelGeneral.Visible = true;
-                    panelWebSocket.Visible = false;
+                    panelVideoStream.Visible = false;
                     break;
                 case "WebSocket":
                     panelWebSocket.Visible = true;
@@ -237,6 +249,20 @@ namespace native_net_drone_monitor
                     break;
                 case "MAVLink":
                     panelMavLink.Visible = true;
+                    break;
+                case "Video Stream":
+                    panelVideoStream.Visible = true;
+                    panelWebSocket.Visible = false;
+                    panelMavLink.Visible = false;
+                    break;
+                case "Telemetry":
+                    if (telemetryTabIsOpened)
+                    {
+                        panelWebSocket.Visible = false;
+                    } else
+                    {
+                        telemetryTabIsOpened = true;
+                    }
                     break;
             }
         }
@@ -253,17 +279,51 @@ namespace native_net_drone_monitor
                 lblProtocol.Enabled = false;
                 cmbProtocol.Enabled = false;
                 cmbProtocol.SelectedItem = null;
+                panelTcp.Visible = false;
+                panelUdp.Visible = false;
+                panelSerial.Visible = false;
+                cmbBaudrate.SelectedItem = null;
+                cmbPortCOM.SelectedItem = null;
+                txtTcpHost.Text = null;
+                txtTcpPort.Text = null;
+                txtUdpHost.Text = null;
+                txtUdpPort.Text = null;
             }
         }
 
         private void cmbProtocol_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbProtocol.SelectedIndex == 2)
+            switch (cmbProtocol.SelectedIndex)
             {
-                panelTCP.Visible = true;
-            } else
+                case 0:
+                    panelUdp.Visible = true;
+                    panelTcp.Visible = false;
+                    panelSerial.Visible = false;
+                    break;
+                case 1:
+                    panelUdp.Visible = false;
+                    panelTcp.Visible = true;
+                    panelSerial.Visible = false;
+                    break;
+                case 2:
+                    panelUdp.Visible = false;
+                    panelTcp.Visible = false;
+                    panelSerial.Visible = true;
+                    break;
+            }
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            var main = (frmMain)Application.OpenForms["frmMain"];
+            if (addData())
             {
-                panelTCP.Visible = false;
+                main.menuRefresh.PerformClick();
+                if (main.Enabled == false)
+                {
+                    main.Enabled = true;
+                }
+                this.Close();
             }
         }
     }

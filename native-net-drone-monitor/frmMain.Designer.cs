@@ -41,7 +41,6 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn1 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn2 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn3 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
@@ -50,6 +49,7 @@ namespace native_net_drone_monitor
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn6 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn7 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
             Syncfusion.WinForms.DataGrid.GridTextColumn gridTextColumn8 = new Syncfusion.WinForms.DataGrid.GridTextColumn();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             Syncfusion.Windows.Forms.CaptionImage captionImage1 = new Syncfusion.Windows.Forms.CaptionImage();
             Syncfusion.Windows.Forms.CaptionLabel captionLabel1 = new Syncfusion.Windows.Forms.CaptionLabel();
             Syncfusion.Windows.Forms.CaptionLabel captionLabel2 = new Syncfusion.Windows.Forms.CaptionLabel();
@@ -57,6 +57,7 @@ namespace native_net_drone_monitor
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabControlAdv3 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.videoStreamTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.recorder = new Vlc.DotNet.Forms.VlcControl();
             this.streamPlayer = new Vlc.DotNet.Forms.VlcControl();
             this.GPSTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.MessagesTab = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
@@ -115,6 +116,7 @@ namespace native_net_drone_monitor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuCheckUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.mapView = new GMap.NET.WindowsForms.GMapControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -126,7 +128,9 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).BeginInit();
             this.tabControlAdv3.SuspendLayout();
             this.videoStreamTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recorder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamPlayer)).BeginInit();
+            this.GPSTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MessagesTab)).BeginInit();
             this.MessagesTab.SuspendLayout();
             this.LogTab.SuspendLayout();
@@ -214,6 +218,7 @@ namespace native_net_drone_monitor
             // videoStreamTab
             // 
             this.videoStreamTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.videoStreamTab.Controls.Add(this.recorder);
             this.videoStreamTab.Controls.Add(this.streamPlayer);
             this.videoStreamTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.videoStreamTab.Image = null;
@@ -225,6 +230,20 @@ namespace native_net_drone_monitor
             this.videoStreamTab.TabIndex = 1;
             this.videoStreamTab.Text = "Video Stream";
             this.videoStreamTab.ThemesEnabled = false;
+            // 
+            // recorder
+            // 
+            this.recorder.BackColor = System.Drawing.Color.Black;
+            this.recorder.Location = new System.Drawing.Point(235, 99);
+            this.recorder.Name = "recorder";
+            this.recorder.Size = new System.Drawing.Size(75, 23);
+            this.recorder.Spu = -1;
+            this.recorder.TabIndex = 1;
+            this.recorder.Text = "vlcControl1";
+            this.recorder.Visible = false;
+            this.recorder.VlcLibDirectory = null;
+            this.recorder.VlcMediaplayerOptions = null;
+            this.recorder.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.recorder_VlcLibDirectoryNeeded);
             // 
             // streamPlayer
             // 
@@ -239,7 +258,6 @@ namespace native_net_drone_monitor
             this.streamPlayer.Spu = -1;
             this.streamPlayer.TabIndex = 0;
             this.streamPlayer.Text = "vlcControl1";
-            //this.streamPlayer.VlcLibDirectory = ((System.IO.DirectoryInfo)(resources.GetObject("streamPlayer.VlcLibDirectory")));
             this.streamPlayer.VlcLibDirectory = null;
             this.streamPlayer.VlcMediaplayerOptions = null;
             this.streamPlayer.VlcLibDirectoryNeeded += new System.EventHandler<Vlc.DotNet.Forms.VlcLibDirectoryNeededEventArgs>(this.streamPlayer_VlcLibDirectoryNeeded);
@@ -247,6 +265,7 @@ namespace native_net_drone_monitor
             // GPSTab
             // 
             this.GPSTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.GPSTab.Controls.Add(this.mapView);
             this.GPSTab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.GPSTab.Image = null;
             this.GPSTab.ImageSize = new System.Drawing.Size(16, 16);
@@ -880,6 +899,33 @@ namespace native_net_drone_monitor
             this.splitContainer4.SplitterDistance = 288;
             this.splitContainer4.TabIndex = 0;
             // 
+            // mapView
+            // 
+            this.mapView.Bearing = 0F;
+            this.mapView.CanDragMap = true;
+            this.mapView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapView.EmptyTileColor = System.Drawing.Color.Navy;
+            this.mapView.GrayScaleMode = false;
+            this.mapView.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.mapView.LevelsKeepInMemmory = 5;
+            this.mapView.Location = new System.Drawing.Point(0, 0);
+            this.mapView.MarkersEnabled = true;
+            this.mapView.MaxZoom = 2;
+            this.mapView.MinZoom = 2;
+            this.mapView.MouseWheelZoomEnabled = true;
+            this.mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.mapView.Name = "mapView";
+            this.mapView.NegativeMode = false;
+            this.mapView.PolygonsEnabled = true;
+            this.mapView.RetryLoadTile = 0;
+            this.mapView.RoutesEnabled = true;
+            this.mapView.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.mapView.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.mapView.ShowTileGridLines = false;
+            this.mapView.Size = new System.Drawing.Size(922, 389);
+            this.mapView.TabIndex = 0;
+            this.mapView.Zoom = 0D;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -937,7 +983,9 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv3)).EndInit();
             this.tabControlAdv3.ResumeLayout(false);
             this.videoStreamTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recorder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.streamPlayer)).EndInit();
+            this.GPSTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MessagesTab)).EndInit();
             this.MessagesTab.ResumeLayout(false);
             this.LogTab.ResumeLayout(false);
@@ -1033,5 +1081,7 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuCheckUpdate;
         private System.Windows.Forms.SplitContainer splitContainer4;
+        private Vlc.DotNet.Forms.VlcControl recorder;
+        private GMap.NET.WindowsForms.GMapControl mapView;
     }
 }

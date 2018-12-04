@@ -20,8 +20,7 @@ using System.Xml;
 using System.Data.SqlClient;
 using System.Threading;
 using System.Xml.Linq;
-using Vlc.DotNet.Core;
-using Vlc.DotNet.Forms;
+
 
 namespace native_net_drone_monitor
 {
@@ -29,19 +28,15 @@ namespace native_net_drone_monitor
     {
 
         public event EventHandler RefreshTriggered;
-        private List<Drone> droneList = new List<Drone>();
-        private List<string> messages = new List<string>();
-        VlcControl recorder = new VlcControl();
+        public List<Drone> droneList = new List<Drone>();
+        public List<string> messages = new List<string>();
 
         private string FILENAME = "droneList.xml";
-        private string SETTINGS_FILENAME = "settings.conf";
         public string path;
         public frmMain()
         {
 
             InitializeComponent();
-            path = "http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi";
-            //streamPlayer.Play(new Uri(path));
             
 
 
@@ -49,9 +44,7 @@ namespace native_net_drone_monitor
 
         public void refresh()
         {
-            /* TODO : ERROR WHILE REFRESHING */
-
-            if (!File.Exists(FILENAME) || !File.Exists(SETTINGS_FILENAME))
+            if (!File.Exists(FILENAME))
             {
                 if (!createXmlFile())
                 {
@@ -76,58 +69,71 @@ namespace native_net_drone_monitor
                 }
             } else
             {
-                if (droneList.Count > 0)
-                {
-                    droneList.Clear();
-                }
-                XmlDocument xmlDoc = new XmlDocument();
-                xmlDoc.Load(FILENAME);
-
-                foreach (XmlNode node in xmlDoc.DocumentElement)
-                {
-                    var profileName = node.Attributes[0].InnerText;
-
-                    Drone newDrone = new Drone();
-
-                    var port = 0;
-                    var socket = 0;
-                    var baudrate = 0;
-                    var ipAddress = node.SelectSingleNode("/drone-list/drone/ip-address").InnerText;
-                    var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
-                    var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
-                    var droneType = node.SelectSingleNode("/drone-list/drone/drone-type").InnerText;
-                    var portCOM = node.SelectSingleNode("/drone-list/drone/port-com").InnerText;
-
-                    Int32.TryParse(node.SelectSingleNode("/drone-list/drone/baudrate").InnerText,out  baudrate);
-                    Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
-                    Int32.TryParse(node.SelectSingleNode("/drone-list/drone/port").InnerText, out port);
-
-                    newDrone.profileName = profileName;
-                    newDrone.ipAddress = ipAddress;
-                    newDrone.protocolConn = protocolConn;
-                    newDrone.connMethod = connMethod;
-                    newDrone.port = port;
-                    newDrone.socket = socket;
-                    newDrone.droneType = droneType;
-                    newDrone.baudrate = baudrate;
-                    newDrone.portCom = portCOM;
-
-                    droneList.Add(newDrone);
-                }
+                readXmlFile();
                 var bindingList = new BindingList<Drone>(droneList);
                 var source = new BindingSource(bindingList, null);
                 cmbConnect.DataSource = source;
                 cmbConnect.DisplayMember = "profileName";
             }
         }
-      
+        
+        private void readXmlFile()
+        {
+            if (droneList.Count > 0)
+            {
+                droneList.Clear();
+            }
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(FILENAME);
+
+            foreach (XmlNode node in xmlDoc.DocumentElement)
+            {
+                var profileName = node.Attributes[0].InnerText;
+
+                Drone newDrone = new Drone();
+
+                var rtspPort = 0;
+                var socket = 0;
+                var baudrate = 0;
+                var tcpPort = 0;
+                var udpPort = 0;
+                var rtspServer = node.SelectSingleNode("/drone-list/drone/rtsp-server").InnerText;
+                var connMethod = node.SelectSingleNode("/drone-list/drone/conn-method").InnerText;
+                var protocolConn = node.SelectSingleNode("/drone-list/drone/protocol").InnerText;
+                var droneType = node.SelectSingleNode("/drone-list/drone/drone-type").InnerText;
+                var portCOM = node.SelectSingleNode("/drone-list/drone/port-com").InnerText;
+                var tcpHost = node.SelectSingleNode("/drone-list/drone/tcp-host").InnerText;
+                var udpHost = node.SelectSingleNode("/drone-list/drone/udp-host").InnerText;
+
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/baudrate").InnerText, out baudrate);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/socket").InnerText, out socket);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/rtsp-port").InnerText, out rtspPort);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/tcp-port").InnerText, out tcpPort);
+                Int32.TryParse(node.SelectSingleNode("/drone-list/drone/udp-port").InnerText, out udpPort);
+
+                newDrone.profileName = profileName;
+                newDrone.rtspServer = rtspServer;
+                newDrone.protocolConn = protocolConn;
+                newDrone.connMethod = connMethod;
+                newDrone.rtspPort = rtspPort;
+                newDrone.socket = socket;
+                newDrone.droneType = droneType;
+                newDrone.baudrate = baudrate;
+                newDrone.portCom = portCOM;
+                newDrone.tcpPort = tcpPort;
+                newDrone.tcpHost = tcpHost;
+                newDrone.udpPort = udpPort;
+                newDrone.udpHost = udpHost;
+
+                droneList.Add(newDrone);
+            }
+        }
+
         public bool createXmlFile()
         {
             new XDocument(
                 new XElement("drone-list")).Save(FILENAME);
-            new XDocument(
-                new XElement("settings")).Save(SETTINGS_FILENAME);
-            if (!File.Exists(FILENAME) && !File.Exists(SETTINGS_FILENAME))
+            if (!File.Exists(FILENAME))
             {
                 return false;
             }
@@ -135,7 +141,7 @@ namespace native_net_drone_monitor
         }
 
         private void frmMain_Load(object sender, EventArgs e)
-        {
+        {   
             refresh();
             statusConnection.Text = "NOT CONNECTED";
             statusConnection.ForeColor = Color.Red;
@@ -210,17 +216,10 @@ namespace native_net_drone_monitor
             }
         }
 
-        private void recorderInit()
-        {
-            recorder.BeginInit();
-            recorder.VlcLibDirectory = streamPlayer.VlcLibDirectory;
-            recorder.Visible = false;
-            recorder.EndInit();
-        }
+       
         public void connect(Drone drone)
         {
 
-            
             var currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             var destination = Path.Combine(currentDirectory,"stream.mkv");
             var mediaOptions = new[]
@@ -228,13 +227,11 @@ namespace native_net_drone_monitor
                     ":sout=#file{dst=" + destination + "}",
                     ":sout-keep"
                 };
-            recorderInit();
-            this.Controls.Add(recorder);
             recorder.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"),
                     mediaOptions);
             streamPlayer.Video.AspectRatio = "4:3"; // set aspect ratio
-            
             streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+
             btnConnectDevices.Visible = false;
             btnDisconnect.Visible = true;
             statusConnection.Text = "CONNECTED";
@@ -244,11 +241,11 @@ namespace native_net_drone_monitor
             statusLblLatency.Visible = true;
             statusLblLatencyUnit.Visible = true;
             statusConnection.ForeColor = Color.Green;
+            
         }
 
         public void disconnect()
         {
-            this.Controls.Remove(recorder);
             streamPlayer.Stop();
             btnConnectDevices.Visible = true;
             btnDisconnect.Visible = false;
@@ -308,5 +305,26 @@ namespace native_net_drone_monitor
                 }
             }
         }
+
+        private void recorder_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
+        {
+            var currentAssembly = Assembly.GetEntryAssembly();
+            var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+            // Default installation path of VideoLAN.LibVLC.Windows
+            e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
+
+            if (!e.VlcLibDirectory.Exists)
+            {
+                var folderBrowserDialog = new FolderBrowserDialog();
+                folderBrowserDialog.Description = "Select Vlc libraries folder.";
+                folderBrowserDialog.RootFolder = Environment.SpecialFolder.Desktop;
+                folderBrowserDialog.ShowNewFolderButton = true;
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    e.VlcLibDirectory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
+                }
+            }
+        }
+        
     }
 }
