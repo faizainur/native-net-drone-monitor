@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Xml;
 using System.Threading;
 using System.Xml.Linq;
-
+using GMap.NET.MapProviders;
 
 namespace native_net_drone_monitor
 {
@@ -131,6 +131,12 @@ namespace native_net_drone_monitor
         private void frmMain_Load(object sender, EventArgs e)
         {   
             refresh();
+            mapView.DragButton = MouseButtons.Left;
+            mapView.MapProvider = GMapProviders.OpenStreetMap;
+            mapView.SetPositionByKeywords("Indonesia");
+            mapView.MinZoom = 0;
+            mapView.MaxZoom = 24;
+            mapView.Zoom = 9;
             statusConnection.Text = "NOT CONNECTED";
             statusConnection.ForeColor = Color.Red;
             statusIP.Visible = false;

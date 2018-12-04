@@ -35,15 +35,15 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection1 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer1 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection2 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection3 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection3 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer3 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection3 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer4 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSetupWizard = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeGeneral = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
@@ -131,9 +131,9 @@ namespace native_net_drone_monitor
             // navSetupWizard
             // 
             this.navSetupWizard.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection1.HeaderText = "Setup Wizard";
-            this.navSetupWizard.Header = headerCollection1;
+            headerCollection2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection2.HeaderText = "Setup Wizard";
+            this.navSetupWizard.Header = headerCollection2;
             this.navSetupWizard.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSetupWizard.Items.Add(this.treeGeneral);
             this.navSetupWizard.Items.Add(this.treeVideoStream);
@@ -442,17 +442,17 @@ namespace native_net_drone_monitor
             // 
             // toggleMavLink
             // 
-            this.toggleMavLink.ActiveState = activeStateCollection1;
+            this.toggleMavLink.ActiveState = activeStateCollection3;
             this.toggleMavLink.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleMavLink.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleMavLink.InactiveState = inactiveStateCollection1;
+            inactiveStateCollection3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleMavLink.InactiveState = inactiveStateCollection3;
             this.toggleMavLink.Location = new System.Drawing.Point(316, 14);
             this.toggleMavLink.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleMavLink.Name = "toggleMavLink";
-            this.toggleMavLink.Renderer = toggleButtonRenderer1;
+            this.toggleMavLink.Renderer = toggleButtonRenderer3;
             this.toggleMavLink.Size = new System.Drawing.Size(90, 40);
-            this.toggleMavLink.Slider = sliderCollection1;
+            this.toggleMavLink.Slider = sliderCollection3;
             this.toggleMavLink.TabIndex = 2;
             this.toggleMavLink.Text = "toggleButton1";
             this.toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -489,17 +489,17 @@ namespace native_net_drone_monitor
             // 
             // toggleWebSocket
             // 
-            this.toggleWebSocket.ActiveState = activeStateCollection2;
+            this.toggleWebSocket.ActiveState = activeStateCollection4;
             this.toggleWebSocket.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleWebSocket.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleWebSocket.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleWebSocket.InactiveState = inactiveStateCollection4;
             this.toggleWebSocket.Location = new System.Drawing.Point(316, 14);
             this.toggleWebSocket.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleWebSocket.Name = "toggleWebSocket";
-            this.toggleWebSocket.Renderer = toggleButtonRenderer2;
+            this.toggleWebSocket.Renderer = toggleButtonRenderer4;
             this.toggleWebSocket.Size = new System.Drawing.Size(90, 40);
-            this.toggleWebSocket.Slider = sliderCollection2;
+            this.toggleWebSocket.Slider = sliderCollection4;
             this.toggleWebSocket.TabIndex = 0;
             this.toggleWebSocket.Text = "toggleButton1";
             this.toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -640,6 +640,7 @@ namespace native_net_drone_monitor
             this.ShowMaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Setup Wizard";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmAddDevices_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
