@@ -17,7 +17,6 @@ using Vlc.DotNet.Forms;
 using System.IO;
 using System.Reflection;
 using System.Xml;
-using System.Data.SqlClient;
 using System.Threading;
 using System.Xml.Linq;
 
@@ -33,13 +32,11 @@ namespace native_net_drone_monitor
 
         private string FILENAME = "droneList.xml";
         public string path;
+
+
         public frmMain()
         {
-
             InitializeComponent();
-            
-
-
         }
 
         public void refresh()

@@ -244,13 +244,19 @@ namespace native_net_drone_monitor
                     panelVideoStream.Visible = false;
                     break;
                 case "WebSocket":
+                    panelGeneral.Visible = true;
+                    panelVideoStream.Visible = true;
                     panelWebSocket.Visible = true;
                     panelMavLink.Visible = false;
                     break;
                 case "MAVLink":
+                    panelGeneral.Visible = true;
+                    panelVideoStream.Visible = true;
+                    panelWebSocket.Visible = true;
                     panelMavLink.Visible = true;
                     break;
                 case "Video Stream":
+                    panelGeneral.Visible = true;
                     panelVideoStream.Visible = true;
                     panelWebSocket.Visible = false;
                     panelMavLink.Visible = false;
@@ -258,9 +264,10 @@ namespace native_net_drone_monitor
                 case "Telemetry":
                     if (telemetryTabIsOpened)
                     {
-                        panelWebSocket.Visible = false;
+                        panelGeneral.Visible = false;
                     } else
                     {
+                        panelVideoStream.Visible = true;
                         telemetryTabIsOpened = true;
                     }
                     break;

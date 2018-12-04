@@ -35,43 +35,25 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection4 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection7 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection7 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer7 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection7 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection8 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection8 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer8 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection8 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection1 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection1 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection1 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer1 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection1 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSetupWizard = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeGeneral = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.treeVideoStream = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.treeTelemetry = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.btnSaveData = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.panelHome = new System.Windows.Forms.Panel();
             this.panelGeneral = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbDroneType = new Syncfusion.WinForms.ListView.SfComboBox();
-            this.txtProfileName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.treeMenuItem2 = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
-            this.treeMenuItem1 = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
-            this.treeWebSocket = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
-            this.treeMavLink = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.panelVideoStream = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtPortRtsp = new System.Windows.Forms.TextBox();
-            this.txtRtspServer = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelWebSocket = new System.Windows.Forms.Panel();
-            this.txtSocket = new System.Windows.Forms.TextBox();
-            this.lblSocket = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.toggleWebSocket = new Syncfusion.Windows.Forms.Tools.ToggleButton();
             this.panelMavLink = new System.Windows.Forms.Panel();
             this.panelTcp = new System.Windows.Forms.Panel();
             this.txtTcpPort = new System.Windows.Forms.TextBox();
@@ -92,17 +74,31 @@ namespace native_net_drone_monitor
             this.lblProtocol = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.toggleMavLink = new Syncfusion.Windows.Forms.Tools.ToggleButton();
-            this.btnSaveData = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.txtSocket = new System.Windows.Forms.TextBox();
+            this.lblSocket = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.toggleWebSocket = new Syncfusion.Windows.Forms.Tools.ToggleButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPortRtsp = new System.Windows.Forms.TextBox();
+            this.txtRtspServer = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbDroneType = new Syncfusion.WinForms.ListView.SfComboBox();
+            this.txtProfileName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.treeWebSocket = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.treeMavLink = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panelHome.SuspendLayout();
             this.panelGeneral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).BeginInit();
             this.panelVideoStream.SuspendLayout();
             this.panelWebSocket.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).BeginInit();
             this.panelMavLink.SuspendLayout();
             this.panelTcp.SuspendLayout();
             this.panelUdp.SuspendLayout();
@@ -111,6 +107,8 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.cmbBaudrate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPortCOM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleMavLink)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -133,9 +131,9 @@ namespace native_net_drone_monitor
             // navSetupWizard
             // 
             this.navSetupWizard.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection4.HeaderText = "Setup Wizard";
-            this.navSetupWizard.Header = headerCollection4;
+            headerCollection1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection1.HeaderText = "Setup Wizard";
+            this.navSetupWizard.Header = headerCollection1;
             this.navSetupWizard.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSetupWizard.Items.Add(this.treeGeneral);
             this.navSetupWizard.Items.Add(this.treeVideoStream);
@@ -183,7 +181,19 @@ namespace native_net_drone_monitor
             this.treeTelemetry.Size = new System.Drawing.Size(211, 50);
             this.treeTelemetry.TabIndex = 1;
             this.treeTelemetry.Text = "Telemetry";
-            this.treeTelemetry.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
+            // btnSaveData
+            // 
+            this.btnSaveData.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveData.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSaveData.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSaveData.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.btnSaveData.Location = new System.Drawing.Point(0, 401);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(213, 50);
+            this.btnSaveData.TabIndex = 1;
+            this.btnSaveData.Text = "Save";
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
             // 
             // panelHome
             // 
@@ -210,100 +220,6 @@ namespace native_net_drone_monitor
             this.panelGeneral.TabIndex = 0;
             this.panelGeneral.Visible = false;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 9);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(415, 46);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Please named the profile to save the drone data, \r\nplease make a good name so you" +
-    " easily remember it.\r\n";
-            // 
-            // cmbDroneType
-            // 
-            this.cmbDroneType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cmbDroneType.Location = new System.Drawing.Point(142, 107);
-            this.cmbDroneType.Name = "cmbDroneType";
-            this.cmbDroneType.Size = new System.Drawing.Size(232, 20);
-            this.cmbDroneType.TabIndex = 8;
-            // 
-            // txtProfileName
-            // 
-            this.txtProfileName.Location = new System.Drawing.Point(142, 75);
-            this.txtProfileName.Name = "txtProfileName";
-            this.txtProfileName.Size = new System.Drawing.Size(232, 20);
-            this.txtProfileName.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Drone type";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Profile name";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(27, 68);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(389, 42);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Setup your drone and save the configuration for future\r\nuse.";
-            // 
-            // treeMenuItem2
-            // 
-            this.treeMenuItem2.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.treeMenuItem2.Location = new System.Drawing.Point(0, 0);
-            this.treeMenuItem2.Name = "treeMenuItem2";
-            this.treeMenuItem2.Size = new System.Drawing.Size(0, 0);
-            this.treeMenuItem2.TabIndex = 0;
-            this.treeMenuItem2.Text = "MAVLink";
-            // 
-            // treeMenuItem1
-            // 
-            this.treeMenuItem1.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.treeMenuItem1.Location = new System.Drawing.Point(0, 0);
-            this.treeMenuItem1.Name = "treeMenuItem1";
-            this.treeMenuItem1.Size = new System.Drawing.Size(0, 0);
-            this.treeMenuItem1.TabIndex = 1;
-            this.treeMenuItem1.Text = "WebSocket";
-            // 
-            // treeWebSocket
-            // 
-            this.treeWebSocket.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeWebSocket.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.treeWebSocket.Location = new System.Drawing.Point(0, 0);
-            this.treeWebSocket.Name = "treeWebSocket";
-            this.treeWebSocket.Size = new System.Drawing.Size(0, 0);
-            this.treeWebSocket.TabIndex = 1;
-            this.treeWebSocket.Text = "WebSocket";
-            // 
-            // treeMavLink
-            // 
-            this.treeMavLink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeMavLink.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.treeMavLink.Location = new System.Drawing.Point(0, 0);
-            this.treeMavLink.Name = "treeMavLink";
-            this.treeMavLink.Size = new System.Drawing.Size(0, 0);
-            this.treeMavLink.TabIndex = 1;
-            this.treeMavLink.Text = "MAVLink";
-            // 
             // panelVideoStream
             // 
             this.panelVideoStream.BackColor = System.Drawing.Color.White;
@@ -320,50 +236,6 @@ namespace native_net_drone_monitor
             this.panelVideoStream.TabIndex = 10;
             this.panelVideoStream.Visible = false;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(11, 20);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(282, 25);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "Set video streaming preferences";
-            // 
-            // txtPortRtsp
-            // 
-            this.txtPortRtsp.Location = new System.Drawing.Point(130, 104);
-            this.txtPortRtsp.Name = "txtPortRtsp";
-            this.txtPortRtsp.Size = new System.Drawing.Size(59, 20);
-            this.txtPortRtsp.TabIndex = 16;
-            // 
-            // txtRtspServer
-            // 
-            this.txtRtspServer.Location = new System.Drawing.Point(130, 71);
-            this.txtRtspServer.Name = "txtRtspServer";
-            this.txtRtspServer.Size = new System.Drawing.Size(232, 20);
-            this.txtRtspServer.TabIndex = 15;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(11, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 20);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Port";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 71);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "IP RTSP";
-            // 
             // panelWebSocket
             // 
             this.panelWebSocket.BackColor = System.Drawing.Color.White;
@@ -378,53 +250,6 @@ namespace native_net_drone_monitor
             this.panelWebSocket.Size = new System.Drawing.Size(428, 502);
             this.panelWebSocket.TabIndex = 18;
             this.panelWebSocket.Visible = false;
-            // 
-            // txtSocket
-            // 
-            this.txtSocket.Location = new System.Drawing.Point(142, 86);
-            this.txtSocket.Name = "txtSocket";
-            this.txtSocket.Size = new System.Drawing.Size(232, 20);
-            this.txtSocket.TabIndex = 3;
-            this.txtSocket.Visible = false;
-            // 
-            // lblSocket
-            // 
-            this.lblSocket.AutoSize = true;
-            this.lblSocket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSocket.Location = new System.Drawing.Point(38, 86);
-            this.lblSocket.Name = "lblSocket";
-            this.lblSocket.Size = new System.Drawing.Size(59, 20);
-            this.lblSocket.TabIndex = 2;
-            this.lblSocket.Text = "Socket";
-            this.lblSocket.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(34, 24);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Turn WebSocket";
-            // 
-            // toggleWebSocket
-            // 
-            this.toggleWebSocket.ActiveState = activeStateCollection7;
-            this.toggleWebSocket.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toggleWebSocket.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleWebSocket.InactiveState = inactiveStateCollection7;
-            this.toggleWebSocket.Location = new System.Drawing.Point(316, 14);
-            this.toggleWebSocket.MinimumSize = new System.Drawing.Size(52, 20);
-            this.toggleWebSocket.Name = "toggleWebSocket";
-            this.toggleWebSocket.Renderer = toggleButtonRenderer7;
-            this.toggleWebSocket.Size = new System.Drawing.Size(90, 40);
-            this.toggleWebSocket.Slider = sliderCollection7;
-            this.toggleWebSocket.TabIndex = 0;
-            this.toggleWebSocket.Text = "toggleButton1";
-            this.toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
-            this.toggleWebSocket.ToggleStateChanged += new Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventHandler(this.toggleWebSocket_ToggleStateChanged);
             // 
             // panelMavLink
             // 
@@ -617,34 +442,188 @@ namespace native_net_drone_monitor
             // 
             // toggleMavLink
             // 
-            this.toggleMavLink.ActiveState = activeStateCollection8;
+            this.toggleMavLink.ActiveState = activeStateCollection1;
             this.toggleMavLink.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleMavLink.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleMavLink.InactiveState = inactiveStateCollection8;
+            inactiveStateCollection1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleMavLink.InactiveState = inactiveStateCollection1;
             this.toggleMavLink.Location = new System.Drawing.Point(316, 14);
             this.toggleMavLink.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleMavLink.Name = "toggleMavLink";
-            this.toggleMavLink.Renderer = toggleButtonRenderer8;
+            this.toggleMavLink.Renderer = toggleButtonRenderer1;
             this.toggleMavLink.Size = new System.Drawing.Size(90, 40);
-            this.toggleMavLink.Slider = sliderCollection8;
+            this.toggleMavLink.Slider = sliderCollection1;
             this.toggleMavLink.TabIndex = 2;
             this.toggleMavLink.Text = "toggleButton1";
             this.toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
             this.toggleMavLink.ToggleStateChanged += new Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventHandler(this.toggleMavLink_ToggleStateChanged);
             // 
-            // btnSaveData
+            // txtSocket
             // 
-            this.btnSaveData.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSaveData.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSaveData.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveData.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.btnSaveData.Location = new System.Drawing.Point(0, 401);
-            this.btnSaveData.Name = "btnSaveData";
-            this.btnSaveData.Size = new System.Drawing.Size(213, 50);
-            this.btnSaveData.TabIndex = 1;
-            this.btnSaveData.Text = "Save";
-            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            this.txtSocket.Location = new System.Drawing.Point(142, 86);
+            this.txtSocket.Name = "txtSocket";
+            this.txtSocket.Size = new System.Drawing.Size(232, 20);
+            this.txtSocket.TabIndex = 3;
+            this.txtSocket.Visible = false;
+            // 
+            // lblSocket
+            // 
+            this.lblSocket.AutoSize = true;
+            this.lblSocket.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSocket.Location = new System.Drawing.Point(38, 86);
+            this.lblSocket.Name = "lblSocket";
+            this.lblSocket.Size = new System.Drawing.Size(59, 20);
+            this.lblSocket.TabIndex = 2;
+            this.lblSocket.Text = "Socket";
+            this.lblSocket.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(34, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(133, 20);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Turn WebSocket";
+            // 
+            // toggleWebSocket
+            // 
+            this.toggleWebSocket.ActiveState = activeStateCollection2;
+            this.toggleWebSocket.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toggleWebSocket.ForeColor = System.Drawing.Color.Black;
+            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleWebSocket.InactiveState = inactiveStateCollection2;
+            this.toggleWebSocket.Location = new System.Drawing.Point(316, 14);
+            this.toggleWebSocket.MinimumSize = new System.Drawing.Size(52, 20);
+            this.toggleWebSocket.Name = "toggleWebSocket";
+            this.toggleWebSocket.Renderer = toggleButtonRenderer2;
+            this.toggleWebSocket.Size = new System.Drawing.Size(90, 40);
+            this.toggleWebSocket.Slider = sliderCollection2;
+            this.toggleWebSocket.TabIndex = 0;
+            this.toggleWebSocket.Text = "toggleButton1";
+            this.toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
+            this.toggleWebSocket.ToggleStateChanged += new Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventHandler(this.toggleWebSocket_ToggleStateChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(11, 20);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(282, 25);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "Set video streaming preferences";
+            // 
+            // txtPortRtsp
+            // 
+            this.txtPortRtsp.Location = new System.Drawing.Point(130, 104);
+            this.txtPortRtsp.Name = "txtPortRtsp";
+            this.txtPortRtsp.Size = new System.Drawing.Size(59, 20);
+            this.txtPortRtsp.TabIndex = 16;
+            // 
+            // txtRtspServer
+            // 
+            this.txtRtspServer.Location = new System.Drawing.Point(130, 71);
+            this.txtRtspServer.Name = "txtRtspServer";
+            this.txtRtspServer.Size = new System.Drawing.Size(232, 20);
+            this.txtRtspServer.TabIndex = 15;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(11, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Port";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "IP RTSP";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(415, 46);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Please named the profile to save the drone data, \r\nplease make a good name so you" +
+    " easily remember it.\r\n";
+            // 
+            // cmbDroneType
+            // 
+            this.cmbDroneType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cmbDroneType.Location = new System.Drawing.Point(142, 107);
+            this.cmbDroneType.Name = "cmbDroneType";
+            this.cmbDroneType.Size = new System.Drawing.Size(232, 20);
+            this.cmbDroneType.TabIndex = 8;
+            // 
+            // txtProfileName
+            // 
+            this.txtProfileName.Location = new System.Drawing.Point(142, 75);
+            this.txtProfileName.Name = "txtProfileName";
+            this.txtProfileName.Size = new System.Drawing.Size(232, 20);
+            this.txtProfileName.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Drone type";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Profile name";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(389, 42);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Setup your drone and save the configuration for future\r\nuse.";
+            // 
+            // treeWebSocket
+            // 
+            this.treeWebSocket.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeWebSocket.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeWebSocket.Location = new System.Drawing.Point(0, 0);
+            this.treeWebSocket.Name = "treeWebSocket";
+            this.treeWebSocket.Size = new System.Drawing.Size(0, 0);
+            this.treeWebSocket.TabIndex = 1;
+            this.treeWebSocket.Text = "WebSocket";
+            // 
+            // treeMavLink
+            // 
+            this.treeMavLink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeMavLink.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeMavLink.Location = new System.Drawing.Point(0, 0);
+            this.treeMavLink.Name = "treeMavLink";
+            this.treeMavLink.Size = new System.Drawing.Size(0, 0);
+            this.treeMavLink.TabIndex = 1;
+            this.treeMavLink.Text = "MAVLink";
             // 
             // frmAddDevices
             // 
@@ -670,12 +649,10 @@ namespace native_net_drone_monitor
             this.panelHome.PerformLayout();
             this.panelGeneral.ResumeLayout(false);
             this.panelGeneral.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).EndInit();
             this.panelVideoStream.ResumeLayout(false);
             this.panelVideoStream.PerformLayout();
             this.panelWebSocket.ResumeLayout(false);
             this.panelWebSocket.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).EndInit();
             this.panelMavLink.ResumeLayout(false);
             this.panelMavLink.PerformLayout();
             this.panelTcp.ResumeLayout(false);
@@ -688,6 +665,8 @@ namespace native_net_drone_monitor
             ((System.ComponentModel.ISupportInitialize)(this.cmbBaudrate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbPortCOM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toggleMavLink)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toggleWebSocket)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbDroneType)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -707,10 +686,7 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.Panel panelHome;
         private System.Windows.Forms.Label label10;
         private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeTelemetry;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeMenuItem2;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeMenuItem1;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeWebSocket;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeMavLink;
+        
         private System.Windows.Forms.Panel panelVideoStream;
         private System.Windows.Forms.Panel panelWebSocket;
         private System.Windows.Forms.Panel panelMavLink;
@@ -743,5 +719,7 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private Syncfusion.Windows.Forms.Tools.TreeMenuItem btnSaveData;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeWebSocket;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeMavLink;
     }
 }
