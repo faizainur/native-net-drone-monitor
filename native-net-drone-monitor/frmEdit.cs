@@ -29,16 +29,6 @@ namespace native_net_drone_monitor
             InitializeComponent();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            var frm = new frmMain();
-            this.Close();
-
-            frm.Visible = true;
-            frm.Show();
-            
-        }
-
         private void frmConnect_Load(object sender, EventArgs e)
         {
             if (!File.Exists(FILENAME))
@@ -48,7 +38,7 @@ namespace native_net_drone_monitor
             else
             {
                 refreshList();
-                listAvailDevices.CollapseAllGroups();
+                MessageBox.Show(droneList.Count.ToString());
             }
 
         }
@@ -57,6 +47,7 @@ namespace native_net_drone_monitor
         {
             var idx = listAvailDevices.SelectedIndex;
             Drone selectedDrone = droneList[idx];
+            var sele = listAvailDevices.SelectedItem;
             var name = selectedDrone.profileName;
             deleteData(name);
             frmMain main = (frmMain)Application.OpenForms["frmMain"];
@@ -93,10 +84,6 @@ namespace native_net_drone_monitor
             var source = new BindingSource(bindingList, null);
             listAvailDevices.DataSource = source;
             listAvailDevices.DisplayMember = "profileName";
-            listAvailDevices.View.GroupDescriptors.Add(new Syncfusion.DataSource.GroupDescriptor()
-            {
-                PropertyName = "droneType"
-            });
         }
 
         private void readXmlFile()
@@ -146,7 +133,7 @@ namespace native_net_drone_monitor
         {
             int idx = listAvailDevices.SelectedIndex;
             //Drone sel = droneList[idx];
-            MessageBox.Show(droneList[0].droneType);
+            MessageBox.Show(idx.ToString());
         }
     }
 }

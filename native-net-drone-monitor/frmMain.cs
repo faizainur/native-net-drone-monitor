@@ -181,10 +181,15 @@ namespace native_net_drone_monitor
         
         private void btnConnectDevices_Click(object sender, EventArgs e)
         {
-            var idx = cmbConnect.SelectedIndex;
-            Drone selectedDrone = droneList[idx];
-            MessageBox.Show(selectedDrone.profileName + selectedDrone.droneType + selectedDrone.connMethod);
-            //connect(selectedDrone);
+            if (cmbConnect.SelectedItem == null)
+            {
+                MessageBox.Show("Please select profile first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            } else
+            {
+                var idx = cmbConnect.SelectedIndex;
+                Drone selectedDrone = droneList[idx];
+                connect(selectedDrone);
+            }
         }
 
         private void cmbConnect_SelectedIndexChanged(object sender, EventArgs e)
