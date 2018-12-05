@@ -836,7 +836,7 @@ namespace native_net_drone_monitor
             // menuOpenLogs
             // 
             this.menuOpenLogs.Name = "menuOpenLogs";
-            this.menuOpenLogs.Size = new System.Drawing.Size(180, 22);
+            this.menuOpenLogs.Size = new System.Drawing.Size(135, 22);
             this.menuOpenLogs.Text = "Open Logs";
             // 
             // exportLogsToolStripMenuItem
@@ -845,7 +845,7 @@ namespace native_net_drone_monitor
             this.menuExPdf,
             this.menuExExcel});
             this.exportLogsToolStripMenuItem.Name = "exportLogsToolStripMenuItem";
-            this.exportLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportLogsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exportLogsToolStripMenuItem.Text = "Export Logs";
             // 
             // menuExPdf
@@ -863,7 +863,7 @@ namespace native_net_drone_monitor
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(132, 6);
             // 
             // exportMapDatabaseToolStripMenuItem
             // 
@@ -871,20 +871,20 @@ namespace native_net_drone_monitor
             this.menuExportMap,
             this.menuImportMap});
             this.exportMapDatabaseToolStripMenuItem.Name = "exportMapDatabaseToolStripMenuItem";
-            this.exportMapDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportMapDatabaseToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exportMapDatabaseToolStripMenuItem.Text = "Map";
             // 
             // menuExportMap
             // 
             this.menuExportMap.Name = "menuExportMap";
-            this.menuExportMap.Size = new System.Drawing.Size(180, 22);
+            this.menuExportMap.Size = new System.Drawing.Size(110, 22);
             this.menuExportMap.Text = "Export ";
             this.menuExportMap.Click += new System.EventHandler(this.menuExportMap_Click);
             // 
             // menuImportMap
             // 
             this.menuImportMap.Name = "menuImportMap";
-            this.menuImportMap.Size = new System.Drawing.Size(180, 22);
+            this.menuImportMap.Size = new System.Drawing.Size(110, 22);
             this.menuImportMap.Text = "Import";
             this.menuImportMap.Click += new System.EventHandler(this.menuImportMap_Click);
             // 
@@ -1101,10 +1101,10 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripMenuItem menuCheckUpdate;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private Vlc.DotNet.Forms.VlcControl recorder;
-        private GMap.NET.WindowsForms.GMapControl mapView;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem exportMapDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuExportMap;
         private System.Windows.Forms.ToolStripMenuItem menuImportMap;
+        public GMap.NET.WindowsForms.GMapControl mapView;
     }
 }

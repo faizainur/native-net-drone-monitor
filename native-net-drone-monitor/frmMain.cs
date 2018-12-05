@@ -25,6 +25,8 @@ using GMap.NET.WindowsForms;
 using System.Diagnostics;
 using System.Configuration;
 using System.Configuration.Assemblies;
+using System.Net.NetworkInformation;
+using System.Net;
 
 namespace native_net_drone_monitor
 {
@@ -43,11 +45,13 @@ namespace native_net_drone_monitor
         public frmMain()
         {
             InitializeComponent();
-            settingsVal = readSettings();
         }
 
         public void refresh()
         {
+            settingsVal = readSettings();
+            applySettings();
+            mapView.Refresh();
             if (!File.Exists(FILENAME))
             {
                 if (!createXmlFile())
@@ -141,12 +145,11 @@ namespace native_net_drone_monitor
             refresh();
 
             // Initialize Maps
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+
             mapView.DragButton = MouseButtons.Left;
             mapView.MapProvider = GMapProviders.OpenStreetMap;
             GMaps.Instance.OptimizeMapDb(null);
-            mapView.CacheLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            mapView.SetPositionByKeywords("Indonesia");
+            //mapView.SetPositionByKeywords("Indonesia");
             mapView.MinZoom = 0;
             mapView.MaxZoom = 24;
             mapView.Zoom = 9;
@@ -159,6 +162,48 @@ namespace native_net_drone_monitor
             statusLblIP.Visible = false;
             statusLblLatency.Visible = false;
             statusLblLatencyUnit.Visible = false;
+        }
+
+        public void applySettings()
+        {
+            
+            switch (settingsVal.mapsMode)
+            {
+                case "Offline":
+                    GMaps.Instance.Mode = AccessMode.CacheOnly;
+                    break;
+                case "Online":
+                    if (isInternetConnectionAvailable())
+                    {
+                        GMaps.Instance.Mode = AccessMode.ServerOnly;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No internet connection, we will move to offline mode", "No internet", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        GMaps.Instance.Mode = AccessMode.ServerOnly;
+                    }
+                    break;
+                case "Download":
+                    GMaps.Instance.Mode = AccessMode.ServerAndCache;
+                    break;
+            }
+            mapView.CacheLocation = settingsVal.cacheLocation;
+        }
+
+        public static bool isInternetConnectionAvailable()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -387,7 +432,7 @@ namespace native_net_drone_monitor
                     buff.saveVideoState = false;
                 }
             }
-            catch (ConfigurationException)
+            catch (ConfigurationErrorsException)
             {
                 var result = MessageBox.Show("Error reading application settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 switch (result)

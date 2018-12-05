@@ -35,11 +35,11 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection4 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer4 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection2 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSettings = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeVideoSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
@@ -103,9 +103,9 @@ namespace native_net_drone_monitor
             // navSettings
             // 
             this.navSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection4.HeaderText = "Settings";
-            this.navSettings.Header = headerCollection4;
+            headerCollection2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection2.HeaderText = "Settings";
+            this.navSettings.Header = headerCollection2;
             this.navSettings.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSettings.Items.Add(this.treeVideoSettings);
             this.navSettings.Items.Add(this.treeMapsSettings);
@@ -151,6 +151,7 @@ namespace native_net_drone_monitor
             this.btnApply.Size = new System.Drawing.Size(210, 50);
             this.btnApply.TabIndex = 1;
             this.btnApply.Text = "Apply";
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
             // 
             // panel1
             // 
@@ -189,17 +190,17 @@ namespace native_net_drone_monitor
             // 
             // toggleSaveVideo
             // 
-            this.toggleSaveVideo.ActiveState = activeStateCollection4;
+            this.toggleSaveVideo.ActiveState = activeStateCollection2;
             this.toggleSaveVideo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleSaveVideo.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleSaveVideo.InactiveState = inactiveStateCollection4;
+            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleSaveVideo.InactiveState = inactiveStateCollection2;
             this.toggleSaveVideo.Location = new System.Drawing.Point(283, 102);
             this.toggleSaveVideo.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleSaveVideo.Name = "toggleSaveVideo";
-            this.toggleSaveVideo.Renderer = toggleButtonRenderer4;
+            this.toggleSaveVideo.Renderer = toggleButtonRenderer2;
             this.toggleSaveVideo.Size = new System.Drawing.Size(90, 40);
-            this.toggleSaveVideo.Slider = sliderCollection4;
+            this.toggleSaveVideo.Slider = sliderCollection2;
             this.toggleSaveVideo.TabIndex = 5;
             this.toggleSaveVideo.Text = "toggleButton1";
             this.toggleSaveVideo.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -251,6 +252,7 @@ namespace native_net_drone_monitor
             // 
             // cmbVIdeoFormat
             // 
+            this.cmbVIdeoFormat.AllowDropDownResize = false;
             this.cmbVIdeoFormat.Location = new System.Drawing.Point(217, 8);
             this.cmbVIdeoFormat.Name = "cmbVIdeoFormat";
             this.cmbVIdeoFormat.Size = new System.Drawing.Size(121, 28);
@@ -278,6 +280,7 @@ namespace native_net_drone_monitor
             // 
             // cmbAspectRatio
             // 
+            this.cmbAspectRatio.AllowDropDownResize = false;
             this.cmbAspectRatio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cmbAspectRatio.Location = new System.Drawing.Point(252, 37);
             this.cmbAspectRatio.Name = "cmbAspectRatio";
@@ -353,6 +356,7 @@ namespace native_net_drone_monitor
             // 
             // cmbMapMode
             // 
+            this.cmbMapMode.AllowDropDownResize = false;
             this.cmbMapMode.Location = new System.Drawing.Point(252, 29);
             this.cmbMapMode.Name = "cmbMapMode";
             this.cmbMapMode.Size = new System.Drawing.Size(121, 28);
@@ -362,6 +366,7 @@ namespace native_net_drone_monitor
             // 
             this.txtCacheLocation.Location = new System.Drawing.Point(42, 122);
             this.txtCacheLocation.Name = "txtCacheLocation";
+            this.txtCacheLocation.ReadOnly = true;
             this.txtCacheLocation.Size = new System.Drawing.Size(298, 20);
             this.txtCacheLocation.TabIndex = 2;
             // 

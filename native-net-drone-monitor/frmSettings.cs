@@ -15,14 +15,21 @@ using System.Text;
 using System.Windows.Forms;
 using Syncfusion.WinForms;
 using Syncfusion.Windows.Forms.Tools;
+using System.Configuration;
+using System.Diagnostics;
 
 namespace native_net_drone_monitor
 {
     public partial class frmSettings : Syncfusion.Windows.Forms.MetroForm
     {
+        string aspectRatioVal, saveVideoState, videoFormat, savePath, mapsModeVal, cacheLocation;
+
+        AppSettingsVal settingsVal = new AppSettingsVal();
 
         List<string> aspectRatio = new List<string>();
         List<VideoFormat> videoFormats = new List<VideoFormat>();
+        List<string> mapsMode = new List<string>();
+
         public frmSettings()
         {
             InitializeComponent();
@@ -56,10 +63,77 @@ namespace native_net_drone_monitor
             var source = new BindingSource(bindingList, null);
             cmbVIdeoFormat.DataSource = source;
             cmbVIdeoFormat.DisplayMember = "formatIdentifier";
+
+            mapsMode.Add("Offline");
+            mapsMode.Add("Online");
+            mapsMode.Add("Dowload");
+            cmbMapMode.DataSource = mapsMode;
+
+            
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
+            var main = new frmMain();
+            settingsVal = main.readSettings();
+
+            loadSettings();
+        }
+
+        private void loadSettings()
+        {
+            txtCacheLocation.Text = settingsVal.cacheLocation;
+            txtPathFolder.Text = settingsVal.savePath;
+
+            if (settingsVal.saveVideoState)
+            {
+                toggleSaveVideo.ToggleState = ToggleButtonState.Active;
+            } else
+            {
+                toggleSaveVideo.ToggleState = ToggleButtonState.Inactive;
+            }
+
+            switch (settingsVal.aspectRatio)
+            {
+                case "4:3":
+                    cmbAspectRatio.SelectedIndex = 0;
+                    break;
+                case "16:9":
+                    cmbAspectRatio.SelectedIndex = 1;
+                    break;
+                case "16:10":
+                    cmbAspectRatio.SelectedIndex = 2;
+                    break;
+            }
+
+            switch (settingsVal.videoFormat)
+            {
+                case ".avi":
+                    cmbVIdeoFormat.SelectedIndex = 0;
+                    break;
+                case ".mkv":
+                    cmbVIdeoFormat.SelectedIndex = 1;
+                    break;
+                case ".mp4":
+                    cmbVIdeoFormat.SelectedIndex = 2;
+                    break;
+                case ".ts":
+                    cmbVIdeoFormat.SelectedIndex = 3;
+                    break;
+            }
+
+            switch (settingsVal.mapsMode)
+            {
+                case "Offline":
+                    cmbMapMode.SelectedIndex = 0;
+                    break;
+                case "Online":
+                    cmbMapMode.SelectedIndex = 1;
+                    break;
+                case "Download":
+                    cmbMapMode.SelectedIndex = 2;
+                    break;
+            }
 
         }
 
@@ -71,6 +145,8 @@ namespace native_net_drone_monitor
             } else
             {
                 panelSaveVideo.Visible = false;
+                cmbVIdeoFormat.SelectedItem = null;
+                txtPathFolder.Clear();
             }
         }
 
@@ -124,6 +200,130 @@ namespace native_net_drone_monitor
         {
             folderBrowserSave.ShowDialog();
             txtCacheLocation.Text = folderBrowserSave.SelectedPath;
+        }
+
+        private void btnApply_Click(object sender, EventArgs e)
+        {
+            var main = new frmMain();
+
+            if (!applyAllSettings())
+            {
+                MessageBox.Show("Error updating app settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                var result = MessageBox.Show("Updating settings seccesfull, you need to restart app to take effect", "Need for restart application", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        System.Diagnostics.Process.Start(Application.ExecutablePath);
+                        this.Close();
+                        Application.ExitThread();
+                        Process.GetCurrentProcess().Kill();
+                        break;
+                    case DialogResult.Cancel:
+                        this.Close();
+                        break;
+                }
+                this.Close();
+                
+                
+            }
+        }
+
+        public bool updateSettings(string key, string value)
+        {
+            try
+            {
+                var settingsFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = settingsFile.AppSettings.Settings;
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+
+                settingsFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(settingsFile.AppSettings.SectionInformation.Name);
+                return true;
+            } catch (ConfigurationErrorsException)
+            {
+                return false;
+            }
+        }
+
+        public bool applyAllSettings()
+        {
+            switch (cmbAspectRatio.SelectedIndex)
+            {
+                case 0:
+                    aspectRatioVal = "4:3";
+                    break;
+                case 1:
+                    aspectRatioVal = "16:9";
+                    break;
+                case 2:
+                    aspectRatioVal = "16:10";
+                    break;
+            }
+
+            switch (cmbMapMode.SelectedIndex)
+            {
+                case 0:
+                    mapsModeVal = "Offline";
+                    break;
+                case 1:
+                    mapsModeVal = "Online";
+                    break;
+                case 2:
+                    mapsModeVal = "Download";
+                    break;
+            }
+
+            switch (cmbVIdeoFormat.SelectedIndex)
+            {
+                case 0:
+                    videoFormat = ".avi";
+                    break;
+                case 1:
+                    videoFormat = ".mkv";
+                    break;
+                case 2:
+                    videoFormat = ".mp4";
+                    break;
+                case 3:
+                    videoFormat = ".ts";
+                    break;
+            }
+
+            switch (toggleSaveVideo.ToggleState)
+            {
+                case ToggleButtonState.Active:
+                    saveVideoState = "true";
+                    break;
+                case ToggleButtonState.Inactive:
+                    saveVideoState = "false";
+                    break;
+            }
+
+            savePath = txtPathFolder.Text;
+            cacheLocation = txtCacheLocation.Text;
+
+            if (updateSettings("aspect-ratio", aspectRatioVal) && 
+                updateSettings("save-video-state", saveVideoState) &&
+                updateSettings("video-format", videoFormat) &&
+                updateSettings("save-path", savePath)&&
+                updateSettings("maps-mode", mapsModeVal)&&
+                updateSettings("cache-location", cacheLocation))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+
         }
     }
 }
