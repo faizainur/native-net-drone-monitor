@@ -140,8 +140,10 @@ namespace native_net_drone_monitor
         }
 
         private void frmMain_Load(object sender, EventArgs e)
-        {   
+        {
             
+
+
             refresh();
 
             // Initialize Maps
@@ -162,6 +164,12 @@ namespace native_net_drone_monitor
             statusLblIP.Visible = false;
             statusLblLatency.Visible = false;
             statusLblLatencyUnit.Visible = false;
+
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            Drone neq = droneList[0];
+            string filename = neq.profileName + time + settingsVal.videoFormat;
+
+            MessageBox.Show(filename);
         }
 
         public void applySettings()
@@ -271,9 +279,10 @@ namespace native_net_drone_monitor
        
         public void connect(Drone drone)
         {
-
+            string time = DateTime.Now.ToString("HH:mm:ss");
             var currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            var destination = Path.Combine(settingsVal.savePath,"stream.mkv");
+            string filename = drone.profileName + settingsVal.videoFormat;
+            var destination = Path.Combine(settingsVal.savePath, filename);
             
             var mediaOptions = new[]
                 {

@@ -215,6 +215,8 @@ namespace native_net_drone_monitor
                 switch (result)
                 {
                     case DialogResult.OK:
+
+                        // Application restarted
                         System.Diagnostics.Process.Start(Application.ExecutablePath);
                         this.Close();
                         Application.ExitThread();
