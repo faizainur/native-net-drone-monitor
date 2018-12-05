@@ -60,6 +60,7 @@ namespace native_net_drone_monitor
             this.recorder = new Vlc.DotNet.Forms.VlcControl();
             this.streamPlayer = new Vlc.DotNet.Forms.VlcControl();
             this.GPSTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.mapView = new GMap.NET.WindowsForms.GMapControl();
             this.MessagesTab = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.LogTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
@@ -116,7 +117,6 @@ namespace native_net_drone_monitor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuCheckUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.mapView = new GMap.NET.WindowsForms.GMapControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -276,6 +276,34 @@ namespace native_net_drone_monitor
             this.GPSTab.TabIndex = 2;
             this.GPSTab.Text = "GPS / MAPS";
             this.GPSTab.ThemesEnabled = false;
+            // 
+            // mapView
+            // 
+            this.mapView.Bearing = 0F;
+            this.mapView.CanDragMap = true;
+            this.mapView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapView.EmptyTileColor = System.Drawing.Color.Navy;
+            this.mapView.GrayScaleMode = false;
+            this.mapView.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.mapView.LevelsKeepInMemmory = 5;
+            this.mapView.Location = new System.Drawing.Point(0, 0);
+            this.mapView.MarkersEnabled = true;
+            this.mapView.MaxZoom = 2;
+            this.mapView.MinZoom = 2;
+            this.mapView.MouseWheelZoomEnabled = true;
+            this.mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.mapView.Name = "mapView";
+            this.mapView.NegativeMode = false;
+            this.mapView.PolygonsEnabled = true;
+            this.mapView.RetryLoadTile = 0;
+            this.mapView.RoutesEnabled = true;
+            this.mapView.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.mapView.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.mapView.ShowTileGridLines = false;
+            this.mapView.Size = new System.Drawing.Size(922, 389);
+            this.mapView.TabIndex = 0;
+            this.mapView.Zoom = 0D;
+            this.mapView.Load += new System.EventHandler(this.mapView_Load);
             // 
             // MessagesTab
             // 
@@ -898,33 +926,6 @@ namespace native_net_drone_monitor
             this.splitContainer4.Size = new System.Drawing.Size(424, 25);
             this.splitContainer4.SplitterDistance = 288;
             this.splitContainer4.TabIndex = 0;
-            // 
-            // mapView
-            // 
-            this.mapView.Bearing = 0F;
-            this.mapView.CanDragMap = true;
-            this.mapView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapView.EmptyTileColor = System.Drawing.Color.Navy;
-            this.mapView.GrayScaleMode = false;
-            this.mapView.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.mapView.LevelsKeepInMemmory = 5;
-            this.mapView.Location = new System.Drawing.Point(0, 0);
-            this.mapView.MarkersEnabled = true;
-            this.mapView.MaxZoom = 2;
-            this.mapView.MinZoom = 2;
-            this.mapView.MouseWheelZoomEnabled = true;
-            this.mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.mapView.Name = "mapView";
-            this.mapView.NegativeMode = false;
-            this.mapView.PolygonsEnabled = true;
-            this.mapView.RetryLoadTile = 0;
-            this.mapView.RoutesEnabled = true;
-            this.mapView.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.mapView.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.mapView.ShowTileGridLines = false;
-            this.mapView.Size = new System.Drawing.Size(922, 389);
-            this.mapView.TabIndex = 0;
-            this.mapView.Zoom = 0D;
             // 
             // frmMain
             // 

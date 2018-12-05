@@ -38,9 +38,7 @@ namespace native_net_drone_monitor
             else
             {
                 refreshList();
-                MessageBox.Show(droneList.Count.ToString());
             }
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

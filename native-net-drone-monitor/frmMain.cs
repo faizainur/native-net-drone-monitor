@@ -20,6 +20,9 @@ using System.Xml;
 using System.Threading;
 using System.Xml.Linq;
 using GMap.NET.MapProviders;
+using GMap.NET;
+using GMap.NET.WindowsForms;
+using System.Diagnostics;
 
 namespace native_net_drone_monitor
 {
@@ -36,6 +39,7 @@ namespace native_net_drone_monitor
 
         public frmMain()
         {
+            
             InitializeComponent();
         }
 
@@ -130,13 +134,12 @@ namespace native_net_drone_monitor
 
         private void frmMain_Load(object sender, EventArgs e)
         {   
+            
             refresh();
-            mapView.DragButton = MouseButtons.Left;
-            mapView.MapProvider = GMapProviders.OpenStreetMap;
-            mapView.SetPositionByKeywords("Indonesia");
-            mapView.MinZoom = 0;
-            mapView.MaxZoom = 24;
-            mapView.Zoom = 9;
+
+            
+
+
             statusConnection.Text = "NOT CONNECTED";
             statusConnection.ForeColor = Color.Red;
             statusIP.Visible = false;
@@ -170,16 +173,9 @@ namespace native_net_drone_monitor
             }
         }
 
-       
-
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
         
         private void btnConnectDevices_Click(object sender, EventArgs e)
@@ -266,7 +262,11 @@ namespace native_net_drone_monitor
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            // Error Memory Leak (sometime)
+            // Problem in maps control
+
+            Application.ExitThread();
+            Process.GetCurrentProcess().Kill();
         }
 
         private void frmMain_VisibleChanged(object sender, EventArgs e)
@@ -290,6 +290,7 @@ namespace native_net_drone_monitor
         {
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+
             // Default installation path of VideoLAN.LibVLC.Windows
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
 
@@ -310,6 +311,7 @@ namespace native_net_drone_monitor
         {
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
+
             // Default installation path of VideoLAN.LibVLC.Windows
             e.VlcLibDirectory = new DirectoryInfo(Path.Combine(currentDirectory, "libvlc", IntPtr.Size == 4 ? "win-x86" : "win-x64"));
 
@@ -325,6 +327,19 @@ namespace native_net_drone_monitor
                 }
             }
         }
-        
+
+        private void mapView_Load(object sender, EventArgs e)
+        {
+            // Initialize Maps
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            mapView.DragButton = MouseButtons.Left;
+            mapView.MapProvider = GMapProviders.OpenStreetMap;
+            GMaps.Instance.OptimizeMapDb(null);
+            mapView.CacheLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            mapView.SetPositionByKeywords("Indonesia");
+            mapView.MinZoom = 0;
+            mapView.MaxZoom = 24;
+            mapView.Zoom = 9;
+        }
     }
 }

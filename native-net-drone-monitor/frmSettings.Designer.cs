@@ -38,12 +38,13 @@ namespace native_net_drone_monitor
             Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection1 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSettings = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
-            this.menuGeneralSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
-            this.menuVideoSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.treeGeneralSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.treeVideoSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.treeMapsSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuSaveSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             this.menuApparances = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
+            this.treeApply = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,9 +76,10 @@ namespace native_net_drone_monitor
             headerCollection1.HeaderText = "Settings";
             this.navSettings.Header = headerCollection1;
             this.navSettings.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.navSettings.Items.Add(this.menuGeneralSettings);
-            this.navSettings.Items.Add(this.menuVideoSettings);
-            this.navSettings.Items.Add(this.menuSaveSettings);
+            this.navSettings.Items.Add(this.treeGeneralSettings);
+            this.navSettings.Items.Add(this.treeVideoSettings);
+            this.navSettings.Items.Add(this.treeMapsSettings);
+            this.navSettings.Items.Add(this.treeApply);
             this.navSettings.Location = new System.Drawing.Point(0, 0);
             this.navSettings.MinimumSize = new System.Drawing.Size(150, 150);
             this.navSettings.Name = "navSettings";
@@ -85,27 +87,38 @@ namespace native_net_drone_monitor
             this.navSettings.TabIndex = 0;
             this.navSettings.Text = "treeNavigator1";
             // 
-            // menuGeneralSettings
+            // treeGeneralSettings
             // 
-            this.menuGeneralSettings.BackColor = System.Drawing.SystemColors.Control;
-            this.menuGeneralSettings.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuGeneralSettings.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.menuGeneralSettings.Location = new System.Drawing.Point(0, 0);
-            this.menuGeneralSettings.Name = "menuGeneralSettings";
-            this.menuGeneralSettings.Size = new System.Drawing.Size(208, 50);
-            this.menuGeneralSettings.TabIndex = 1;
-            this.menuGeneralSettings.Text = "General";
+            this.treeGeneralSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.treeGeneralSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeGeneralSettings.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeGeneralSettings.Location = new System.Drawing.Point(0, 0);
+            this.treeGeneralSettings.Name = "treeGeneralSettings";
+            this.treeGeneralSettings.Size = new System.Drawing.Size(210, 50);
+            this.treeGeneralSettings.TabIndex = 1;
+            this.treeGeneralSettings.Text = "General";
             // 
-            // menuVideoSettings
+            // treeVideoSettings
             // 
-            this.menuVideoSettings.BackColor = System.Drawing.SystemColors.Control;
-            this.menuVideoSettings.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuVideoSettings.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.menuVideoSettings.Location = new System.Drawing.Point(0, 52);
-            this.menuVideoSettings.Name = "menuVideoSettings";
-            this.menuVideoSettings.Size = new System.Drawing.Size(208, 50);
-            this.menuVideoSettings.TabIndex = 1;
-            this.menuVideoSettings.Text = "Video Settings";
+            this.treeVideoSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.treeVideoSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeVideoSettings.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeVideoSettings.Location = new System.Drawing.Point(0, 52);
+            this.treeVideoSettings.Name = "treeVideoSettings";
+            this.treeVideoSettings.Size = new System.Drawing.Size(210, 50);
+            this.treeVideoSettings.TabIndex = 1;
+            this.treeVideoSettings.Text = "Video Settings";
+            // 
+            // treeMapsSettings
+            // 
+            this.treeMapsSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.treeMapsSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeMapsSettings.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeMapsSettings.Location = new System.Drawing.Point(0, 104);
+            this.treeMapsSettings.Name = "treeMapsSettings";
+            this.treeMapsSettings.Size = new System.Drawing.Size(210, 50);
+            this.treeMapsSettings.TabIndex = 1;
+            this.treeMapsSettings.Text = "Maps";
             // 
             // panel1
             // 
@@ -126,18 +139,6 @@ namespace native_net_drone_monitor
             this.label1.TabIndex = 0;
             this.label1.Text = "Personalize your settings";
             // 
-            // menuSaveSettings
-            // 
-            this.menuSaveSettings.BackColor = System.Drawing.SystemColors.Control;
-            this.menuSaveSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.menuSaveSettings.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuSaveSettings.ItemBackColor = System.Drawing.SystemColors.Control;
-            this.menuSaveSettings.Location = new System.Drawing.Point(0, 427);
-            this.menuSaveSettings.Name = "menuSaveSettings";
-            this.menuSaveSettings.Size = new System.Drawing.Size(210, 50);
-            this.menuSaveSettings.TabIndex = 1;
-            this.menuSaveSettings.Text = "Save Settings";
-            // 
             // menuApparances
             // 
             this.menuApparances.BackColor = System.Drawing.SystemColors.Control;
@@ -149,6 +150,18 @@ namespace native_net_drone_monitor
             this.menuApparances.TabIndex = 1;
             this.menuApparances.Text = "Apparances";
             // 
+            // treeApply
+            // 
+            this.treeApply.BackColor = System.Drawing.SystemColors.Control;
+            this.treeApply.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.treeApply.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeApply.ItemBackColor = System.Drawing.SystemColors.Control;
+            this.treeApply.Location = new System.Drawing.Point(0, 427);
+            this.treeApply.Name = "treeApply";
+            this.treeApply.Size = new System.Drawing.Size(210, 50);
+            this.treeApply.TabIndex = 1;
+            this.treeApply.Text = "Apply";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,9 +169,13 @@ namespace native_net_drone_monitor
             this.CaptionForeColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(637, 528);
             this.Controls.Add(this.splitContainer1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmSettings";
             this.ShowIcon = false;
+            this.ShowMaximizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -174,11 +191,12 @@ namespace native_net_drone_monitor
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Syncfusion.Windows.Forms.Tools.TreeNavigator navSettings;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem menuGeneralSettings;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem menuVideoSettings;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeGeneralSettings;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeVideoSettings;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private Syncfusion.Windows.Forms.Tools.TreeMenuItem menuSaveSettings;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeMapsSettings;
         private Syncfusion.Windows.Forms.Tools.TreeMenuItem menuApparances;
+        private Syncfusion.Windows.Forms.Tools.TreeMenuItem treeApply;
     }
 }
