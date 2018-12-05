@@ -22,7 +22,7 @@ namespace native_net_drone_monitor
     {
 
         List<string> aspectRatio = new List<string>();
-
+        List<VideoFormat> videoFormats = new List<VideoFormat>();
         public frmSettings()
         {
             InitializeComponent();
@@ -30,8 +30,32 @@ namespace native_net_drone_monitor
             aspectRatio.Add("16:9");
             aspectRatio.Add("16:10");
 
+            var aviFormat = new VideoFormat();
+            var mkvFormat = new VideoFormat();
+            var mp4Format = new VideoFormat();
+            var tsForamt = new VideoFormat();
+
+            aviFormat.formatIdentifier = "AVI";
+            aviFormat.fileExt = ".avi";
+            mkvFormat.formatIdentifier = "MKV";
+            mkvFormat.fileExt = ".mkv";
+            mp4Format.formatIdentifier = "MP4";
+            mp4Format.fileExt = ".mp4";
+            tsForamt.formatIdentifier = "TS";
+            tsForamt.fileExt = ".ts";
+
+            videoFormats.Add(aviFormat);
+            videoFormats.Add(mkvFormat);
+            videoFormats.Add(mp4Format);
+            videoFormats.Add(tsForamt);
+
             toggleSaveVideo.VisualStyle = ToggleButtonStyle.Office2016Colorful;
             cmbAspectRatio.DataSource = aspectRatio;
+
+            var bindingList = new BindingList<VideoFormat>(videoFormats);
+            var source = new BindingSource(bindingList, null);
+            cmbVIdeoFormat.DataSource = source;
+            cmbVIdeoFormat.DisplayMember = "formatIdentifier";
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
@@ -61,8 +85,13 @@ namespace native_net_drone_monitor
             TreeMenuItem tm = e.SelectedItem;
             switch (tm.Text)
             {
-                case "Video Settings":
+                case "Video":
+                    panelVideoSettings.Visible = true   ;
+                    panelMapsSettings.Visible = false;
+                    break;
+                case "Maps":
                     panelVideoSettings.Visible = true;
+                    panelMapsSettings.Visible = true;
                     break;
             }
         }
@@ -72,7 +101,29 @@ namespace native_net_drone_monitor
             if (cbUseDefault.Checked)
             {
                 txtPathFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            } else
+            {
+                txtPathFolder.Clear();
             }
+        }
+
+        private void cbUseDefaultCacheLoc_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbUseDefaultCacheLoc.Checked)
+            {
+                string tempPath = System.IO.Path.GetTempPath();
+                txtCacheLocation.Text = tempPath;
+            }
+            else
+            {
+                txtCacheLocation.Clear();
+            }
+        }
+
+        private void btnBrowseCacheLoc_Click(object sender, EventArgs e)
+        {
+            folderBrowserSave.ShowDialog();
+            txtCacheLocation.Text = folderBrowserSave.SelectedPath;
         }
     }
 }

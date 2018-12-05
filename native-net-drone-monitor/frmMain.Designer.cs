@@ -109,8 +109,6 @@ namespace native_net_drone_monitor
             this.exportLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExPdf = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExExcel = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuFlightAnalyzer = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGettingStarted = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -776,47 +774,47 @@ namespace native_net_drone_monitor
             // menuAddDevice
             // 
             this.menuAddDevice.Name = "menuAddDevice";
-            this.menuAddDevice.Size = new System.Drawing.Size(169, 22);
+            this.menuAddDevice.Size = new System.Drawing.Size(180, 22);
             this.menuAddDevice.Text = "Add New Device";
             this.menuAddDevice.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
             // menuEditDevices
             // 
             this.menuEditDevices.Name = "menuEditDevices";
-            this.menuEditDevices.Size = new System.Drawing.Size(169, 22);
+            this.menuEditDevices.Size = new System.Drawing.Size(180, 22);
             this.menuEditDevices.Text = "Edit Device Profile";
             this.menuEditDevices.Click += new System.EventHandler(this.editDevicesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // menuRefresh
             // 
             this.menuRefresh.Name = "menuRefresh";
             this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuRefresh.Size = new System.Drawing.Size(169, 22);
+            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
             this.menuRefresh.Text = "Refresh";
             this.menuRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(169, 22);
+            this.menuSettings.Size = new System.Drawing.Size(180, 22);
             this.menuSettings.Text = "Settings";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(166, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -824,9 +822,7 @@ namespace native_net_drone_monitor
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuOpenLogs,
-            this.exportLogsToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.menuFlightAnalyzer});
+            this.exportLogsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -834,7 +830,7 @@ namespace native_net_drone_monitor
             // menuOpenLogs
             // 
             this.menuOpenLogs.Name = "menuOpenLogs";
-            this.menuOpenLogs.Size = new System.Drawing.Size(150, 22);
+            this.menuOpenLogs.Size = new System.Drawing.Size(180, 22);
             this.menuOpenLogs.Text = "Open Logs";
             // 
             // exportLogsToolStripMenuItem
@@ -843,7 +839,7 @@ namespace native_net_drone_monitor
             this.menuExPdf,
             this.menuExExcel});
             this.exportLogsToolStripMenuItem.Name = "exportLogsToolStripMenuItem";
-            this.exportLogsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exportLogsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportLogsToolStripMenuItem.Text = "Export Logs";
             // 
             // menuExPdf
@@ -857,17 +853,6 @@ namespace native_net_drone_monitor
             this.menuExExcel.Name = "menuExExcel";
             this.menuExExcel.Size = new System.Drawing.Size(153, 22);
             this.menuExExcel.Text = "Excel File (.xlsx)";
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(147, 6);
-            // 
-            // menuFlightAnalyzer
-            // 
-            this.menuFlightAnalyzer.Name = "menuFlightAnalyzer";
-            this.menuFlightAnalyzer.Size = new System.Drawing.Size(150, 22);
-            this.menuFlightAnalyzer.Text = "Flight analyzer";
             // 
             // helpToolStripMenuItem
             // 
@@ -1074,8 +1059,6 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripMenuItem exportLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuExPdf;
         private System.Windows.Forms.ToolStripMenuItem menuExExcel;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
-        private System.Windows.Forms.ToolStripMenuItem menuFlightAnalyzer;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuGettingStarted;
         private System.Windows.Forms.ToolStripMenuItem menuAbout;

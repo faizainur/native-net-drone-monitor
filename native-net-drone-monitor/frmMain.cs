@@ -96,7 +96,7 @@ namespace native_net_drone_monitor
                 var udpPort = 0;
 
                 Drone newDrone = new Drone();
-
+                
                 Int32.TryParse(node["baudrate"].InnerText, out baudrate);
                 Int32.TryParse(node["tcp-port"].InnerText, out tcpPort);
                 Int32.TryParse(node["socket"].InnerText, out socket);
