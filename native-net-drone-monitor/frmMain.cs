@@ -137,7 +137,16 @@ namespace native_net_drone_monitor
             
             refresh();
 
-            
+            // Initialize Maps
+            GMaps.Instance.Mode = AccessMode.ServerAndCache;
+            mapView.DragButton = MouseButtons.Left;
+            mapView.MapProvider = GMapProviders.OpenStreetMap;
+            GMaps.Instance.OptimizeMapDb(null);
+            mapView.CacheLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            mapView.SetPositionByKeywords("Indonesia");
+            mapView.MinZoom = 0;
+            mapView.MaxZoom = 24;
+            mapView.Zoom = 9;
 
 
             statusConnection.Text = "NOT CONNECTED";
@@ -267,6 +276,7 @@ namespace native_net_drone_monitor
 
             Application.ExitThread();
             Process.GetCurrentProcess().Kill();
+             // Process.GetCurrentProcess().CloseMainWindow(); => alternative if the line above doesn't works
         }
 
         private void frmMain_VisibleChanged(object sender, EventArgs e)
@@ -309,6 +319,7 @@ namespace native_net_drone_monitor
 
         private void recorder_VlcLibDirectoryNeeded(object sender, VlcLibDirectoryNeededEventArgs e)
         {
+
             var currentAssembly = Assembly.GetEntryAssembly();
             var currentDirectory = new FileInfo(currentAssembly.Location).DirectoryName;
 
@@ -330,16 +341,7 @@ namespace native_net_drone_monitor
 
         private void mapView_Load(object sender, EventArgs e)
         {
-            // Initialize Maps
-            GMaps.Instance.Mode = AccessMode.ServerAndCache;
-            mapView.DragButton = MouseButtons.Left;
-            mapView.MapProvider = GMapProviders.OpenStreetMap;
-            GMaps.Instance.OptimizeMapDb(null);
-            mapView.CacheLocation = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            mapView.SetPositionByKeywords("Indonesia");
-            mapView.MinZoom = 0;
-            mapView.MaxZoom = 24;
-            mapView.Zoom = 9;
+            
         }
     }
 }
