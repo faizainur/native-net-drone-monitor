@@ -35,11 +35,11 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection2 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection4 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer4 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSettings = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeVideoSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
@@ -103,9 +103,9 @@ namespace native_net_drone_monitor
             // navSettings
             // 
             this.navSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection2.HeaderText = "Settings";
-            this.navSettings.Header = headerCollection2;
+            headerCollection4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection4.HeaderText = "Settings";
+            this.navSettings.Header = headerCollection4;
             this.navSettings.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSettings.Items.Add(this.treeVideoSettings);
             this.navSettings.Items.Add(this.treeMapsSettings);
@@ -189,17 +189,17 @@ namespace native_net_drone_monitor
             // 
             // toggleSaveVideo
             // 
-            this.toggleSaveVideo.ActiveState = activeStateCollection2;
+            this.toggleSaveVideo.ActiveState = activeStateCollection4;
             this.toggleSaveVideo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleSaveVideo.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleSaveVideo.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleSaveVideo.InactiveState = inactiveStateCollection4;
             this.toggleSaveVideo.Location = new System.Drawing.Point(283, 102);
             this.toggleSaveVideo.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleSaveVideo.Name = "toggleSaveVideo";
-            this.toggleSaveVideo.Renderer = toggleButtonRenderer2;
+            this.toggleSaveVideo.Renderer = toggleButtonRenderer4;
             this.toggleSaveVideo.Size = new System.Drawing.Size(90, 40);
-            this.toggleSaveVideo.Slider = sliderCollection2;
+            this.toggleSaveVideo.Slider = sliderCollection4;
             this.toggleSaveVideo.TabIndex = 5;
             this.toggleSaveVideo.Text = "toggleButton1";
             this.toggleSaveVideo.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -362,7 +362,6 @@ namespace native_net_drone_monitor
             // 
             this.txtCacheLocation.Location = new System.Drawing.Point(42, 122);
             this.txtCacheLocation.Name = "txtCacheLocation";
-            this.txtCacheLocation.ReadOnly = true;
             this.txtCacheLocation.Size = new System.Drawing.Size(298, 20);
             this.txtCacheLocation.TabIndex = 2;
             // 

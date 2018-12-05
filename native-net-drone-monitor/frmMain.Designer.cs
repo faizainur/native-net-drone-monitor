@@ -109,6 +109,10 @@ namespace native_net_drone_monitor
             this.exportLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExPdf = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportMapDatabaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExportMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuImportMap = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGettingStarted = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
@@ -774,47 +778,47 @@ namespace native_net_drone_monitor
             // menuAddDevice
             // 
             this.menuAddDevice.Name = "menuAddDevice";
-            this.menuAddDevice.Size = new System.Drawing.Size(180, 22);
+            this.menuAddDevice.Size = new System.Drawing.Size(169, 22);
             this.menuAddDevice.Text = "Add New Device";
             this.menuAddDevice.Click += new System.EventHandler(this.addDeviceToolStripMenuItem_Click);
             // 
             // menuEditDevices
             // 
             this.menuEditDevices.Name = "menuEditDevices";
-            this.menuEditDevices.Size = new System.Drawing.Size(180, 22);
+            this.menuEditDevices.Size = new System.Drawing.Size(169, 22);
             this.menuEditDevices.Text = "Edit Device Profile";
             this.menuEditDevices.Click += new System.EventHandler(this.editDevicesToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(166, 6);
             // 
             // menuRefresh
             // 
             this.menuRefresh.Name = "menuRefresh";
             this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.menuRefresh.Size = new System.Drawing.Size(169, 22);
             this.menuRefresh.Text = "Refresh";
             this.menuRefresh.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // menuSettings
             // 
             this.menuSettings.Name = "menuSettings";
-            this.menuSettings.Size = new System.Drawing.Size(180, 22);
+            this.menuSettings.Size = new System.Drawing.Size(169, 22);
             this.menuSettings.Text = "Settings";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(166, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -822,7 +826,9 @@ namespace native_net_drone_monitor
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuOpenLogs,
-            this.exportLogsToolStripMenuItem});
+            this.exportLogsToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.exportMapDatabaseToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -854,6 +860,34 @@ namespace native_net_drone_monitor
             this.menuExExcel.Size = new System.Drawing.Size(153, 22);
             this.menuExExcel.Text = "Excel File (.xlsx)";
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            // 
+            // exportMapDatabaseToolStripMenuItem
+            // 
+            this.exportMapDatabaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuExportMap,
+            this.menuImportMap});
+            this.exportMapDatabaseToolStripMenuItem.Name = "exportMapDatabaseToolStripMenuItem";
+            this.exportMapDatabaseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportMapDatabaseToolStripMenuItem.Text = "Map";
+            // 
+            // menuExportMap
+            // 
+            this.menuExportMap.Name = "menuExportMap";
+            this.menuExportMap.Size = new System.Drawing.Size(180, 22);
+            this.menuExportMap.Text = "Export ";
+            this.menuExportMap.Click += new System.EventHandler(this.menuExportMap_Click);
+            // 
+            // menuImportMap
+            // 
+            this.menuImportMap.Name = "menuImportMap";
+            this.menuImportMap.Size = new System.Drawing.Size(180, 22);
+            this.menuImportMap.Text = "Import";
+            this.menuImportMap.Click += new System.EventHandler(this.menuImportMap_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -870,6 +904,7 @@ namespace native_net_drone_monitor
             this.menuGettingStarted.Name = "menuGettingStarted";
             this.menuGettingStarted.Size = new System.Drawing.Size(177, 22);
             this.menuGettingStarted.Text = "Getting Started";
+            this.menuGettingStarted.Click += new System.EventHandler(this.menuGettingStarted_Click);
             // 
             // menuAbout
             // 
@@ -931,7 +966,7 @@ namespace native_net_drone_monitor
             captionImage1.Name = "CaptionImage1";
             captionImage1.Size = new System.Drawing.Size(100, 60);
             this.CaptionImages.Add(captionImage1);
-            captionLabel1.Font = new System.Drawing.Font("Century Gothic", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            captionLabel1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             captionLabel1.ForeColor = System.Drawing.Color.White;
             captionLabel1.Location = new System.Drawing.Point(100, 18);
             captionLabel1.Name = "lblProfileNameCapt";
@@ -1067,5 +1102,9 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.SplitContainer splitContainer4;
         private Vlc.DotNet.Forms.VlcControl recorder;
         private GMap.NET.WindowsForms.GMapControl mapView;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem exportMapDatabaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuExportMap;
+        private System.Windows.Forms.ToolStripMenuItem menuImportMap;
     }
 }

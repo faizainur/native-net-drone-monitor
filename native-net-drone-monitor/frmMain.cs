@@ -23,6 +23,8 @@ using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.WindowsForms;
 using System.Diagnostics;
+using System.Configuration;
+using System.Configuration.Assemblies;
 
 namespace native_net_drone_monitor
 {
@@ -30,8 +32,9 @@ namespace native_net_drone_monitor
     {
 
         public event EventHandler RefreshTriggered;
-        public List<Drone> droneList = new List<Drone>();
-        public List<string> messages = new List<string>();
+        List<Drone> droneList = new List<Drone>();
+        List<string> messages = new List<string>();
+        AppSettingsVal settingsVal = new AppSettingsVal();
 
         private string FILENAME = "droneList.xml";
         public string path;
@@ -39,8 +42,8 @@ namespace native_net_drone_monitor
 
         public frmMain()
         {
-            
             InitializeComponent();
+            settingsVal = readSettings();
         }
 
         public void refresh()
@@ -162,7 +165,6 @@ namespace native_net_drone_monitor
         {
             var addDevices = new frmAddDevices();
             addDevices.Show();
-           
             
         }
 
@@ -226,15 +228,20 @@ namespace native_net_drone_monitor
         {
 
             var currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            var destination = Path.Combine(currentDirectory,"stream.mkv");
+            var destination = Path.Combine(settingsVal.savePath,"stream.mkv");
+            
             var mediaOptions = new[]
                 {
                     ":sout=#file{dst=" + destination + "}",
                     ":sout-keep"
                 };
-            recorder.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"),
+            if (settingsVal.saveVideoState)
+            {
+                recorder.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"),
                     mediaOptions);
-            streamPlayer.Video.AspectRatio = "4:3"; // set aspect ratio
+            }
+            
+            streamPlayer.Video.AspectRatio = settingsVal.aspectRatio; // set aspect ratio
             streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
 
             btnConnectDevices.Visible = false;
@@ -342,6 +349,58 @@ namespace native_net_drone_monitor
         private void mapView_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void menuGettingStarted_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuExportMap_Click(object sender, EventArgs e)
+        {
+            mapView.ShowExportDialog();
+        }
+
+        private void menuImportMap_Click(object sender, EventArgs e)
+        {
+            // TODO : Error importing map database
+            mapView.ShowImportDialog();
+        }
+
+        public AppSettingsVal readSettings()
+        {
+            var buff = new AppSettingsVal();
+            try
+            {
+                var settingsFile = ConfigurationManager.AppSettings;
+                var buffSaveState = settingsFile["save-video-state"];
+                buff.aspectRatio = settingsFile["aspect-ratio"];
+                buff.cacheLocation = settingsFile["cache-location"];
+                buff.videoFormat = settingsFile["video-format"];
+                buff.savePath = settingsFile["save-path"];
+                buff.mapsMode = settingsFile["maps-mode"];
+                if (buffSaveState == "true")
+                {
+                    buff.saveVideoState = true;
+                }else
+                {
+                    buff.saveVideoState = false;
+                }
+            }
+            catch (ConfigurationException)
+            {
+                var result = MessageBox.Show("Error reading application settings", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        Application.ExitThread();
+                        Process.GetCurrentProcess().Kill();
+                        break;
+                }
+            }
+
+
+            return buff;
         }
     }
 }
