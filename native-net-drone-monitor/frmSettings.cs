@@ -46,14 +46,11 @@ namespace native_net_drone_monitor
             aviFormat.fileExt = ".avi";
             mkvFormat.formatIdentifier = "MKV";
             mkvFormat.fileExt = ".mkv";
-            mp4Format.formatIdentifier = "MP4";
-            mp4Format.fileExt = ".mp4";
             tsForamt.formatIdentifier = "TS";
             tsForamt.fileExt = ".ts";
 
             videoFormats.Add(aviFormat);
             videoFormats.Add(mkvFormat);
-            videoFormats.Add(mp4Format);
             videoFormats.Add(tsForamt);
 
             toggleSaveVideo.VisualStyle = ToggleButtonStyle.Office2016Colorful;
@@ -114,11 +111,8 @@ namespace native_net_drone_monitor
                 case ".mkv":
                     cmbVIdeoFormat.SelectedIndex = 1;
                     break;
-                case ".mp4":
-                    cmbVIdeoFormat.SelectedIndex = 2;
-                    break;
                 case ".ts":
-                    cmbVIdeoFormat.SelectedIndex = 3;
+                    cmbVIdeoFormat.SelectedIndex = 2;
                     break;
             }
 

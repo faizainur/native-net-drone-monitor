@@ -152,7 +152,18 @@ namespace native_net_drone_monitor
             {
                 if (toggleMavLink.ToggleState == ToggleButtonState.Active)
                 {
-                    selectedConnMethod = "MAVLink";
+                    switch (cmbProtocol.SelectedIndex)
+                    {
+                        case 0:
+                            selectedConnMethod = "MAVLink | UDP";
+                            break;
+                        case 1:
+                            selectedConnMethod = "MAVLink | TCP";
+                            break;
+                        case 2:
+                            selectedConnMethod = "MAVLink | Serial";
+                            break;
+                    }
                 }
                 else if (toggleWebSocket.ToggleState == ToggleButtonState.Active)
                 {
@@ -166,11 +177,11 @@ namespace native_net_drone_monitor
 
                 string seletedType = droneType[cmbDroneType.SelectedIndex];
 
-                if (cmbProtocol.SelectedItem != null)
-                {
-                    selectedProtocol = protocol[cmbProtocol.SelectedIndex];
-                }
-                else { selectedProtocol = ""; }
+                //if (cmbProtocol.SelectedItem != null)
+                //{
+                //    selectedProtocol = protocol[cmbProtocol.SelectedIndex];
+                //}
+                //else { selectedProtocol = ""; }
 
                 if (cmbPortCOM.SelectedItem != null)
                 {
@@ -198,7 +209,6 @@ namespace native_net_drone_monitor
                         new XElement("rtsp-server", txtRtspServer.Text),
                         new XElement("conn-method", selectedConnMethod),
                         new XElement("rtsp-port", txtPortRtsp.Text),
-                        new XElement("protocol", selectedProtocol),
                         new XElement("socket", txtSocket.Text),
                         new XElement("port-com", selectedCOM),
                         new XElement("baudrate", baudrate),

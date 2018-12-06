@@ -112,7 +112,6 @@ namespace native_net_drone_monitor
 
                 newDrone.profileName = node.Attributes[0].InnerText;
                 newDrone.rtspServer = node["rtsp-server"].InnerText;
-                newDrone.protocolConn = node["protocol"].InnerText;
                 newDrone.connMethod = node["conn-method"].InnerText;
                 newDrone.droneType = node["drone-type"].InnerText;
                 newDrone.portCom = node["port-com"].InnerText;
@@ -141,17 +140,12 @@ namespace native_net_drone_monitor
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
-
-
             refresh();
 
             // Initialize Maps
-
             mapView.DragButton = MouseButtons.Left;
             mapView.MapProvider = GMapProviders.OpenStreetMap;
             GMaps.Instance.OptimizeMapDb(null);
-            //mapView.SetPositionByKeywords("Indonesia");
             mapView.MinZoom = 0;
             mapView.MaxZoom = 24;
             mapView.Zoom = 9;
@@ -164,12 +158,6 @@ namespace native_net_drone_monitor
             statusLblIP.Visible = false;
             statusLblLatency.Visible = false;
             statusLblLatencyUnit.Visible = false;
-
-            string time = DateTime.Now.ToString("HH:mm:ss");
-            Drone neq = droneList[0];
-            string filename = neq.profileName + time + settingsVal.videoFormat;
-
-            MessageBox.Show(filename);
         }
 
         public void applySettings()
@@ -276,28 +264,46 @@ namespace native_net_drone_monitor
             }
         }
 
-       
+        #region Connection Method
         public void connect(Drone drone)
         {
-            string time = DateTime.Now.ToString("HH:mm:ss");
+            string time = DateTime.Now.ToString("HH-mm-ss");
             var currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            string filename = drone.profileName + settingsVal.videoFormat;
+            string filename = drone.profileName + time + settingsVal.videoFormat;
             var destination = Path.Combine(settingsVal.savePath, filename);
-            
+            string url;
+
             var mediaOptions = new[]
                 {
                     ":sout=#file{dst=" + destination + "}",
                     ":sout-keep"
                 };
+
+            // connect based on choice
+            switch (drone.connMethod)
+            {
+                case "WebSocket":
+                    // Connect via WebSocket
+                    break;
+                case "MAVLink | UDP":
+                    // Connect via UDP
+                    break;
+                case "MAVLink | TCP":
+                    // Connect via TCP
+                    break;
+                case "MAVLink | Serial":
+                    // Connect via Serial
+                    break;
+            }
             if (settingsVal.saveVideoState)
             {
                 recorder.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"),
                     mediaOptions);
             }
-            
-            streamPlayer.Video.AspectRatio = settingsVal.aspectRatio; // set aspect ratio
+
             streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
 
+            streamPlayer.Video.AspectRatio = settingsVal.aspectRatio; // set aspect ratio
             btnConnectDevices.Visible = false;
             btnDisconnect.Visible = true;
             statusConnection.Text = "CONNECTED";
@@ -307,7 +313,56 @@ namespace native_net_drone_monitor
             statusLblLatency.Visible = true;
             statusLblLatencyUnit.Visible = true;
             statusConnection.ForeColor = Color.Green;
-            
+
+        }
+
+        private void connectMavTCP(string ipHost, int port)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void connectMavUDP(string ipHost, int port)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void connectMavSerial(string portCom, int baudrate)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void connectWebSocket(int socket)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void disconnect()
@@ -323,6 +378,9 @@ namespace native_net_drone_monitor
             statusLblLatencyUnit.Visible = false;
             statusConnection.ForeColor = Color.Red;
         }
+        #endregion
+
+
 
         private void editDevicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -398,11 +456,6 @@ namespace native_net_drone_monitor
                     e.VlcLibDirectory = new DirectoryInfo(folderBrowserDialog.SelectedPath);
                 }
             }
-        }
-
-        private void mapView_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void menuGettingStarted_Click(object sender, EventArgs e)

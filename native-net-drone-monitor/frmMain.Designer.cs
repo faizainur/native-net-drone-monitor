@@ -305,7 +305,6 @@ namespace native_net_drone_monitor
             this.mapView.Size = new System.Drawing.Size(922, 389);
             this.mapView.TabIndex = 0;
             this.mapView.Zoom = 0D;
-            this.mapView.Load += new System.EventHandler(this.mapView_Load);
             // 
             // MessagesTab
             // 

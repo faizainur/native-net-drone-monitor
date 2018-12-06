@@ -111,7 +111,6 @@ namespace native_net_drone_monitor
 
                 newDrone.profileName = node.Attributes[0].InnerText;
                 newDrone.rtspServer = node["rtsp-server"].InnerText;
-                newDrone.protocolConn = node["protocol"].InnerText;
                 newDrone.connMethod = node["conn-method"].InnerText;
                 newDrone.droneType = node["drone-type"].InnerText;
                 newDrone.portCom = node["port-com"].InnerText;
