@@ -47,11 +47,35 @@ namespace native_net_drone_monitor
             InitializeComponent();
         }
 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            refresh();
+            if (!mapBGWorker.IsBusy)
+            {
+                mapBGWorker.RunWorkerAsync();
+            }
+
+            statusConnection.Text = "NOT CONNECTED";
+            statusConnection.ForeColor = Color.Red;
+            statusIP.Visible = false;
+            statusLatency.Visible = false;
+            statusLblIP.Visible = false;
+            statusLblLatency.Visible = false;
+            statusLblLatencyUnit.Visible = false;
+
+            // Initialize Maps
+            mapView.DragButton = MouseButtons.Left;
+            mapView.ShowCenter = false;
+            mapView.MinZoom = 0;
+            mapView.MaxZoom = 24;
+            mapView.Zoom = 9;
+            mapView.SetPositionByKeywords(settingsVal.mapLocation);
+        }
+
         public void refresh()
         {
             settingsVal = readSettings();
-            applySettings();
-            mapView.Refresh();
+            
             if (!File.Exists(FILENAME))
             {
                 if (!createXmlFile())
@@ -138,31 +162,11 @@ namespace native_net_drone_monitor
             return true;
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            refresh();
 
-            // Initialize Maps
-            mapView.DragButton = MouseButtons.Left;
+        public void applyMapSettings()
+        {
             mapView.MapProvider = GMapProviders.OpenStreetMap;
             GMaps.Instance.OptimizeMapDb(null);
-            mapView.MinZoom = 0;
-            mapView.MaxZoom = 24;
-            mapView.Zoom = 9;
-
-
-            statusConnection.Text = "NOT CONNECTED";
-            statusConnection.ForeColor = Color.Red;
-            statusIP.Visible = false;
-            statusLatency.Visible = false;
-            statusLblIP.Visible = false;
-            statusLblLatency.Visible = false;
-            statusLblLatencyUnit.Visible = false;
-        }
-
-        public void applySettings()
-        {
-            
             switch (settingsVal.mapsMode)
             {
                 case "Offline":
@@ -184,6 +188,7 @@ namespace native_net_drone_monitor
                     break;
             }
             mapView.CacheLocation = settingsVal.cacheLocation;
+
         }
 
         public static bool isInternetConnectionAvailable()
@@ -322,9 +327,9 @@ namespace native_net_drone_monitor
             {
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error while connecting to drone\n" + ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
@@ -335,9 +340,9 @@ namespace native_net_drone_monitor
             {
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error while connecting to drone\n" + ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -347,9 +352,9 @@ namespace native_net_drone_monitor
             {
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error while connecting to drone\n" + ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -359,9 +364,9 @@ namespace native_net_drone_monitor
             {
 
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Error while connecting to drone", "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error while connecting to drone\n" + ex.Message, "Error Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -486,6 +491,7 @@ namespace native_net_drone_monitor
                 buff.videoFormat = settingsFile["video-format"];
                 buff.savePath = settingsFile["save-path"];
                 buff.mapsMode = settingsFile["maps-mode"];
+                buff.mapLocation = settingsFile["maps-location"];
                 if (buffSaveState == "true")
                 {
                     buff.saveVideoState = true;
@@ -505,9 +511,23 @@ namespace native_net_drone_monitor
                         break;
                 }
             }
-
-
             return buff;
+        }
+
+        private void mapBGWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            try
+            {
+                if (!GMapControl.IsDesignerHosted)
+                {
+                    applyMapSettings();
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Error during loading map data\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

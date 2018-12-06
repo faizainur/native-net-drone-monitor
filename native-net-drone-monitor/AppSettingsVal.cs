@@ -14,5 +14,6 @@ namespace native_net_drone_monitor
         public string savePath { get; set; }
         public string mapsMode { get; set; }
         public string cacheLocation { get; set; }
+        public string mapLocation { get; set; }
     }
 }

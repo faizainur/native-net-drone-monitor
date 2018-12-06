@@ -92,6 +92,7 @@ namespace native_net_drone_monitor
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.statusIP = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblIP = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
@@ -119,6 +120,7 @@ namespace native_net_drone_monitor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuCheckUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.mapBGWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -609,7 +611,8 @@ namespace native_net_drone_monitor
             this.toolStripStatusLabel2,
             this.toolStripPanelItem2,
             this.statusIP,
-            this.statusLblIP});
+            this.statusLblIP,
+            this.progressBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 660);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -699,6 +702,12 @@ namespace native_net_drone_monitor
             this.statusLblIP.Name = "statusLblIP";
             this.statusLblIP.Size = new System.Drawing.Size(23, 22);
             this.statusLblIP.Text = ": IP";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 21);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // panel1
             // 
@@ -946,6 +955,12 @@ namespace native_net_drone_monitor
             this.splitContainer4.SplitterDistance = 288;
             this.splitContainer4.TabIndex = 0;
             // 
+            // mapBGWorker
+            // 
+            this.mapBGWorker.WorkerReportsProgress = true;
+            this.mapBGWorker.WorkerSupportsCancellation = true;
+            this.mapBGWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.mapBGWorker_DoWork);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1104,6 +1119,8 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.ToolStripMenuItem exportMapDatabaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuExportMap;
         private System.Windows.Forms.ToolStripMenuItem menuImportMap;
-        public GMap.NET.WindowsForms.GMapControl mapView;
+        private System.ComponentModel.BackgroundWorker mapBGWorker;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private GMap.NET.WindowsForms.GMapControl mapView;
     }
 }

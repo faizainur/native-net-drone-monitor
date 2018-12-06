@@ -22,7 +22,7 @@ namespace native_net_drone_monitor
 {
     public partial class frmSettings : Syncfusion.Windows.Forms.MetroForm
     {
-        string aspectRatioVal, saveVideoState, videoFormat, savePath, mapsModeVal, cacheLocation;
+        string aspectRatioVal, saveVideoState, videoFormat, savePath, mapsModeVal, cacheLocation, mapLocation;
 
         AppSettingsVal settingsVal = new AppSettingsVal();
 
@@ -81,6 +81,7 @@ namespace native_net_drone_monitor
         {
             txtCacheLocation.Text = settingsVal.cacheLocation;
             txtPathFolder.Text = settingsVal.savePath;
+            txtMapLocation.Text = settingsVal.mapLocation;
 
             if (settingsVal.saveVideoState)
             {
@@ -170,7 +171,7 @@ namespace native_net_drone_monitor
         {
             if (cbUseDefault.Checked)
             {
-                txtPathFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                txtPathFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
             } else
             {
                 txtPathFolder.Clear();
@@ -306,13 +307,15 @@ namespace native_net_drone_monitor
 
             savePath = txtPathFolder.Text;
             cacheLocation = txtCacheLocation.Text;
+            mapLocation = txtMapLocation.Text;
 
             if (updateSettings("aspect-ratio", aspectRatioVal) && 
                 updateSettings("save-video-state", saveVideoState) &&
                 updateSettings("video-format", videoFormat) &&
                 updateSettings("save-path", savePath)&&
                 updateSettings("maps-mode", mapsModeVal)&&
-                updateSettings("cache-location", cacheLocation))
+                updateSettings("cache-location", cacheLocation) &&
+                updateSettings("maps-location", mapLocation))
             {
                 return true;
             } else

@@ -35,11 +35,11 @@ namespace native_net_drone_monitor
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection2 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
-            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection2 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection2 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
-            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer2 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
-            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection2 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
+            Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection headerCollection4 = new Syncfusion.Windows.Forms.Tools.TreeNavigator.HeaderCollection();
+            Syncfusion.Windows.Forms.Tools.ActiveStateCollection activeStateCollection4 = new Syncfusion.Windows.Forms.Tools.ActiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.InactiveStateCollection inactiveStateCollection4 = new Syncfusion.Windows.Forms.Tools.InactiveStateCollection();
+            Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer toggleButtonRenderer4 = new Syncfusion.Windows.Forms.Tools.ToggleButtonRenderer();
+            Syncfusion.Windows.Forms.Tools.SliderCollection sliderCollection4 = new Syncfusion.Windows.Forms.Tools.SliderCollection();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.navSettings = new Syncfusion.Windows.Forms.Tools.TreeNavigator();
             this.treeVideoSettings = new Syncfusion.Windows.Forms.Tools.TreeMenuItem();
@@ -69,6 +69,8 @@ namespace native_net_drone_monitor
             this.btnBrowseCacheLoc = new Syncfusion.WinForms.Controls.SfButton();
             this.label7 = new System.Windows.Forms.Label();
             this.cbUseDefaultCacheLoc = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtMapLocation = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,9 +105,9 @@ namespace native_net_drone_monitor
             // navSettings
             // 
             this.navSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            headerCollection2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            headerCollection2.HeaderText = "Settings";
-            this.navSettings.Header = headerCollection2;
+            headerCollection4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerCollection4.HeaderText = "Settings";
+            this.navSettings.Header = headerCollection4;
             this.navSettings.ItemBackColor = System.Drawing.SystemColors.Control;
             this.navSettings.Items.Add(this.treeVideoSettings);
             this.navSettings.Items.Add(this.treeMapsSettings);
@@ -190,17 +192,17 @@ namespace native_net_drone_monitor
             // 
             // toggleSaveVideo
             // 
-            this.toggleSaveVideo.ActiveState = activeStateCollection2;
+            this.toggleSaveVideo.ActiveState = activeStateCollection4;
             this.toggleSaveVideo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toggleSaveVideo.ForeColor = System.Drawing.Color.Black;
-            inactiveStateCollection2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
-            this.toggleSaveVideo.InactiveState = inactiveStateCollection2;
+            inactiveStateCollection4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(151)))), ((int)(((byte)(151)))));
+            this.toggleSaveVideo.InactiveState = inactiveStateCollection4;
             this.toggleSaveVideo.Location = new System.Drawing.Point(283, 102);
             this.toggleSaveVideo.MinimumSize = new System.Drawing.Size(52, 20);
             this.toggleSaveVideo.Name = "toggleSaveVideo";
-            this.toggleSaveVideo.Renderer = toggleButtonRenderer2;
+            this.toggleSaveVideo.Renderer = toggleButtonRenderer4;
             this.toggleSaveVideo.Size = new System.Drawing.Size(90, 40);
-            this.toggleSaveVideo.Slider = sliderCollection2;
+            this.toggleSaveVideo.Slider = sliderCollection4;
             this.toggleSaveVideo.TabIndex = 5;
             this.toggleSaveVideo.Text = "toggleButton1";
             this.toggleSaveVideo.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Default;
@@ -225,9 +227,9 @@ namespace native_net_drone_monitor
             this.cbUseDefault.AutoSize = true;
             this.cbUseDefault.Location = new System.Drawing.Point(7, 132);
             this.cbUseDefault.Name = "cbUseDefault";
-            this.cbUseDefault.Size = new System.Drawing.Size(101, 17);
+            this.cbUseDefault.Size = new System.Drawing.Size(80, 17);
             this.cbUseDefault.TabIndex = 13;
-            this.cbUseDefault.Text = "Reset to default";
+            this.cbUseDefault.Text = "Use default";
             this.cbUseDefault.UseVisualStyleBackColor = true;
             this.cbUseDefault.CheckedChanged += new System.EventHandler(this.cbUseDefault_CheckedChanged);
             // 
@@ -331,6 +333,8 @@ namespace native_net_drone_monitor
             // 
             // panelMapsSettings
             // 
+            this.panelMapsSettings.Controls.Add(this.txtMapLocation);
+            this.panelMapsSettings.Controls.Add(this.label8);
             this.panelMapsSettings.Controls.Add(this.cbUseDefaultCacheLoc);
             this.panelMapsSettings.Controls.Add(this.label7);
             this.panelMapsSettings.Controls.Add(this.btnBrowseCacheLoc);
@@ -364,7 +368,7 @@ namespace native_net_drone_monitor
             // 
             // txtCacheLocation
             // 
-            this.txtCacheLocation.Location = new System.Drawing.Point(42, 122);
+            this.txtCacheLocation.Location = new System.Drawing.Point(43, 167);
             this.txtCacheLocation.Name = "txtCacheLocation";
             this.txtCacheLocation.ReadOnly = true;
             this.txtCacheLocation.Size = new System.Drawing.Size(298, 20);
@@ -374,7 +378,7 @@ namespace native_net_drone_monitor
             // 
             this.btnBrowseCacheLoc.AccessibleName = "Button";
             this.btnBrowseCacheLoc.Font = new System.Drawing.Font("Segoe UI Semibold", 9F);
-            this.btnBrowseCacheLoc.Location = new System.Drawing.Point(346, 122);
+            this.btnBrowseCacheLoc.Location = new System.Drawing.Point(347, 167);
             this.btnBrowseCacheLoc.Name = "btnBrowseCacheLoc";
             this.btnBrowseCacheLoc.Size = new System.Drawing.Size(31, 20);
             this.btnBrowseCacheLoc.TabIndex = 3;
@@ -385,7 +389,7 @@ namespace native_net_drone_monitor
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(37, 94);
+            this.label7.Location = new System.Drawing.Point(38, 139);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(161, 21);
             this.label7.TabIndex = 4;
@@ -394,13 +398,30 @@ namespace native_net_drone_monitor
             // cbUseDefaultCacheLoc
             // 
             this.cbUseDefaultCacheLoc.AutoSize = true;
-            this.cbUseDefaultCacheLoc.Location = new System.Drawing.Point(42, 149);
+            this.cbUseDefaultCacheLoc.Location = new System.Drawing.Point(43, 194);
             this.cbUseDefaultCacheLoc.Name = "cbUseDefaultCacheLoc";
             this.cbUseDefaultCacheLoc.Size = new System.Drawing.Size(80, 17);
             this.cbUseDefaultCacheLoc.TabIndex = 5;
             this.cbUseDefaultCacheLoc.Text = "Use default";
             this.cbUseDefaultCacheLoc.UseVisualStyleBackColor = true;
             this.cbUseDefaultCacheLoc.CheckedChanged += new System.EventHandler(this.cbUseDefaultCacheLoc_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(38, 78);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 21);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Set Location";
+            // 
+            // txtMapLocation
+            // 
+            this.txtMapLocation.Location = new System.Drawing.Point(42, 102);
+            this.txtMapLocation.Name = "txtMapLocation";
+            this.txtMapLocation.Size = new System.Drawing.Size(298, 20);
+            this.txtMapLocation.TabIndex = 7;
             // 
             // frmSettings
             // 
@@ -468,5 +489,7 @@ namespace native_net_drone_monitor
         private System.Windows.Forms.TextBox txtCacheLocation;
         private Syncfusion.WinForms.ListView.SfComboBox cmbMapMode;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtMapLocation;
+        private System.Windows.Forms.Label label8;
     }
 }
