@@ -26,11 +26,16 @@ namespace native_net_drone_monitor
         private List<string> protocol = new List<string>();
         private List<string> baudrateList = new List<string>();
         private List<string> listCOM = new List<string>();
+        private List<Drone> droneList = new List<Drone>();
+
+        private Drone oldDrone = new Drone();
 
         string selectedConnMethod;
         bool telemetryTabIsOpened = false;
         public const string FILENAME = "droneList.xml";
-        public frmAddDevices()
+
+
+        public frmAddDevices(Drone drone, List<Drone> drones)
         {
             InitializeComponent();
             droneType.Add("Quad Copter");
@@ -63,10 +68,23 @@ namespace native_net_drone_monitor
             listCOM.Add("COM3");
             listCOM.Add("COM5");
             cmbPortCOM.DataSource = listCOM;
+
+            if (drone != null)
+            {
+                editData(drone);
+                oldDrone = drone;
+            }
+        }
+
+        private void frmAddDevices_Load(object sender, EventArgs e)
+        {
+            toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
+            toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
         }
 
         private bool validateForm()
         {
+            
             // TODO : Error validating radioButtons status
             if (txtRtspServer.Text == null)
             {
@@ -122,6 +140,11 @@ namespace native_net_drone_monitor
                             break;
                     }
                 }
+                
+                if (droneList != null)
+                {
+                    
+                }
             }
             if (toggleWebSocket.ToggleState == ToggleButtonState.Active)
             {
@@ -144,6 +167,11 @@ namespace native_net_drone_monitor
             /* TODO Validating data form */
 
             string baudrate, selectedProtocol, selectedCOM;
+
+            if (oldDrone != null)
+            {
+                deleteData(oldDrone.profileName);
+            }
             if (!validateForm())
             {
                 MessageBox.Show("Please fill the form", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -177,17 +205,23 @@ namespace native_net_drone_monitor
 
                 string seletedType = droneType[cmbDroneType.SelectedIndex];
 
-                //if (cmbProtocol.SelectedItem != null)
-                //{
-                //    selectedProtocol = protocol[cmbProtocol.SelectedIndex];
-                //}
-                //else { selectedProtocol = ""; }
-
                 if (cmbPortCOM.SelectedItem != null)
                 {
                     selectedCOM = listCOM[cmbPortCOM.SelectedIndex];
                 }
                 else { selectedCOM = ""; }
+
+                if (droneList != null)
+                {
+                    for (int j = 0; j < droneList.Count; ++j)
+                    {
+                        if (txtProfileName.Text == droneList[j].profileName)
+                        {
+                            MessageBox.Show("Profile name already used, please choose other profile name");
+                            return false;
+                        }
+                    }
+                }
 
                 if (toggleWebSocket.ToggleState == ToggleButtonState.Active && toggleMavLink.ToggleState == ToggleButtonState.Active)
                 {
@@ -224,12 +258,7 @@ namespace native_net_drone_monitor
             // TODO Check if file exist
         }
 
-        private void frmAddDevices_Load(object sender, EventArgs e)
-        {
-            toggleWebSocket.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
-            toggleMavLink.VisualStyle = Syncfusion.Windows.Forms.Tools.ToggleButtonStyle.Office2016Colorful;
-        }
-
+        
         private void toggleWebSocket_ToggleStateChanged(object sender, Syncfusion.Windows.Forms.Tools.ToggleStateChangedEventArgs e)
         {
             if (e.ToggleState == ToggleButtonState.Active)
@@ -342,6 +371,87 @@ namespace native_net_drone_monitor
                 }
                 this.Close();
             }
+        }
+
+        private void editData(Drone drone)
+        {
+            txtSocket.Text = drone.socket.ToString();
+            txtRtspServer.Text = drone.rtspServer.ToString();
+            txtProfileName.Text = drone.profileName;
+            txtPortRtsp.Text = drone.rtspPort.ToString();
+            txtTcpHost.Text = drone.tcpHost;
+            txtTcpPort.Text = drone.tcpPort.ToString();
+            txtUdpHost.Text = drone.udpHost;
+            txtUdpPort.Text = drone.udpPort.ToString();
+
+            switch (drone.connMethod)
+            {
+                case "WebSocket":
+                    toggleWebSocket.ToggleState = ToggleButtonState.Active;
+                    break;
+                case "MAVLink | UDP":
+                    toggleMavLink.ToggleState = ToggleButtonState.Active;
+                    cmbProtocol.SelectedIndex = 0;
+                    break;
+                case "MAVLink | TCP":
+                    toggleMavLink.ToggleState = ToggleButtonState.Active;
+                    cmbProtocol.SelectedIndex = 1;
+                    break;
+                case "MAVLink | Serial":
+                    toggleMavLink.ToggleState = ToggleButtonState.Active;
+                    cmbProtocol.SelectedIndex = 2;
+                    break;
+            }
+
+            switch (drone.portCom)
+            {
+                case "COM3":
+                    cmbPortCOM.SelectedIndex = 0;
+                    break;
+                case "COM5":
+                    cmbPortCOM.SelectedIndex = 1;
+                    break;
+            }
+
+            for (int i = 0; i < 13; ++i)
+            {
+                if (drone.baudrate.ToString() == baudrateList[i])
+                {
+                    cmbBaudrate.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < 5; ++i)
+            {
+                if (drone.droneType == droneType[i])
+                {
+                    cmbDroneType.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void deleteData(string attrName)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(FILENAME);
+
+            XmlNode root = xmlDoc.SelectSingleNode("/drone-list");
+
+            foreach (XmlNode child in root.ChildNodes)
+            {
+                string name = child.Attributes[0].InnerText;
+
+                if (name == attrName)
+                {
+                    root.RemoveChild(child);
+                    break;
+                }
+            }
+
+            xmlDoc.Save(FILENAME);
+
         }
     }
 }

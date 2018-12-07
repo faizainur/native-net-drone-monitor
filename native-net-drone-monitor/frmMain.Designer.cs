@@ -69,6 +69,7 @@ namespace native_net_drone_monitor
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.altIndicator = new Syncfusion.Windows.Forms.Gauge.LinearGauge();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.TablesTab = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.cmbConnect = new Syncfusion.WinForms.ListView.SfComboBox();
             this.btnDisconnect = new Syncfusion.WinForms.Controls.SfButton();
@@ -143,6 +144,7 @@ namespace native_net_drone_monitor
             this.GraphTab.SuspendLayout();
             this.tabPageAdv2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbConnect)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -438,6 +440,7 @@ namespace native_net_drone_monitor
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.altIndicator, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.trackBar1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -446,6 +449,7 @@ namespace native_net_drone_monitor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.30435F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 628);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // altIndicator
             // 
@@ -475,7 +479,15 @@ namespace native_net_drone_monitor
             this.altIndicator.Size = new System.Drawing.Size(194, 299);
             this.altIndicator.TabIndex = 0;
             this.altIndicator.Text = "linearGauge1";
-            this.altIndicator.ValueIndicatorColor = System.Drawing.Color.MediumAquamarine;
+            this.altIndicator.ValueIndicatorColor = System.Drawing.Color.Transparent;
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(203, 3);
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 1;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // TablesTab
             // 
@@ -1029,6 +1041,8 @@ namespace native_net_drone_monitor
             this.GraphTab.ResumeLayout(false);
             this.tabPageAdv2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbConnect)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1122,5 +1136,6 @@ namespace native_net_drone_monitor
         private System.ComponentModel.BackgroundWorker mapBGWorker;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private GMap.NET.WindowsForms.GMapControl mapView;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

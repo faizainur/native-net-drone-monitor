@@ -24,9 +24,11 @@ namespace native_net_drone_monitor
         List<Drone> droneList = new List<Drone>();
         XmlDocument xmlDoc = new XmlDocument();
 
-        public frmEdit()
+        public frmEdit(List<Drone> drones)
         {
             InitializeComponent();
+
+            droneList = drones;
         }
 
         private void frmConnect_Load(object sender, EventArgs e)
@@ -77,60 +79,18 @@ namespace native_net_drone_monitor
         private void refreshList()
         {
             listAvailDevices.DataSource = null;
-            readXmlFile();
             var bindingList = new BindingList<Drone>(droneList);
             var source = new BindingSource(bindingList, null);
             listAvailDevices.DataSource = source;
             listAvailDevices.DisplayMember = "profileName";
         }
 
-        private void readXmlFile()
-        {
-            if (droneList.Count > 0)
-            {
-                droneList.Clear();
-            }
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(FILENAME);
-
-            foreach (XmlNode node in xmlDoc.DocumentElement)
-            {
-                var rtspPort = 0;
-                var socket = 0;
-                var baudrate = 0;
-                var tcpPort = 0;
-                var udpPort = 0;
-
-                Drone newDrone = new Drone();
-
-                Int32.TryParse(node["baudrate"].InnerText, out baudrate);
-                Int32.TryParse(node["tcp-port"].InnerText, out tcpPort);
-                Int32.TryParse(node["socket"].InnerText, out socket);
-                Int32.TryParse(node["udp-port"].InnerText, out udpPort);
-                Int32.TryParse(node["rtsp-port"].InnerText, out rtspPort);
-
-                newDrone.profileName = node.Attributes[0].InnerText;
-                newDrone.rtspServer = node["rtsp-server"].InnerText;
-                newDrone.connMethod = node["conn-method"].InnerText;
-                newDrone.droneType = node["drone-type"].InnerText;
-                newDrone.portCom = node["port-com"].InnerText;
-                newDrone.tcpHost = node["tcp-host"].InnerText;
-                newDrone.udpHost = node["udp-host"].InnerText;
-                newDrone.rtspPort = rtspPort;
-                newDrone.socket = socket;
-                newDrone.udpPort = udpPort;
-                newDrone.baudrate = baudrate;
-                newDrone.tcpPort = tcpPort;
-
-                droneList.Add(newDrone);
-            }
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int idx = listAvailDevices.SelectedIndex;
-            //Drone sel = droneList[idx];
-            MessageBox.Show(idx.ToString());
+            Drone sel = droneList[idx];
+            var editForm = new frmAddDevices(sel, droneList);
+            editForm.Show();
         }
     }
 }

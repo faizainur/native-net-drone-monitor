@@ -30,9 +30,11 @@ namespace native_net_drone_monitor
         List<VideoFormat> videoFormats = new List<VideoFormat>();
         List<string> mapsMode = new List<string>();
 
-        public frmSettings()
+        public frmSettings(AppSettingsVal settingsValParam)
         {
             InitializeComponent();
+            settingsVal = settingsValParam;
+
             aspectRatio.Add("4:3");
             aspectRatio.Add("16:9");
             aspectRatio.Add("16:10");
@@ -72,7 +74,6 @@ namespace native_net_drone_monitor
         private void frmSettings_Load(object sender, EventArgs e)
         {
             var main = new frmMain();
-            settingsVal = main.readSettings();
 
             loadSettings();
         }

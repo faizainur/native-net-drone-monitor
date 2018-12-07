@@ -27,6 +27,7 @@ using System.Configuration;
 using System.Configuration.Assemblies;
 using System.Net.NetworkInformation;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace native_net_drone_monitor
 {
@@ -41,19 +42,23 @@ namespace native_net_drone_monitor
         private string FILENAME = "droneList.xml";
         public string path;
 
+        // Imported function from libraries
+
+        [DllImport("mavlinkLibNet.dll")]
+        public static extern int addInt(int a, int b);
 
         public frmMain()
         {
             InitializeComponent();
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            refresh();
             if (!mapBGWorker.IsBusy)
             {
                 mapBGWorker.RunWorkerAsync();
             }
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            loadData();
 
             statusConnection.Text = "NOT CONNECTED";
             statusConnection.ForeColor = Color.Red;
@@ -72,7 +77,7 @@ namespace native_net_drone_monitor
             mapView.SetPositionByKeywords(settingsVal.mapLocation);
         }
 
-        public void refresh()
+        public void loadData()
         {
             settingsVal = readSettings();
             
@@ -88,7 +93,7 @@ namespace native_net_drone_monitor
                     switch (result)
                     {
                         case DialogResult.Yes:
-                            var frmAdd = new frmAddDevices();
+                            var frmAdd = new frmAddDevices(null, null);
                             frmAdd.Show();
                             frmAdd.TopMost = true;
                             break;
@@ -162,7 +167,8 @@ namespace native_net_drone_monitor
             return true;
         }
 
-
+     
+        
         public void applyMapSettings()
         {
             mapView.MapProvider = GMapProviders.OpenStreetMap;
@@ -209,7 +215,7 @@ namespace native_net_drone_monitor
 
         private void addDeviceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var addDevices = new frmAddDevices();
+            var addDevices = new frmAddDevices(null, droneList);
             addDevices.Show();
             
         }
@@ -272,6 +278,7 @@ namespace native_net_drone_monitor
         #region Connection Method
         public void connect(Drone drone)
         {
+            var rtspUrl = drone.rtspServer;
             string time = DateTime.Now.ToString("HH-mm-ss");
             var currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             string filename = drone.profileName + time + settingsVal.videoFormat;
@@ -284,7 +291,7 @@ namespace native_net_drone_monitor
                     ":sout-keep"
                 };
 
-            // connect based on choice
+            // Telemetry connection based on choice
             switch (drone.connMethod)
             {
                 case "WebSocket":
@@ -300,13 +307,14 @@ namespace native_net_drone_monitor
                     // Connect via Serial
                     break;
             }
+
+            // Video stream connection
             if (settingsVal.saveVideoState)
             {
-                recorder.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"),
-                    mediaOptions);
+                recorder.Play(new Uri(rtspUrl),
+                    mediaOptions); // if user wants to save the streamed video
             }
-
-            streamPlayer.Play(new Uri("D:/My Project/TRUI/AUAV/Programming/native-net-drone-monitor/native-net-drone-monitor/bin/Debug/1.mkv"));
+            streamPlayer.Play(new Uri(rtspUrl));
 
             streamPlayer.Video.AspectRatio = settingsVal.aspectRatio; // set aspect ratio
             btnConnectDevices.Visible = false;
@@ -389,7 +397,7 @@ namespace native_net_drone_monitor
 
         private void editDevicesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var editFrm = new frmEdit();
+            var editFrm = new frmEdit(droneList);
             editFrm.Show();
         }
 
@@ -405,17 +413,17 @@ namespace native_net_drone_monitor
 
         private void frmMain_VisibleChanged(object sender, EventArgs e)
         {
-            refresh();
+            loadData();
         }
 
         private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            refresh();
+            loadData();
         }
 
         private void menuSettings_Click(object sender, EventArgs e)
         {
-            var settingsFrm = new frmSettings();
+            var settingsFrm = new frmSettings(settingsVal);
             settingsFrm.Show();
             settingsFrm.TopMost = true;
         }
@@ -528,6 +536,16 @@ namespace native_net_drone_monitor
             {
                 MessageBox.Show("Error during loading map data\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            altIndicator.Value = trackBar1.Value;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
