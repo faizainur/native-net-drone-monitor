@@ -615,6 +615,7 @@ namespace native_net_drone_monitor
             // 
             // treeWebSocket
             // 
+            this.treeWebSocket.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeWebSocket.ItemBackColor = System.Drawing.SystemColors.Control;
             this.treeWebSocket.Location = new System.Drawing.Point(0, 0);
             this.treeWebSocket.Name = "treeWebSocket";
@@ -624,6 +625,7 @@ namespace native_net_drone_monitor
             // 
             // treeMavLink
             // 
+            this.treeMavLink.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeMavLink.ItemBackColor = System.Drawing.SystemColors.Control;
             this.treeMavLink.Location = new System.Drawing.Point(0, 0);
             this.treeMavLink.Name = "treeMavLink";
