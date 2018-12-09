@@ -4,8 +4,10 @@ an open source project
 
 ```
 PLEASE BE AWARE !!!
-THIS PROGRAM STILL UNDER DEVELOPMENT AND IN ALPHA STATUS. SO THERE ARE CHANCES WHEN BUGS HAPPENED WHICH WE HAVEN'T NOTICED.
-SO, ANY BUGS THAT MIGHT BE BROKE YOU DRONE IS YOUR RESPONSIBILITIES, NOT OUR. 
+THIS PROGRAM STILL UNDER DEVELOPMENT AND IN ALPHA STATUS. SO THERE ARE CHANCES 
+WHEN BUGS HAPPENED WHICH WE HAVEN'T NOTICED. SO, ANY BUGS THAT MIGHT BE BROKE 
+YOU DRONE IS YOUR RESPONSIBILITIES, NOT OUR. 
+
 PLEASE FEEL FREE TO CONCTACT US IF YOU FOUND ANY BUGS IN THIS PROJECT.
 
 THANK YOU.
@@ -19,7 +21,13 @@ Drone Monitor is a software that could show any data streamed from data using an
 2. Telemetry data
 3. GPS
 Any data received from the drone will be saved on a log file.
-
+## Dependencies
+### Nuget Packages
+1. VLC.DotNet
+2. GMap.NET
+### Libraries
+1. Syncfusion Component Libraries for WinForm [Syncfusion website](https://www.syncfusion.com/)
+2. libvlc (just install VLC Player to get this libraries)
 ## Supported tranfer method (Under development)
 1. TCP (Telemetry)
 2. RTSP (Video stream)
