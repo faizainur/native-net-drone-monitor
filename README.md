@@ -28,7 +28,7 @@ Any data received from the drone will be saved on a log file.
 ### Libraries
 1. Syncfusion Component Libraries for WinForm [Syncfusion website](https://www.syncfusion.com/)
 2. libvlc (just install VLC Player to get this libraries)
-## Supported tranfer method (Under development)
+## Supported data tranfer method (Under development)
 1. TCP (Telemetry)
 2. RTSP (Video stream)
 3. MAVLink (Telemetry)
